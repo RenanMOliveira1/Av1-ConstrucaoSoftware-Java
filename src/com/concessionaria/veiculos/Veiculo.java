@@ -5,7 +5,7 @@ package com.concessionaria.veiculos;
  *
  */
 
-public class Veiculo {
+public abstract class Veiculo {
 	private String chassi;
 	private String montadora;
 	private String modelo;
