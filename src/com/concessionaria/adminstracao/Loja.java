@@ -68,8 +68,9 @@ public class Loja {
 		}	
 	}
 	
-	public ArrayList<Carro> pesquisaCarro(){
+	public ArrayList<Carro> pesquisaCarro(String dadosPesquisa){
 		ArrayList<Carro> resultado = new ArrayList<Carro>();
+		
 		return resultado;
 	}
 	
