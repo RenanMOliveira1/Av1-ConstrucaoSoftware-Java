@@ -11,6 +11,7 @@ import java.util.Scanner;
 public class Carro extends Veiculo {
 	private double motorizacao;
 	private String cambio;
+	Scanner input = new Scanner(System.in);
 	
 	public Carro() {
 	}
@@ -66,7 +67,6 @@ public class Carro extends Veiculo {
 	}
 	
 	public void leCarro(){
-		Scanner input = new Scanner(System.in);
 		
 		System.out.println("Entre com o chassi do carro: ");
 		String chassi = input.nextLine();
