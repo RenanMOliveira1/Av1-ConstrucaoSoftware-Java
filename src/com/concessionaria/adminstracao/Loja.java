@@ -2,7 +2,8 @@ package com.concessionaria.adminstracao;
 
 import java.util.ArrayList;
 
-import com.concessionaria.veiculos.*;
+import com.concessionaria.veiculos.Carro;
+import com.concessionaria.veiculos.Motocicleta;
 
 /**
  * 
@@ -43,9 +44,10 @@ public class Loja {
 	}	
 	
 	public boolean adicionarCarro(){
-		Carro carro = Carro.leCarro();
+		Carro carro = new Carro();
 		int verifica;
 		
+		carro.leCarro();
 		verifica = this.getEstoqueCarro().size();
 		this.getEstoqueCarro().add(carro);
 		if(verifica + 1 == this.getEstoqueCarro().size()){
@@ -56,9 +58,10 @@ public class Loja {
 	}
 	
 	public boolean adicionarMotocicleta(){
-		Motocicleta moto = Motocicleta.leMoto();
+		Motocicleta moto = new Motocicleta();
 		int verifica;
 		
+		moto.lemoto();
 		verifica = this.getEstoqueMotocicleta().size();
 		this.getEstoqueMotocicleta().add(moto);
 		if(verifica + 1 == this.getEstoqueMotocicleta().size()){

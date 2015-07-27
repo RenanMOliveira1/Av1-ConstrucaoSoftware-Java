@@ -1,12 +1,15 @@
 package com.concessionaria.veiculos;
 
+import java.util.Scanner;
+
 /**
  * @author Tiago
+ *@author Renan Oliveira
  *
  */
 
 public class Carro extends Veiculo {
-	private double motolizacao;
+	private double motorizacao;
 	private String cambio;
 	
 	public Carro() {
@@ -28,7 +31,7 @@ public class Carro extends Veiculo {
 	public Carro(String chassi, String montadora, String modelo, String tipo,
 			String cor, float preco, float motolizacao, String cambio) {
 		super(chassi, montadora, modelo, tipo, cor, preco);
-		setMotolizacao(motolizacao);
+		setMotorizacao(motolizacao);
 		setCambio(cambio);
 	}
 	
@@ -36,19 +39,15 @@ public class Carro extends Veiculo {
 	 * @return Retorna a Motorização
 	 */
 	public double getMotolizacao() {
-		return motolizacao;
+		return motorizacao;
 	}
 	
 	/**
 	 * @param motolizacao
 	 * Se Numero for Negativo, chama uma excessão.
 	 */
-	public void setMotolizacao(double motolizacao) {
-		
-		if (motolizacao < 0)
-			throw new IllegalArgumentException("Não se aceita Número Negativo.");
-		
-		this.motolizacao = motolizacao;
+	public void setMotorizacao(double motolizacao) {
+		this.motorizacao = motolizacao;
 	}
 	
 	/**
@@ -66,5 +65,64 @@ public class Carro extends Veiculo {
 		this.cambio = cambio;
 	}
 	
-	
+	public void leCarro(){
+		Scanner input = new Scanner(System.in);
+		
+		System.out.println("Entre com o chassi do carro: ");
+		String chassi = input.nextLine();
+		if(chassi.equals(null) == false){
+			setChassi(chassi);
+		} else {
+			throw new IllegalArgumentException("Chassi nao deve ser nulo!");
+		}
+		System.out.println("Entre com a montadora do carro: ");
+		String montadora = input.nextLine();
+		if(montadora.equals(null) == false){
+			setMontadora(montadora);
+		} else {
+			throw new IllegalArgumentException("Montadora nao deve ser nulo!");
+		}
+		System.out.println("Entre com o chassi do carro: ");
+		String modelo = input.nextLine();
+		if(modelo.equals(null) == false){
+			setModelo(modelo);
+		} else {
+			throw new IllegalArgumentException("Modelo nao deve ser nulo!");
+		}
+		System.out.println("Entre com o tipo do carro: ");
+		String tipo = input.nextLine();
+		if(tipo.equals(null) == false){
+			setChassi(tipo);
+		} else {
+			throw new IllegalArgumentException("Tipo nao deve ser nulo!");
+		}
+		System.out.println("Entre com o chassi do carro: ");
+		String cor = input.nextLine();
+		if(cor.equals(null) == false){
+			setChassi(cor);
+		} else {
+			throw new IllegalArgumentException("Cor nao deve ser nulo!");
+		}
+		System.out.println("Entre com o preço do carro: ");
+		Float preco = input.nextFloat();
+		if(preco > 0){
+			setPreco(preco);
+		} else {
+			throw new IllegalArgumentException("Preço deve ser numeral e positivo");
+		}
+		System.out.println("Entre com a motorizacao do tanque do carro: ");
+		int motorizacao = input.nextInt();
+		if(motorizacao > 0){
+			setMotorizacao(motorizacao);
+		} else {
+			throw new IllegalArgumentException("Motorizacao deve ser numeral e positiva");
+		}
+		System.out.println("Entre com a cilindrada do carro: ");
+		String cambio = input.nextLine();
+		if(cambio.equals(null) == false){
+			setCambio(cambio);
+		} else {
+			throw new IllegalArgumentException("Cambio deve ser numeral e positiva");
+		}
+	}
 }
