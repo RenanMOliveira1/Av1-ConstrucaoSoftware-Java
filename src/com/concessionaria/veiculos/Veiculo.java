@@ -1,4 +1,4 @@
-package com.concessionaria.veiculos;
+ package com.concessionaria.veiculos;
 
 /**
  * @author Tiago
@@ -6,12 +6,12 @@ package com.concessionaria.veiculos;
  */
 
 public abstract class Veiculo {
-	private String chassi;
-	private String montadora;
-	private String modelo;
-	private String tipo;
-	private String cor;
-	private float preco;
+	protected String chassi;
+	protected String montadora;
+	protected String modelo;
+	protected String tipo;
+	protected String cor;
+	protected float preco;
 	
 	
 	public Veiculo () {
