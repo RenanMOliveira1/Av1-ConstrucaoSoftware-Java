@@ -74,11 +74,11 @@ public class Motocicleta extends Veiculo {
 		this.capacidadeTanque = capacidadeTanque;
 	}
 	
-	public void lemoto(){
+	public void leMoto(){
 		
 		System.out.println("Entre com o chassi da moto: ");
 		String chassi = input.nextLine();
-		if(chassi.equals(null) == false){
+		if(chassi.equals(null) == false) {
 			setChassi(chassi);
 		} else {
 			throw new IllegalArgumentException("Chassi nao deve ser nulo!");

@@ -61,7 +61,7 @@ public class Loja {
 		Motocicleta moto = new Motocicleta();
 		int verifica;
 		
-		moto.lemoto();
+		moto.leMoto();
 		verifica = this.getEstoqueMotocicleta().size();
 		this.getEstoqueMotocicleta().add(moto);
 		if(verifica + 1 == this.getEstoqueMotocicleta().size()){

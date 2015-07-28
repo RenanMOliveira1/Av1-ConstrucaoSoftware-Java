@@ -1,7 +1,7 @@
  package com.concessionaria.veiculos;
 
 /**
- * @author Tiago
+ * @author Yasmin Farias
  *
  */
 
