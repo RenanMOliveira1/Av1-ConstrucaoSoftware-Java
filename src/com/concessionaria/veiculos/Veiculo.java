@@ -122,9 +122,6 @@ public abstract class Veiculo {
 	 * faz setPreco just quando preco é igual ou maior que zero (não é negativo)
 	 */
 	public void setPreco(float preco) {
-		
-		if (preco < 0)
-			throw new IllegalArgumentException("Não se aceita Número Negativo.");
 		this.preco = preco;
 	}
 	

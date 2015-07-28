@@ -113,7 +113,7 @@ public class Motocicleta extends Veiculo {
 		}
 		System.out.println("Entre com o preço da moto: ");
 		Float preco = input.nextFloat();
-		if(preco > 0){
+		if(preco >= 0){
 			setPreco(preco);
 		} else {
 			throw new IllegalArgumentException("Preço deve ser numeral e positivo");
