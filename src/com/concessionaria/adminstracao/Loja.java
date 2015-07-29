@@ -71,10 +71,13 @@ public class Loja {
 		}	
 	}
 	
-	public ArrayList<Carro> pesquisaCarro(String dadosPesquisa){
+	public ArrayList<Carro> pesquisaCarro(String parametros){
 		ArrayList<Carro> resultado = new ArrayList<Carro>();
-		
 		return resultado;
+	}
+	
+	public ArrayList<Carro> pesquisaCarro(){
+		return getEstoqueCarro();
 	}
 	
 	public ArrayList<Motocicleta> pesquisaMotocicleta(){
