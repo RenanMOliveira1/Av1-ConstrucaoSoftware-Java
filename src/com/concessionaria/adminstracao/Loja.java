@@ -71,13 +71,10 @@ public class Loja {
 		}	
 	}
 	
-	public ArrayList<Carro> pesquisaCarro(String parametros){
+	public ArrayList<Carro> pesquisaCarro(String dadosPesquisa){
 		ArrayList<Carro> resultado = new ArrayList<Carro>();
+		
 		return resultado;
-	}
-	
-	public ArrayList<Carro> pesquisaCarro(){
-		return getEstoqueCarro();
 	}
 	
 	public ArrayList<Motocicleta> pesquisaMotocicleta(){
@@ -131,7 +128,7 @@ public class Loja {
 			System.out.println(moto.getModelo());
 			System.out.println(moto.getTipo());
 			System.out.println(moto.getCilindrada());
-			System.out.println(moto.getCapacidadeTanque());
+			System.out.println(moto.getCapacidaDeTanque());
 			System.out.println(moto.getCor());
 			System.out.println(moto.getPreco());
 			System.out.println("-----------X------------");

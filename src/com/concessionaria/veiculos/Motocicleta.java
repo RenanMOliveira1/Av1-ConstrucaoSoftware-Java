@@ -1,17 +1,20 @@
 package com.concessionaria.veiculos;
 
+import com.concessionaria.adminstracao.Enum.*;
+
 import java.util.Scanner;
 
 
 /**
  * @author Tiago
  * @author Renan Oliveira
+ * @author Yasmin
  *
  */
 
 public class Motocicleta extends Veiculo {
 	private int cilindrada;
-	private int capacidadeTanque;
+	private int capacidaDeTanque;
 	Scanner input = new Scanner(System.in);
 	
 	public Motocicleta() {
@@ -24,17 +27,17 @@ public class Motocicleta extends Veiculo {
 	 * @param tipo
 	 * @param cor
 	 * @param preco
-	 * @param CapacidadedeTanque
+	 * @param CapacidadeDeTanque
 	 * @param cilindrada
 	 * 
 	 * Construtor com todos os parâmentros e chamada a Super Classe Veículo
 	 */
 	public Motocicleta(String chassi, String montadora, String modelo,
-			String tipo, String cor, float preco, int CapacidadedeTanque, int cilindrada) {
+			String tipo, String cor, float preco, int CapacidadeDeTanque, int cilindrada) {
 		
 		super(chassi, montadora, modelo, tipo, cor, preco);
 		
-		setCapacidadeTanque(capacidadeTanque);
+		setCapacidaDeTanque(capacidaDeTanque);
 		setCilindrada(cilindrada);
 	}
 	
@@ -61,8 +64,8 @@ public class Motocicleta extends Veiculo {
 	 * @return Retorna a Capacidade de Tanque
 	 */
 	
-	public int getCapacidadeTanque() {
-		return capacidadeTanque;
+	public int getCapacidaDeTanque() {
+		return capacidaDeTanque;
 	}
 	
 	/**
@@ -70,67 +73,111 @@ public class Motocicleta extends Veiculo {
 	 * Se Numero for Negativo, chama uma excessão.
 	 */
 	
-	public void setCapacidadeTanque(int capacidadeTanque) {		
-		this.capacidadeTanque = capacidadeTanque;
+	public void setCapacidaDeTanque(int capacidadeTanque) {		
+		this.capacidaDeTanque = capacidadeTanque;
 	}
 	
+	/**
+	 * Método que faz a leitura de tipo de Motocicleta a partir do teclado
+	 */
+	public void leTipoMoto() {
+		
+		String nomeTipoEscolhido = null;
+		
+		/**
+		 * Percorre todos os valores de TipoMoto e recebe seus valores em "tipoMoto" na ordem, imprimindo as opcoes
+		 */
+		System.out.println("Entre com o tipo de moto: ");
+		for (TipoMoto tipoMoto : TipoMoto.values()) {
+			System.out.println("*Digite " + tipoMoto.getNumOpcao() + " para escolher " + tipoMoto.getNomeTipo());
+		}
+		
+		int opcaoTipo = input.nextInt();
+		
+		/**
+		 * Percorre todos os valores de TipoMoto e recebe seus valores em "tipoMoto" na ordem
+		 * Assim, verifica se o valor da opcao inputada confere com cada opcao de "tipoMoto"
+		 */
+		for (TipoMoto tipoMoto : TipoMoto.values()) {
+			if(opcaoTipo == tipoMoto.getNumOpcao())
+				nomeTipoEscolhido = tipoMoto.getNomeTipo();	
+		} 
+		
+		if (nomeTipoEscolhido.equals(null) == false)
+			setTipo(nomeTipoEscolhido);
+		else 
+			throw new IllegalArgumentException("Opcao nao valida!");
+		
+	}
+	
+	/**
+	 * Método que faz a leitura da cilindrada de Motocicleta a partir do teclado
+	 */
+	public void leCilindrada() {
+		
+		int cilindradaEscolhida = 0;
+		
+		/**
+		 * Percorre todos os valores de Cilindrada e recebe seus valores em "cilindrada" na ordem, imprimindo as opcoes
+		 */
+		System.out.println("Entre com a cilindrada da moto: ");
+		for (Cilindrada cilindrada : Cilindrada.values()) {
+			System.out.println("*Digite " + cilindrada.getNumOpcao() + " para escolher " + cilindrada.getNumCilindradas());
+		}
+		
+		int opcaoCilindrada = input.nextInt();
+		
+		/**
+		 * Percorre todos os valores de Cilindrada e recebe seus valores em "cilindrada" na ordem
+		 * Assim, verifica se o valor da opcao inputada confere com cada opcao de "cilindrada"
+		 */
+		for (Cilindrada cilindrada : Cilindrada.values()) {
+			if(opcaoCilindrada == cilindrada.getNumOpcao())
+				cilindradaEscolhida = cilindrada.getNumCilindradas();	
+		} 
+		
+		if (cilindradaEscolhida > 0)
+			setCilindrada(cilindradaEscolhida);
+		else 
+			throw new IllegalArgumentException("Opcao nao valida!");
+		
+	}
+	
+	/**
+	 * Método que faz a leitura de capacidade de tanque de Motocicleta a partir do teclado
+	 */
+	public void leCapacidadeDeTanque() {
+		System.out.println("Entre com a capacidade do tanque da moto: ");
+		
+		int capacidade = input.nextInt();
+		
+		if(capacidade > 0)
+			setCapacidaDeTanque(capacidade);
+		else 
+			throw new IllegalArgumentException("Capacidade deve ser numeral e positiva");
+	}
+	
+	/**
+	 * @see leChassi()
+	 * @see leMontadora()
+	 * @see leModelo()
+	 * @see leCor()
+	 * @see lePreco()
+	 * 
+	 * Métodos da classe abstrata Veiculo
+	 */
 	public void leMoto(){
 		
-		System.out.println("Entre com o chassi da moto: ");
-		String chassi = input.nextLine();
-		if(chassi.equals(null) == false) {
-			setChassi(chassi);
-		} else {
-			throw new IllegalArgumentException("Chassi nao deve ser nulo!");
-		}
-		System.out.println("Entre com a montadora da moto: ");
-		String montadora = input.nextLine();
-		if(montadora.equals(null) == false){
-			setMontadora(montadora);
-		} else {
-			throw new IllegalArgumentException("Montadora nao deve ser nulo!");
-		}
-		System.out.println("Entre com o chassi da moto: ");
-		String modelo = input.nextLine();
-		if(modelo.equals(null) == false){
-			setModelo(modelo);
-		} else {
-			throw new IllegalArgumentException("Modelo nao deve ser nulo!");
-		}
-		System.out.println("Entre com o tipo da moto: ");
-		String tipo = input.nextLine();
-		if(tipo.equals(null) == false){
-			setChassi(tipo);
-		} else {
-			throw new IllegalArgumentException("Tipo nao deve ser nulo!");
-		}
-		System.out.println("Entre com o chassi da moto: ");
-		String cor = input.nextLine();
-		if(cor.equals(null) == false){
-			setChassi(cor);
-		} else {
-			throw new IllegalArgumentException("Cor nao deve ser nulo!");
-		}
-		System.out.println("Entre com o preço da moto: ");
-		Float preco = input.nextFloat();
-		if(preco >= 0){
-			setPreco(preco);
-		} else {
-			throw new IllegalArgumentException("Preço deve ser numeral e positivo");
-		}
-		System.out.println("Entre com a capacidade do tanque da moto: ");
-		int capacidade = input.nextInt();
-		if(capacidade > 0){
-			setCapacidadeTanque(capacidade);
-		} else {
-			throw new IllegalArgumentException("Capacidade deve ser numeral e positiva");
-		}
-		System.out.println("Entre com a cilindrada da moto: ");
-		int cilindrada = input.nextInt();
-		if(cilindrada > 0){
-			setCapacidadeTanque(cilindrada);
-		} else {
-			throw new IllegalArgumentException("Cilindrada deve ser numeral e positiva");
-		}
+		System.out.println("********Entre com caracteristicas para a sua moto********");
+
+		leChassi();
+		leMontadora();
+		leModelo();
+		leTipoMoto();
+		leCor();
+		lePreco();
+		leCapacidadeDeTanque();
+		leCilindrada();
+		
 	}
 }

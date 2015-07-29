@@ -7,7 +7,7 @@ package com.concessionaria.adminstracao;
  */
 public class Enum {
 
-	public enum MontadoraCarro {
+	public enum Montadora {
         
 		TOYOTA(1, "Toyota"),
 		BMW(2, "BMW"),
@@ -18,7 +18,15 @@ public class Enum {
 		FORD(7, "Ford"),
 		PORSCHE(8, "Porsche"),
 		HYUNDAI(9, "Hyundai"),
-		RENAULT(10, "Renault");
+		RENAULT(10, "Renault"),
+		DUCATI(11, "Ducati"),
+		SUZUKI(12, "Suzuki"),
+		YAMAHA(13, "Yamaha"),
+		HOLLISTER_EXCITE(14, "Hollister Excite"),
+		KAWASAKI(15, "Kawasaki"),
+		APRILIA_TUONO(16, "Aprilia Tuono"),
+		VYRUS(17, "Vyrus"),
+		ICON_SHENE(18, "ICON_SHENE");
 		
 		private int numOpcao;
 		private String nomeMontadora;
@@ -29,7 +37,7 @@ public class Enum {
 		 * 
 		 * Construtor com todos os parâmentros
 		 */
-		private MontadoraCarro(int numOpcao, String nomeMontadora) {
+		private Montadora(int numOpcao, String nomeMontadora) {
 			this.numOpcao = numOpcao;
 			this.nomeMontadora = nomeMontadora;
 		}
@@ -37,56 +45,15 @@ public class Enum {
 		/**
 		 * @return Retorna o numero da opcao
 		 */
-		public int getOpcao() {
+		public int getNumOpcao() {
 			return this.numOpcao;
 		}
 		
 		/**
 		 * @return Retorna o nome da montadora
 		 */
-		public String getNome() {
+		public String getNomeMontadora() {
 			return this.nomeMontadora;
-		}
-	}
-	
-	public enum MontadoraMoto {
-		DUCATI(1, "Ducati"),
-		SUZUKI(2, "Suzuki"),
-	    HONDA(3, "Honda"),
-		BMW(4, "BMW"),
-		YAMAHA(5, "Yamaha"),
-		HOLLISTER_EXCITE(6, "Hollister Excite"),
-		KAWASAKI(7, "Kawasaki"),
-		APRILIA_TUONO(8, "Aprilia Tuono"),
-		VYRUS(9, "Vyrus"),
-		ICON_SHENE(10, "ICON_SHENE");
-			
-		private int numOpcao;	
-		private String nomeMontadora;
-			
-		/**
-		 * @param numOpcao
-		 * @param nomeMontadora
-		 * 
-		 * Construtor com todos os parâmentros
-		 */
-		private MontadoraMoto(int numOpcao, String nomeMontadora) {
-			this.numOpcao = numOpcao;
-			this.nomeMontadora = nomeMontadora;
-		}
-			
-		/**
-		 * @return Retorna o numero da opcao
-		 */
-		public int numOpcao() {
-			return numOpcao;
-		}
-		
-		/**
-		 * @return Retorna o nome da montadora
-		 */
-		public String nomeMontadora() {
-			return nomeMontadora;
 		}
 	}
 	
