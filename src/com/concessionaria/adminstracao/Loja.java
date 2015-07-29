@@ -21,24 +21,31 @@ public class Loja {
 	public String getEndereco() {
 		return endereco;
 	}
+	
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
+	
 	public String getNome() {
 		return nome;
 	}
+	
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
 	public ArrayList<Carro> getEstoqueCarro() {
 		return estoqueCarro;
 	}
+	
 	public void setEstoqueCarro(ArrayList<Carro> estoqueCarro) {
 		this.estoqueCarro = estoqueCarro;
 	}
+	
 	public ArrayList<Motocicleta> getEstoqueMotocicleta() {
 		return estoqueMotocicleta;
 	}
+	
 	public void setEstoqueMotocicleta(ArrayList<Motocicleta> estoqueMoto) {
 		this.estoqueMotocicleta = estoqueMoto;
 	}	
