@@ -63,7 +63,6 @@ public class Motocicleta extends Veiculo {
 	/**
 	 * @return Retorna a Capacidade de Tanque
 	 */
-	
 	public int getCapacidaDeTanque() {
 		return capacidaDeTanque;
 	}
@@ -72,7 +71,6 @@ public class Motocicleta extends Veiculo {
 	 * @param capacidadeTanque
 	 * Se Numero for Negativo, chama uma excessão.
 	 */
-	
 	public void setCapacidaDeTanque(int capacidadeTanque) {		
 		this.capacidaDeTanque = capacidadeTanque;
 	}

@@ -265,14 +265,15 @@ public class Enum {
 	}
 
 	public enum Cilindrada {
-		CENTO_E_CINQUENTA(1, 100),
-		DUZENTOS_E_CINQUENTA(1, 250),
-		TREZENTAS(2, 300),
-		QUATROCENTAS(3, 400),
-		QUINHENTAS(4, 500),
-		SEISCENTAS(5, 600),
-		SETECENTOS_E_CINQUENTA(6, 750),
-		MIL(7, 1000);
+		CEM(1, 100),
+		CENTO_E_CINQUENTA(2, 150),
+		DUZENTOS_E_CINQUENTA(3, 250),
+		TREZENTAS(4, 300),
+		QUATROCENTAS(5, 400),
+		QUINHENTAS(6, 500),
+		SEISCENTAS(7, 600),
+		SETECENTOS_E_CINQUENTA(8, 750),
+		MIL(9, 1000);
 		
 		private int numOpcao;
 		private int numCilindradas;

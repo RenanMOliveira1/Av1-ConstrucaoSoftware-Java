@@ -68,7 +68,6 @@ public class Carro extends Veiculo {
 		this.cambio = cambio;
 	}
 	
-	
 	/**
 	 * Método que faz a leitura de tipo de Carro a partir do teclado
 	 */

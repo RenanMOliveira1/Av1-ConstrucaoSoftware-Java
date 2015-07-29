@@ -36,7 +36,6 @@ public abstract class Veiculo {
 	 * 
 	 * Construtor com todos os parâmentros
 	 */
-	
 	public Veiculo(String chassi, String montadora, String modelo, String tipo, String cor, float preco) {
 		
 		setChassi(chassi);
