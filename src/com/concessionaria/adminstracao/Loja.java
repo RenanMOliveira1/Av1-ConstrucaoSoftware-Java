@@ -122,6 +122,7 @@ public class Loja {
 			System.out.println(carro.getCor());
 			System.out.println(carro.getPreco());
 			System.out.println("-----------X------------");
+			System.out.println(" ");
 		}
 	}
 	
@@ -136,6 +137,7 @@ public class Loja {
 			System.out.println(moto.getCor());
 			System.out.println(moto.getPreco());
 			System.out.println("-----------X------------");
+			System.out.println(" ");
 		}
 	}
 }
