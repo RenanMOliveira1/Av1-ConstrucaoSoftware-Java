@@ -52,11 +52,14 @@ public class Loja {
 	
 	public boolean adicionarCarro(){
 		Carro carro = new Carro();
-		int verifica;
+		ArrayList<Carro> novoCarro = new ArrayList<Carro>();
+		int verifica = 0;
 		
 		carro.leCarro();
-		verifica = this.getEstoqueCarro().size();
-		this.getEstoqueCarro().add(carro);
+		if (this.getEstoqueCarro() != null)
+			verifica = this.getEstoqueCarro().size();
+		novoCarro.add(carro);
+		setEstoqueCarro(novoCarro);
 		if(verifica + 1 == this.getEstoqueCarro().size()){
 			return true;
 		} else {
@@ -113,13 +116,21 @@ public class Loja {
 	public void listarEstoqueCarro(){
 		
 		for(Carro carro : getEstoqueCarro()){
+			System.out.print("Chassi: ");
 			System.out.println(carro.getChassi());
+			System.out.print("Montadora: ");
 			System.out.println(carro.getMontadora());
+			System.out.print("Modelo: ");
 			System.out.println(carro.getModelo());
+			System.out.print("Tipo: ");
 			System.out.println(carro.getTipo());
+			System.out.print("Cambio: ");
 			System.out.println(carro.getCambio());
-			System.out.println(carro.getMotolizacao());
+			System.out.print("Motorizacao: ");
+			System.out.println(carro.getMotorizacao());
+			System.out.print("Cor: ");
 			System.out.println(carro.getCor());
+			System.out.print("Preco: ");
 			System.out.println(carro.getPreco());
 			System.out.println("-----------X------------");
 			System.out.println(" ");

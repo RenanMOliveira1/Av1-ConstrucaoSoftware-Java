@@ -42,15 +42,15 @@ public class Carro extends Veiculo {
 	/**
 	 * @return Retorna a Motorização
 	 */
-	public double getMotolizacao() {
+	public double getMotorizacao() {
 		return motorizacao;
 	}
 	
 	/**
 	 * @param motolizacao
 	 */
-	public void setMotorizacao(double motolizacao) {
-		this.motorizacao = motolizacao;
+	public void setMotorizacao(double motorizacao) {
+		this.motorizacao = motorizacao;
 	}
 	
 	/**
@@ -125,7 +125,7 @@ public class Carro extends Veiculo {
 		/**
 		 * Percorre todos os valores de Cambio e recebe seus valores em "cambio" na ordem, imprimindo as opcoes
 		 */
-		System.out.println("Entre com o tipo de carro: ");
+		System.out.println("Entre com o cambio de carro: ");
 		for (Cambio cambio : Cambio.values()) {
 			System.out.println("*Digite " + cambio.getNumOpcao() + " para escolher " + cambio.getNomeCambio());
 		}

@@ -34,44 +34,45 @@ public class Menu {
 	
 		    switch (opcaoEscolhida) {
 		    case 1:
-		      System.out.println("|       Adicionar Carro Selecionado      |");
+		      System.out.println("|       Adicionar Carro Selecionado       |");
 		      concessionaria.adicionarCarro();
 		      break;
 		    case 2:
-		      System.out.println("|        Adicionar Moto Selecionado      |");
+		      System.out.println("|        Adicionar Moto Selecionado       |");
 		      concessionaria.adicionarMotocicleta();
 		      break;
 		    case 3:
-		      System.out.println("|       Pesquisar Carro Selecionado      |");
+		      System.out.println("|       Pesquisar Carro Selecionado       |");
 		      concessionaria.pesquisaCarro();
 		      break;
 		    case 4:
-		    	System.out.println("|      Pesquisar Moto Seleciondado     |");
+		    	System.out.println("|      Pesquisar Moto Seleciondado      |");
 		    	concessionaria.pesquisaMotocicleta();
 		    	break;
 		    case 5:
-		    	System.out.println("|        Buscar Carro Selecionado      |");
+		    	System.out.println("|        Buscar Carro Selecionado       |");
 		    	System.out.println(" Entre com o chassi: ");
 		    	String chassiCarro = Keyin.inString();
 		    	concessionaria.buscaCarro(chassiCarro);
 		    	break;
 		    case 6:
-		    	System.out.println("|         Buscar Moto  Selecionado      |");
+		    	System.out.println("|         Buscar Moto  Selecionado       |");
 		    	System.out.println(" Entre com o chassi: ");
 		    	String chassiMoto = Keyin.inString();
 		    	concessionaria.buscarMoto(chassiMoto);
 		    	break;
 		    case 7:
-		    	System.out.println("|  Listar Estoque de Carros Selecionado  |");
+		    	System.out.println("|  Listar Estoque de Carros Selecionado   |");
 		    	concessionaria.listarEstoqueCarro();
 		    	break;
 		    case 8:
-		    	System.out.println("|   Listar Estoque de Motos Selecionado  |");
+		    	System.out.println("|   Listar Estoque de Motos Selecionado   |");
 		    	concessionaria.listarEstoqueMotocicleta();
 		    	break;
 		    case 9:
-		    	System.out.println("|            Saida Selecionada            |");
+		    	System.out.println("|            Saida Selecionada             |");
 		    	sair = true;
+		    	break;
 		    default:
 		      System.out.println("Opcao Invalida!!");
 		    }

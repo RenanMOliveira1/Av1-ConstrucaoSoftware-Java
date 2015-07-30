@@ -190,7 +190,7 @@ public abstract class Veiculo {
 	public void leModelo() {
 		System.out.println("Entre com o modelo: ");
 		
-		String modelo = input.nextLine();
+		String modelo = input.next();
 		
 		if(modelo.equals(null) == false)
 			setModelo(modelo);
