@@ -15,8 +15,8 @@ public class Loja {
 	
 	String endereco;
 	String nome;
-	ArrayList<Carro> estoqueCarro;
-	ArrayList<Motocicleta> estoqueMotocicleta;
+	ArrayList<Carro> estoqueCarro = new ArrayList<Carro>();
+	ArrayList<Motocicleta> estoqueMotocicleta = new ArrayList<Motocicleta>();
 	
 	public String getEndereco() {
 		return endereco;
@@ -52,14 +52,12 @@ public class Loja {
 	
 	public boolean adicionarCarro(){
 		Carro carro = new Carro();
-		ArrayList<Carro> novoCarro = new ArrayList<Carro>();
 		int verifica = 0;
 		
 		carro.leCarro();
 		if (this.getEstoqueCarro() != null)
 			verifica = this.getEstoqueCarro().size();
-		novoCarro.add(carro);
-		setEstoqueCarro(novoCarro);
+		this.getEstoqueCarro().add(carro);
 		if(verifica + 1 == this.getEstoqueCarro().size()){
 			return true;
 		} else {
@@ -90,65 +88,81 @@ public class Loja {
 	}
 	
 	public Carro buscaCarro(String chassi){
-		Carro carro = new Carro();
 		
 		for(Carro car : this.getEstoqueCarro()){
-			if(chassi == car.getChassi()){
-				carro = car;
-				break;
+			if(car.getChassi().equals(chassi)){
+				return car;
 			}
 		}
-		return carro;
+		return null;
 	}
 	
 	public Motocicleta buscarMoto(String chassi){
-		Motocicleta motocicleta = new Motocicleta();
 		
 		for(Motocicleta moto : this.getEstoqueMotocicleta()){
-			if(chassi == moto.getChassi()){
-				motocicleta = moto;
-				break;
+			if(moto.getChassi().equals(chassi)){
+				return moto;
 			}
 		}
-		return motocicleta;
+		return null;
 	}
 	
-	public void listarEstoqueCarro(){
-		
-		for(Carro carro : getEstoqueCarro()){
-			System.out.print("Chassi: ");
-			System.out.println(carro.getChassi());
-			System.out.print("Montadora: ");
-			System.out.println(carro.getMontadora());
-			System.out.print("Modelo: ");
-			System.out.println(carro.getModelo());
-			System.out.print("Tipo: ");
-			System.out.println(carro.getTipo());
-			System.out.print("Cambio: ");
-			System.out.println(carro.getCambio());
-			System.out.print("Motorizacao: ");
-			System.out.println(carro.getMotorizacao());
-			System.out.print("Cor: ");
-			System.out.println(carro.getCor());
-			System.out.print("Preco: ");
-			System.out.println(carro.getPreco());
-			System.out.println("-----------X------------");
-			System.out.println(" ");
+	public void listarArrayCarro(ArrayList<Carro> carList){
+		for(Carro car : carList){
+			this.listarCarro(car);
 		}
 	}
 	
-	public void listarEstoqueMotocicleta(){
+	public void listarArrayMotoicleta(ArrayList<Motocicleta> motoList){
+		for(Motocicleta moto : motoList){
+			this.listaMotocicleta(moto);
+		}
+	}
+	
+	public void listarArrayMotoicleta(){
 		for(Motocicleta moto : getEstoqueMotocicleta()){
-			System.out.println(moto.getChassi());
-			System.out.println(moto.getMontadora());
-			System.out.println(moto.getModelo());
-			System.out.println(moto.getTipo());
-			System.out.println(moto.getCilindrada());
-			System.out.println(moto.getCapacidaDeTanque());
-			System.out.println(moto.getCor());
-			System.out.println(moto.getPreco());
-			System.out.println("-----------X------------");
-			System.out.println(" ");
+			this.listaMotocicleta(moto);
 		}
+	}
+	
+	public void listarArrayCarro(){
+		for(Carro car : getEstoqueCarro()){
+			this.listarCarro(car);
+		}
+	}
+	
+	public void listarCarro(Carro carro){
+		
+		System.out.print("Chassi: ");
+		System.out.println(carro.getChassi());
+		System.out.print("Montadora: ");
+		System.out.println(carro.getMontadora());
+		System.out.print("Modelo: ");
+		System.out.println(carro.getModelo());
+		System.out.print("Tipo: ");
+		System.out.println(carro.getTipo());
+		System.out.print("Cambio: ");
+		System.out.println(carro.getCambio());
+		System.out.print("Motorizacao: ");
+		System.out.println(carro.getMotorizacao());
+		System.out.print("Cor: ");
+		System.out.println(carro.getCor());
+		System.out.print("Preco: ");
+		System.out.println(carro.getPreco());
+		System.out.println("-----------X------------");
+		System.out.println(" ");
+	}
+	
+	public void listaMotocicleta(Motocicleta moto){
+		System.out.println(moto.getChassi());
+		System.out.println(moto.getMontadora());
+		System.out.println(moto.getModelo());
+		System.out.println(moto.getTipo());
+		System.out.println(moto.getCilindrada());
+		System.out.println(moto.getCapacidaDeTanque());
+		System.out.println(moto.getCor());
+		System.out.println(moto.getPreco());
+		System.out.println("-----------X------------");
+		System.out.println(" ");
 	}
 }

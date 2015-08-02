@@ -142,7 +142,7 @@ public class Carro extends Veiculo {
 		} 
 		
 		if (cambioEscolhido.equals(null) == false)
-			setTipo(cambioEscolhido);
+			setCambio(cambioEscolhido);
 		else 
 			throw new IllegalArgumentException("Opcao nao valida!");
 	}
