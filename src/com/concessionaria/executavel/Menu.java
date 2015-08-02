@@ -31,20 +31,28 @@ public class Menu {
 			System.out.println("|        4. Pesquisar Moto                 |");
 			System.out.println("|        5. Buscar Carro                   |");
 			System.out.println("|        6. Buscar Moto                    |");
-			System.out.println("|        7. Listar Estoque de Carros       |");
-			System.out.println("|        8. Listar Estoque de Motos        |");
-			System.out.println("|        9. Sair                           |");
+			System.out.println("|        7. Remover Carro                 |");
+			System.out.println("|        8. Remover Moto                 |");
+			System.out.println("|        9. Listar Estoque de Carros       |");
+			System.out.println("|        10. Listar Estoque de Motos        |");
+			System.out.println("|        11. Sair                          |");
 			System.out.println("===========================================");
 			opcaoEscolhida = Keyin.inInt(" Selecione sua opcao: ");
 
 			switch (opcaoEscolhida) {
 			case 1:
 				System.out.println("|       Adicionar Carro Selecionado       |");
-				concessionaria.adicionarCarro();
+				if (concessionaria.adicionarCarro())
+					System.out.println("\nCarro Adicionado!\n");
+				else
+					System.out.println("\nHouve um Problema no Cadastro.\n");
 				break;
 			case 2:
 				System.out.println("|        Adicionar Moto Selecionado       |");
-				concessionaria.adicionarMotocicleta();
+				if (concessionaria.adicionarMotocicleta())
+					System.out.println("\nMotocicleta Adicionado!\n");
+				else
+					System.out.println("\nHouve um Problema no Cadastro.\n");
 				break;
 			case 3:
 				System.out.println("|       Pesquisar Carro Selecionado       |");
@@ -60,25 +68,43 @@ public class Menu {
 				System.out.println("|        Buscar Carro Selecionado       |");
 				System.out.println(" Entre com o chassi: ");
 				String chassiCarro = Keyin.inString();
-				Carro findCar = concessionaria.buscaCarro(chassiCarro);
-				concessionaria.listarCarro(findCar);
+				Carro carroSelecionado = concessionaria.buscarCarro(chassiCarro);
+				concessionaria.listarCarro(carroSelecionado);
 				break;
 			case 6:
 				System.out.println("|         Buscar Moto  Selecionado       |");
 				System.out.println(" Entre com o chassi: ");
 				String chassiMoto = Keyin.inString();
-				Motocicleta findMoto = concessionaria.buscarMoto(chassiMoto);
-				concessionaria.listaMotocicleta(findMoto);
+				Motocicleta motocicletaSelecionada = concessionaria.buscarMoto(chassiMoto);
+				concessionaria.listarMotocicleta(motocicletaSelecionada);
 				break;
 			case 7:
-				System.out.println("|  Listar Estoque de Carros Selecionado   |");
-				concessionaria.listarArrayCarro();
+				System.out.println("|  Remover Carro do Estoque   |");
+				System.out.println(" Entre com o chassi: ");
+				String chassiCarroSelecionado = Keyin.inString();
+				if (concessionaria.removerCarro(chassiCarroSelecionado))
+					System.out.println("\nCarro Removido!\n");
+				else
+					System.out.println("\nHouve um Problema na Remocao do Veiculo.\n");
 				break;
 			case 8:
-				System.out.println("|   Listar Estoque de Motos Selecionado   |");
-				concessionaria.listarArrayMotoicleta();
+				System.out.println("|  Remover Moto do Estoque   |");
+				System.out.println(" Entre com o chassi: ");
+				String chassiMotoSelecionado = Keyin.inString();
+				if (concessionaria.removerMotocicleta(chassiMotoSelecionado))
+					System.out.println("\nMoto Removida!\n");
+				else
+					System.out.println("\nHouve um Problema na Remocao do Veiculo.\n");
 				break;
 			case 9:
+				System.out.println("|  Listar Estoque de Carros Selecionado   |");
+				concessionaria.listarEstoqueCarro();
+				break;
+			case 10:
+				System.out.println("|   Listar Estoque de Motos Selecionado   |");
+				concessionaria.listarEstoqueMotocicleta();
+				break;
+			case 11:
 				System.out.println("|            Saida Selecionada             |");
 				sair = true;
 				break;

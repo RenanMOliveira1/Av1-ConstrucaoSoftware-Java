@@ -8,6 +8,7 @@ import com.concessionaria.veiculos.Motocicleta;
 /**
  * 
  * @author Renan Oliveira
+ * @author Tiago Henrique
  *
  */
 
@@ -50,6 +51,9 @@ public class Loja {
 		this.estoqueMotocicleta = estoqueMoto;
 	}	
 	
+	/**
+	 * @return Retorna True se o Carro for Cadastrado com sucesso, e false se ocorrer algum problema
+	 */
 	public boolean adicionarCarro(){
 		Carro carro = new Carro();
 		int verifica = 0;
@@ -65,6 +69,9 @@ public class Loja {
 		}	
 	}
 	
+	/**
+	 * @return Retorna True se a Motocicleta for Cadastrado com sucesso, e false se ocorrer algum problema
+	 */
 	public boolean adicionarMotocicleta(){
 		Motocicleta moto = new Motocicleta();
 		int verifica;
@@ -87,7 +94,11 @@ public class Loja {
 		return getEstoqueMotocicleta();
 	}
 	
-	public Carro buscaCarro(String chassi){
+	/**
+	 * @param chassi
+	 * @return Retorna o Carro com o Chassi correspondente
+	 */
+	public Carro buscarCarro(String chassi){
 		
 		for(Carro car : this.getEstoqueCarro()){
 			if(car.getChassi().equals(chassi)){
@@ -97,6 +108,10 @@ public class Loja {
 		return null;
 	}
 	
+	/**
+	 * @param chassi
+	 * @return Retorna a Motocicleta com o Chassi correspondente
+	 */
 	public Motocicleta buscarMoto(String chassi){
 		
 		for(Motocicleta moto : this.getEstoqueMotocicleta()){
@@ -115,20 +130,42 @@ public class Loja {
 	
 	public void listarArrayMotoicleta(ArrayList<Motocicleta> motoList){
 		for(Motocicleta moto : motoList){
-			this.listaMotocicleta(moto);
+			this.listarMotocicleta(moto);
 		}
 	}
 	
-	public void listarArrayMotoicleta(){
+	public void listarEstoqueMotocicleta(){
 		for(Motocicleta moto : getEstoqueMotocicleta()){
-			this.listaMotocicleta(moto);
+			this.listarMotocicleta(moto);
 		}
 	}
 	
-	public void listarArrayCarro(){
+	public void listarEstoqueCarro(){
 		for(Carro car : getEstoqueCarro()){
 			this.listarCarro(car);
 		}
+	}
+	
+	public boolean removerCarro(String chassi) {
+		Carro carroSelecionado = buscarCarro(chassi);
+		
+		if (carroSelecionado != null) {
+			getEstoqueCarro().remove(carroSelecionado);
+			return true;
+		} 
+		
+		return false;
+	}
+	
+	public boolean removerMotocicleta(String chassi) {
+		Motocicleta motoSelecionada = buscarMoto(chassi);
+		
+		if (motoSelecionada != null) {
+			getEstoqueMotocicleta().remove(motoSelecionada);
+			return true;
+		} 
+		
+		return false;
 	}
 	
 	public void listarCarro(Carro carro){
@@ -150,19 +187,28 @@ public class Loja {
 		System.out.print("Preco: ");
 		System.out.println(carro.getPreco());
 		System.out.println("-----------X------------");
-		System.out.println(" ");
+		System.out.println();
 	}
 	
-	public void listaMotocicleta(Motocicleta moto){
-		System.out.println(moto.getChassi());
-		System.out.println(moto.getMontadora());
-		System.out.println(moto.getModelo());
-		System.out.println(moto.getTipo());
-		System.out.println(moto.getCilindrada());
-		System.out.println(moto.getCapacidaDeTanque());
-		System.out.println(moto.getCor());
-		System.out.println(moto.getPreco());
+	public void listarMotocicleta(Motocicleta motoSelecionada){
+		
+		System.out.print("Chassi: ");
+		System.out.println(motoSelecionada.getChassi());
+		System.out.print("Montadora: ");
+		System.out.println(motoSelecionada.getMontadora());
+		System.out.print("Modelo: ");
+		System.out.println(motoSelecionada.getModelo());
+		System.out.print("Tipo: ");
+		System.out.println(motoSelecionada.getTipo());
+		System.out.print("Cilindrada: ");
+		System.out.println(motoSelecionada.getCilindrada());
+		System.out.print("Capacida De Tanque: ");
+		System.out.println(motoSelecionada.getCapacidaDeTanque());
+		System.out.print("Cor: ");
+		System.out.println(motoSelecionada.getCor());
+		System.out.print("Preco: ");
+		System.out.println(motoSelecionada.getPreco());
 		System.out.println("-----------X------------");
-		System.out.println(" ");
+		System.out.println();
 	}
 }
