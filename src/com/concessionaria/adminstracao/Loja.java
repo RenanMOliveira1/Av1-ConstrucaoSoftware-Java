@@ -128,7 +128,7 @@ public class Loja {
 		}
 	}
 	
-	public void listarArrayMotoicleta(ArrayList<Motocicleta> motoList){
+	public void listarArrayMotocicleta(ArrayList<Motocicleta> motoList){
 		for(Motocicleta moto : motoList){
 			this.listarMotocicleta(moto);
 		}
