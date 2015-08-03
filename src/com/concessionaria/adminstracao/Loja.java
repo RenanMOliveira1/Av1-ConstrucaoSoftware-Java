@@ -19,34 +19,58 @@ public class Loja {
 	ArrayList<Carro> estoqueCarro = new ArrayList<Carro>();
 	ArrayList<Motocicleta> estoqueMotocicleta = new ArrayList<Motocicleta>();
 	
+	/** 
+	 * @return retorna endereco
+	 */
 	public String getEndereco() {
 		return endereco;
 	}
 	
+	/**
+	 * @param endereco
+	 */
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
 	
+	/**
+	 * @return retorna nome
+	 */
 	public String getNome() {
 		return nome;
 	}
 	
+	/**
+	 * @param nome
+	 */
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 	
+	/**
+	 * @return retorna um ArrayList de carros
+	 */
 	public ArrayList<Carro> getEstoqueCarro() {
 		return estoqueCarro;
 	}
 	
+	/**
+	 * @param estoqueCarro
+	 */
 	public void setEstoqueCarro(ArrayList<Carro> estoqueCarro) {
 		this.estoqueCarro = estoqueCarro;
 	}
 	
+	/**
+	 * @return retorna im ArrayList de motocicletas
+	 */
 	public ArrayList<Motocicleta> getEstoqueMotocicleta() {
 		return estoqueMotocicleta;
 	}
 	
+	/**
+	 * @param estoqueMoto
+	 */
 	public void setEstoqueMotocicleta(ArrayList<Motocicleta> estoqueMoto) {
 		this.estoqueMotocicleta = estoqueMoto;
 	}	
@@ -122,11 +146,25 @@ public class Loja {
 		return null;
 	}
 	
+	/**
+	 * 
+	 * @param carList
+	 * 
+	 * lista as caracteristicas de todos os objetos contidos num ArrayList de carros
+	 */
+	
 	public void listarArrayCarro(ArrayList<Carro> carList){
 		for(Carro car : carList){
 			this.listarCarro(car);
 		}
 	}
+	
+	/**
+	 * 
+	 * @param motoList
+	 * 
+	 * lista as caracteristicas de todos os objetos contidos num ArrayList de motocicletas
+	 */
 	
 	public void listarArrayMotocicleta(ArrayList<Motocicleta> motoList){
 		for(Motocicleta moto : motoList){
@@ -140,11 +178,20 @@ public class Loja {
 		}
 	}
 	
+	
 	public void listarEstoqueCarro(){
 		for(Carro car : getEstoqueCarro()){
 			this.listarCarro(car);
 		}
 	}
+	
+	/**
+	 * 
+	 * @param chassi
+	 * @return
+	 * 
+	 * remove o veiculo a partir do codigo do seu chassi
+	 */
 	
 	public boolean removerCarro(String chassi) {
 		Carro carroSelecionado = buscarCarro(chassi);
@@ -168,6 +215,13 @@ public class Loja {
 		return false;
 	}
 	
+	/**
+	 * 
+	 * @param carro
+	 * 
+	 * imprime todas as caraacteristicas do carro
+	 */
+	
 	public void listarCarro(Carro carro){
 		
 		System.out.print("Chassi: ");
@@ -189,6 +243,13 @@ public class Loja {
 		System.out.println("-----------X------------");
 		System.out.println();
 	}
+	
+	/**
+	 * 
+	 * @param motoSelecionada
+	 * 
+	 * imprime todas as caracteristicas de motocicleta
+	 */
 	
 	public void listarMotocicleta(Motocicleta motoSelecionada){
 		

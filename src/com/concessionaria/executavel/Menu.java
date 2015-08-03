@@ -128,6 +128,11 @@ public class Menu {
 }
 
 class EntradaDeDado {
+	/**
+	 * @param mensagem
+	 * 
+	 * Imprime mensagem
+	 */
 	public static void imprimeMensagem(String mensagem) {
 		System.out.print(mensagem + " ");
 		System.out.flush();
@@ -170,6 +175,11 @@ class EntradaDeDado {
 		}
 	}
 
+	/**
+	 * 
+	 * @param mensagem
+	 * @return retorna o numero que foi imputado
+	 */
 	public static int tipoInt(String mensagem) {
 		while (true) {
 			leInt();
