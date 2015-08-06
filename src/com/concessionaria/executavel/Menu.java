@@ -76,14 +76,20 @@ public class Menu {
 				System.out.println(" Entre com o chassi: ");
 				String chassiCarro = EntradaDeDado.tipoString();
 				Carro carroSelecionado = concessionaria.buscarCarro(chassiCarro);
-				concessionaria.listarCarro(carroSelecionado);
+				if (carroSelecionado != null)
+					concessionaria.listarCarro(carroSelecionado);
+				else
+					System.out.println("\nCarro não Encontrado.\n");
 				break;
 			case 6:
 				System.out.println("|          Buscar Moto  Selecionado         |");
 				System.out.println(" Entre com o chassi: ");
 				String chassiMoto = EntradaDeDado.tipoString();
 				Motocicleta motocicletaSelecionada = concessionaria.buscarMoto(chassiMoto);
-				concessionaria.listarMotocicleta(motocicletaSelecionada);
+				if (motocicletaSelecionada != null)
+					concessionaria.listarMotocicleta(motocicletaSelecionada);
+				else
+					System.out.println("\nMoto não Encontrada.\n");
 				break;
 			case 7:
 				System.out.println("|   Remover Carro do Estoque Selecionado    |");
