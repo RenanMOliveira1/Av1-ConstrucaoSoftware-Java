@@ -101,7 +101,7 @@ public class Motocicleta extends Veiculo {
 				nomeTipoEscolhido = tipoMoto.getNomeTipo();	
 		} 
 		
-		if (nomeTipoEscolhido.equals(null) == false)
+		if (!nomeTipoEscolhido.equals(null))
 			setTipo(nomeTipoEscolhido);
 		else 
 			throw new IllegalArgumentException("Opcao nao valida!");

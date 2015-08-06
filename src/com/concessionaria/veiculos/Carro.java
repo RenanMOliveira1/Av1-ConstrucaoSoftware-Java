@@ -94,7 +94,7 @@ public class Carro extends Veiculo {
 				nomeTipoEscolhido = tipoCarro.getNomeTipo();	
 		} 
 		
-		if (nomeTipoEscolhido.equals(null) == false)
+		if (!nomeTipoEscolhido.equals(null))
 			setTipo(nomeTipoEscolhido);
 		else 
 			throw new IllegalArgumentException("Opcao nao valida!");
@@ -104,7 +104,7 @@ public class Carro extends Veiculo {
 	/**
 	 * Método que faz a leitura de motorizacao de Carro a partir do teclado
 	 */
-	public void leMotorizacao() {
+	public void leMotorizacao() throws IllegalArgumentException {
 		System.out.println("Entre com a motorizacao do tanque do carro: ");
 		
 		int motorizacao = input.nextInt();
@@ -126,12 +126,11 @@ public class Carro extends Veiculo {
 		 * Percorre todos os valores de Cambio e recebe seus valores em "cambio" na ordem, imprimindo as opcoes
 		 */
 		System.out.println("Entre com o cambio de carro: ");
+		
 		for (Cambio cambio : Cambio.values()) {
 			System.out.println("*Digite " + cambio.getNumOpcao() + " para escolher " + cambio.getNomeCambio());
 		}
-		
 		int opcaoCambio = input.nextInt();
-		
 		/**
 		 * Percorre todos os valores de Cambio e recebe seus valores em "cambio" na ordem
 		 * Assim, verifica se o valor da opcao inputada confere com cada opcao de "cambio"
@@ -141,7 +140,7 @@ public class Carro extends Veiculo {
 				cambioEscolhido = cambio.getNomeCambio();	
 		} 
 		
-		if (cambioEscolhido.equals(null) == false)
+		if (!cambioEscolhido.equals(null))
 			setCambio(cambioEscolhido);
 		else 
 			throw new IllegalArgumentException("Opcao nao valida!");
@@ -160,7 +159,6 @@ public class Carro extends Veiculo {
 	public void leCarro(){
 		
 		System.out.println("********Entre com caracteristicas para o seu carro********");
-		
 		leChassi();
 		leMontadora();
 		leModelo();
@@ -169,5 +167,6 @@ public class Carro extends Veiculo {
 		lePreco();
 		leMotorizacao();
 		leCambio();
+		
 	}
 }
