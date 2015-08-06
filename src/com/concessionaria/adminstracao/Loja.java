@@ -14,10 +14,10 @@ import com.concessionaria.veiculos.Motocicleta;
 
 public class Loja {
 	
-	String endereco;
-	String nome;
-	ArrayList<Carro> estoqueCarro = new ArrayList<Carro>();
-	ArrayList<Motocicleta> estoqueMotocicleta = new ArrayList<Motocicleta>();
+	private String endereco;
+	private String nome;
+	private ArrayList<Carro> estoqueCarro = new ArrayList<Carro>();
+	private ArrayList<Motocicleta> estoqueMotocicleta = new ArrayList<Motocicleta>();
 	
 	/** 
 	 * @return retorna endereco
