@@ -79,17 +79,10 @@ public class Motocicleta extends Veiculo {
 	 * Método que faz a leitura de tipo de Motocicleta a partir do teclado
 	 */
 	public void leTipoMoto() {
-		
 		String nomeTipoEscolhido = null;
 		
-		/**
-		 * Percorre todos os valores de TipoMoto e recebe seus valores em "tipoMoto" na ordem, imprimindo as opcoes
-		 */
 		System.out.println("Entre com o tipo de moto: ");
-		for (TipoMoto tipoMoto : TipoMoto.values()) {
-			System.out.println("*Digite " + tipoMoto.getNumOpcao() + " para escolher " + tipoMoto.getNomeTipo());
-		}
-		
+		TipoMoto.exibirOpcoes();
 		int opcaoTipo = input.nextInt();
 		
 		/**
@@ -112,17 +105,10 @@ public class Motocicleta extends Veiculo {
 	 * Método que faz a leitura da cilindrada de Motocicleta a partir do teclado
 	 */
 	public void leCilindrada() {
-		
 		int cilindradaEscolhida = 0;
-		
-		/**
-		 * Percorre todos os valores de Cilindrada e recebe seus valores em "cilindrada" na ordem, imprimindo as opcoes
-		 */
+
 		System.out.println("Entre com a cilindrada da moto: ");
-		for (Cilindrada cilindrada : Cilindrada.values()) {
-			System.out.println("*Digite " + cilindrada.getNumOpcao() + " para escolher " + cilindrada.getNumCilindradas());
-		}
-		
+		Cilindrada.exibirOpcoes();
 		int opcaoCilindrada = input.nextInt();
 		
 		/**

@@ -8,7 +8,6 @@ package com.concessionaria.adminstracao;
 public class Enum {
 
 	public enum Montadora {
-        
 		TOYOTA(1, "Toyota"),
 		BMW(2, "BMW"),
 		VOLKSWAGEN(3, "Volkswagen"),
@@ -55,6 +54,12 @@ public class Enum {
 		public String getNomeMontadora() {
 			return this.nomeMontadora;
 		}
+		
+		public static void exibirOpcoes() {
+			for (Montadora montadora : Montadora.values()) {
+				System.out.println("*Digite " + montadora.getNumOpcao() + " para escolher " + montadora.getNomeMontadora());
+			}
+		}
 	}
 	
 	public enum TipoCarro {
@@ -100,10 +105,18 @@ public class Enum {
 		public String getNomeTipo() {
 			return nomeTipo;
 		}
+		
+		/**
+		 * Percorre todos os valores de TipoCarro e recebe seus valores em "tipoCarro" na ordem, imprimindo as opcoes
+		 */
+		public static void exibirOpcoes() {
+			for (TipoCarro tipoCarro : TipoCarro.values()) {
+				System.out.println("*Digite " + tipoCarro.getNumOpcao() + " para escolher " + tipoCarro.getNomeTipo());
+			}
+		}
 	}
 	
-	public enum TipoMoto{
-		
+	public enum TipoMoto{	
 		CICLOMOTOR(1, "Ciclomotor"),
 		MOTOCICLO(2, "Motociclo"),
 		SCOOTER(3, "Scooter"),
@@ -147,10 +160,15 @@ public class Enum {
 		public String getNomeTipo() {
 			return nomeTipo;
 		}
+		
+		public static void exibirOpcoes() {
+			for (TipoMoto tipoMoto : TipoMoto.values()) {
+				System.out.println("*Digite " + tipoMoto.getNumOpcao() + " para escolher " + tipoMoto.getNomeTipo());
+			}
+		}
 	}
 
-	public enum Cor {
-		
+	public enum Cor {	
 		PRETO(1, "Preto"),
 		PRATA(2, "Prata"),
 		BRANCO(3, "Branco"),
@@ -188,48 +206,15 @@ public class Enum {
 		public String getNomeCor() {
 			return nomeCor;
 		}
+		
+		public static void exibirOpcoes() {
+			for (Cor cor : Cor.values()) {
+				System.out.println("*Digite " + cor.getNumOpcao() + " para escolher " + cor.getNomeCor());
+			}
+		}
 	}
-	
-	public enum Motorizacao {
-		
-		UM_PONTO_ZERO(1, 1.0),
-		UM_PONTO_QUATRO(2, 1.4),
-		UM_PONTO_SEIS(3, 1.6),
-		UM_PONTO_OITO(4, 1.8),
-		DOIS_PONTO_ZERO(5, 2.0);
-		
-		private int numOpcao;
-		private double numMotorizacao;
-		
-		/**
-		 * @param numOpcao
-		 * @param numMotorizacao
-		 * 
-		 * Construtor com todos os parâmentros
-		 */
-		private Motorizacao(int numOpcao, double numMotorizacao) {
-			this.numOpcao = numOpcao;
-			this.numMotorizacao = numMotorizacao;
-		}
-		
-		/**
-		 * @return Retorna o numero da opcao
-		 */
-		public int getNumOpcao() {
-			return numOpcao;
-		}
-		
-		/**
-		 * @return Retorna o numero da motorizacao
-		 */
-		public double getNumMotorizacao() {
-			return numMotorizacao;
-		}
-   }
 
 	public enum Cambio {
-
-
 		CVT(1, "CVT"),
 		AUTOMATICO(2, "Automático"),
 		MANUAL_COMUM(3, "Manual Comum"),
@@ -261,6 +246,12 @@ public class Enum {
 		 */
 		public String getNomeCambio() {
 			return nomeCambio;
+		}
+		
+		public static void exibirOpcoes() {
+			for (Cambio cambio : Cambio.values()) {
+				System.out.println("*Digite " + cambio.getNumOpcao() + " para escolher " + cambio.getNomeCambio());
+			}
 		}
 	}
 
@@ -301,6 +292,12 @@ public class Enum {
 		 */
 		public int getNumCilindradas() {
 			return numCilindradas;
+		}
+		
+		public static void exibirOpcoes() {
+			for (Cilindrada cilindrada : Cilindrada.values()) {
+				System.out.println("*Digite " + cilindrada.getNumOpcao() + " para escolher " + cilindrada.getNumCilindradas());
+			}
 		}
 	}
 

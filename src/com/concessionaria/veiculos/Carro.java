@@ -74,15 +74,9 @@ public class Carro extends Veiculo {
 	public void leTipoCarro() {
 		String nomeTipoEscolhido = null;
 		
-		System.out.println("Entre com o tipo de carro: ");
 		
-		/**
-		 * Percorre todos os valores de TipoCarro e recebe seus valores em "tipoCarro" na ordem, imprimindo as opcoes
-		 */
-		for (TipoCarro tipoCarro : TipoCarro.values()) {
-			System.out.println("*Digite " + tipoCarro.getNumOpcao() + " para escolher " + tipoCarro.getNomeTipo());
-		}
-		
+		System.out.println("\nEntre com o tipo de carro: ");
+		TipoCarro.exibirOpcoes();
 		int opcaoTipo = input.nextInt();
 		
 		/**
@@ -105,8 +99,8 @@ public class Carro extends Veiculo {
 	 * Método que faz a leitura de motorizacao de Carro a partir do teclado
 	 */
 	public void leMotorizacao() throws IllegalArgumentException {
-		System.out.println("Entre com a motorizacao do tanque do carro: ");
 		
+		System.out.println("\nEntre com a motorizacao do tanque do carro: ");
 		int motorizacao = input.nextInt();
 		
 		if(motorizacao > 0)
@@ -122,15 +116,10 @@ public class Carro extends Veiculo {
 	public void leCambio() {
 		String cambioEscolhido = null;
 		
-		/**
-		 * Percorre todos os valores de Cambio e recebe seus valores em "cambio" na ordem, imprimindo as opcoes
-		 */
-		System.out.println("Entre com o cambio de carro: ");
-		
-		for (Cambio cambio : Cambio.values()) {
-			System.out.println("*Digite " + cambio.getNumOpcao() + " para escolher " + cambio.getNomeCambio());
-		}
+		System.out.println("\nEntre com o cambio de carro: ");
+		Cambio.exibirOpcoes();
 		int opcaoCambio = input.nextInt();
+		
 		/**
 		 * Percorre todos os valores de Cambio e recebe seus valores em "cambio" na ordem
 		 * Assim, verifica se o valor da opcao inputada confere com cada opcao de "cambio"

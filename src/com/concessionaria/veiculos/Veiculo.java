@@ -19,7 +19,7 @@ public abstract class Veiculo {
 	protected String modelo;
 	protected String tipo;
 	protected String cor;
-	protected float preco;
+	protected double preco;
 	
 	
 	public Veiculo () {
@@ -46,93 +46,51 @@ public abstract class Veiculo {
 		setPreco(preco);
 	}
 	
-	
-	/**
-	 * @return Retorna o Chassi do Carro
-	 */
 	public String getChassi() {
 		return chassi;
 	}
 	
-	/**
-	 * @param chassi
-	 */
 	public void setChassi(String chassi) {
 		this.chassi = chassi;
 	}
 	
-	/**
-	 * @return Retorna a Montadora 
-	 */
 	public String getMontadora() {
 		return montadora;
 	}
 	
-	/**
-	 * @param montadora
-	 */
 	public void setMontadora(String montadora) {
 		this.montadora = montadora;
 	}
 	
-	/**
-	 * @return Retorna o Modelo
-	 */
 	public String getModelo() {
 		return modelo;
 	}
 	
-	/**
-	 * @param modelo
-	 */
 	public void setModelo(String modelo) {
 		this.modelo = modelo;
 	}
 	
-	/**
-	 * @return Retorna o Tipo do Veículo
-	 */
 	public String getTipo() {
 		return tipo;
 	}
 	
-	/**
-	 * @param tipo
-	 */
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
 	
-	/**
-	 * @return Retorna a Cor
-	 */
 	public String getCor() {
 		return cor;
 	}
 	
-	/**
-	 * @param cor
-	 */
 	public void setCor(String cor) {
 		this.cor = cor;
 	}
 	
-	/**
-	 * @return Retorna o Preço
-	 */
-	public float getPreco() {
+	public double getPreco() {
 		return preco;
 	}
 	
-	/**
-	 * @param preco
-	 * 
-	 * faz setPreco just quando preco é igual ou maior que zero (não é negativo)
-	 */
-	public void setPreco(float preco) {
-		
-		if (preco < 0)
-			throw new IllegalArgumentException("Não se aceita Número Negativo.");
+	public void setPreco(double preco) {
 		this.preco = preco;
 	}
 	
@@ -140,7 +98,7 @@ public abstract class Veiculo {
 	 * Método que faz a leitura do chassi de um veiculo a partir do teclado
 	 */
 	public void leChassi() {
-		System.out.println("Entre com o chassi: ");
+		System.out.println("\nEntre com o chassi: ");
 		
 		String chassi = input.nextLine();
 		
@@ -157,15 +115,8 @@ public abstract class Veiculo {
 		
 		String nomeMontadoraEscolhido = null;
 		
-		System.out.println("Entre com a montadora: ");
-		
-		/**
-		 * Percorre todos os valores de Montadora e recebe seus valores em "montadora" na ordem, imprimindo as opcoes
-		 */
-		for (Montadora montadora : Montadora.values()) {
-			System.out.println("*Digite " + montadora.getNumOpcao() + " para escolher " + montadora.getNomeMontadora());
-		}
-		
+		System.out.println("\nEntre com a montadora: ");
+		Montadora.exibirOpcoes();
 		int opcaoMontadora = input.nextInt();
 		
 		/**
@@ -177,7 +128,7 @@ public abstract class Veiculo {
 				nomeMontadoraEscolhido = montadora.getNomeMontadora();	
 		} 
 		
-		if (nomeMontadoraEscolhido.equals(null) == false)
+		if (!nomeMontadoraEscolhido.equals(null))
 			setMontadora(nomeMontadoraEscolhido);
 		else 
 			throw new IllegalArgumentException("Opcao nao valida!");
@@ -192,7 +143,7 @@ public abstract class Veiculo {
 		
 		String modelo = input.next();
 		
-		if(modelo.equals(null) == false)
+		if(!modelo.equals(null))
 			setModelo(modelo);
 		else 
 			throw new IllegalArgumentException("Modelo nao deve ser nulo!");
@@ -202,18 +153,10 @@ public abstract class Veiculo {
 	 * Método que faz a leitura de cor de um veiculo a partir do teclado
 	 */
 	public void leCor() {
-		
 		String corEscolhida = null;
 		
 		System.out.println("Entre com a cor: ");
-		
-		/**
-		 * Percorre todos os valores de Cor e recebe seus valores em "cor" na ordem, imprimindo as opcoes
-		 */
-		for (Cor cor : Cor.values()) {
-			System.out.println("*Digite " + cor.getNumOpcao() + " para escolher " + cor.getNomeCor());
-		}
-		
+		Cor.exibirOpcoes();
 		int opcaoCor = input.nextInt();
 		
 		/**
@@ -225,9 +168,8 @@ public abstract class Veiculo {
 				corEscolhida = cor.getNomeCor();	
 		} 
 		
-		if (corEscolhida.equals(null) == false) 
+		if (!corEscolhida.equals(null)) 
 			setCor(corEscolhida);
-		
 		else 
 			throw new IllegalArgumentException("Opcao nao valida!");
 		
@@ -239,8 +181,7 @@ public abstract class Veiculo {
 	public void lePreco() {
 		
 		System.out.println("Entre com o preço: ");
-		
-		Float preco = input.nextFloat();
+		double preco = input.nextDouble();
 		
 		if(preco > 0)
 			setPreco(preco);

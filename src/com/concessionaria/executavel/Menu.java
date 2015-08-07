@@ -36,7 +36,7 @@ public class Menu {
 			System.out.println("|        8. Remover Moto                   |");
 			System.out.println("|        9. Listar Estoque de Carros       |");
 			System.out.println("|        10. Listar Estoque de Motos       |");
-			System.out.println("|        11. Sair                          |");
+			System.out.println("|        0. Sair                          |");
 			System.out.println("===========================================");
 			
 			/**
@@ -117,7 +117,7 @@ public class Menu {
 				System.out.println("|    Listar Estoque de Motos Selecionado    |");
 				concessionaria.listarEstoqueMotocicleta();
 				break;
-			case 11:
+			case 0:
 				System.out.println("|             Saida Selecionada             |");
 				sair = true;
 				break;
