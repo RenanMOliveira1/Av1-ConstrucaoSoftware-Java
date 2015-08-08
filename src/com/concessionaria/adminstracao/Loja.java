@@ -224,24 +224,15 @@ public class Loja {
 	
 	public void listarCarro(Carro carro){
 		
-		System.out.print("Chassi: ");
-		System.out.println(carro.getChassi());
-		System.out.print("Montadora: ");
-		System.out.println(carro.getMontadora());
-		System.out.print("Modelo: ");
-		System.out.println(carro.getModelo());
-		System.out.print("Tipo: ");
-		System.out.println(carro.getTipo());
-		System.out.print("Cambio: ");
-		System.out.println(carro.getCambio());
-		System.out.print("Motorizacao: ");
-		System.out.println(carro.getMotorizacao());
-		System.out.print("Cor: ");
-		System.out.println(carro.getCor());
-		System.out.print("Preco: ");
-		System.out.println(carro.getPreco());
-		System.out.println("-----------X------------");
-		System.out.println();
+		System.out.println("Chassi: " + carro.getChassi());
+		System.out.println("Montadora: " + carro.getMontadora());
+		System.out.println("Modelo: " + carro.getModelo());
+		System.out.println("Tipo: " + carro.getTipo());
+		System.out.println("Cambio: " + carro.getCambio());
+		System.out.println("Motorizacao: " + carro.getMotorizacao());
+		System.out.println("Cor: " + carro.getCor());
+		System.out.println("Preco: " + carro.getPreco());
+		System.out.println("-----------X------------\n");
 	}
 	
 	/**
@@ -253,23 +244,14 @@ public class Loja {
 	
 	public void listarMotocicleta(Motocicleta motoSelecionada){
 		
-		System.out.print("Chassi: ");
-		System.out.println(motoSelecionada.getChassi());
-		System.out.print("Montadora: ");
-		System.out.println(motoSelecionada.getMontadora());
-		System.out.print("Modelo: ");
-		System.out.println(motoSelecionada.getModelo());
-		System.out.print("Tipo: ");
-		System.out.println(motoSelecionada.getTipo());
-		System.out.print("Cilindrada: ");
-		System.out.println(motoSelecionada.getCilindrada());
-		System.out.print("Capacida De Tanque: ");
-		System.out.println(motoSelecionada.getCapacidaDeTanque());
-		System.out.print("Cor: ");
-		System.out.println(motoSelecionada.getCor());
-		System.out.print("Preco: ");
-		System.out.println(motoSelecionada.getPreco());
-		System.out.println("-----------X------------");
-		System.out.println();
+		System.out.println("Chassi: " + motoSelecionada.getChassi());
+		System.out.println("Montadora: " + motoSelecionada.getMontadora());
+		System.out.println("Modelo: " + motoSelecionada.getModelo());
+		System.out.println("Tipo: " + motoSelecionada.getTipo());
+		System.out.println("Cilindrada: " + motoSelecionada.getCilindrada());
+		System.out.println("Capacida De Tanque: " + motoSelecionada.getCapacidaDeTanque());
+		System.out.println("Cor: " + motoSelecionada.getCor());
+		System.out.println("Preco: " + motoSelecionada.getPreco());
+		System.out.println("-----------X------------\n");
 	}
 }

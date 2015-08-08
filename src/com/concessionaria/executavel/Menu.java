@@ -35,8 +35,8 @@ public class Menu {
 			System.out.println("|        7. Remover Carro                  |");
 			System.out.println("|        8. Remover Moto                   |");
 			System.out.println("|        9. Listar Estoque de Carros       |");
-			System.out.println("|        10. Listar Estoque de Motos       |");
-			System.out.println("|        0. Sair                          |");
+			System.out.println("|        10. Listar Estoque de Motos       |");			
+			System.out.println("|        0. Sair                           |");
 			System.out.println("===========================================");
 			
 			/**
