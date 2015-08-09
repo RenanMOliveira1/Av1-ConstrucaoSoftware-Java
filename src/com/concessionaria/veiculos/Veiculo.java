@@ -21,10 +21,10 @@ public abstract class Veiculo {
 	protected String cor;
 	protected double preco;
 	
-	
 	public Veiculo () {
 		
 	}
+	
 	
 	/**
 	 * @param chassi
@@ -112,27 +112,16 @@ public abstract class Veiculo {
 	 * Método que faz a leitura de montadora de um veiculo a partir do teclado
 	 */
 	public void leMontadora() {
-		
-		String nomeMontadoraEscolhido = null;
-		
+
 		System.out.println("\nEntre com a montadora: ");
 		Montadora.exibirOpcoes();
 		int opcaoMontadora = input.nextInt();
+		String nomeMontadoraEscolhido = Montadora.pesquisarOpcao(opcaoMontadora);
 		
-		/**
-		 * Percorre todos os valores de Montadora e recebe seus valores em "montadora" na ordem
-		 * Assim, verifica se o valor da opcao inputada confere com cada opcao de "montadora"
-		 */
-		for (Montadora montadora : Montadora.values()) {
-			if(opcaoMontadora == montadora.getNumOpcao())
-				nomeMontadoraEscolhido = montadora.getNomeMontadora();	
-		} 
+		if (nomeMontadoraEscolhido.equals(null))
+			throw new IllegalArgumentException("Montadora: Opção Inválida.");
 		
-		if (!nomeMontadoraEscolhido.equals(null))
-			setMontadora(nomeMontadoraEscolhido);
-		else 
-			throw new IllegalArgumentException("Opcao nao valida!");
-		
+		setMontadora(nomeMontadoraEscolhido);	
 	}
 	
 	/**
@@ -140,38 +129,28 @@ public abstract class Veiculo {
 	 */
 	public void leModelo() {
 		System.out.println("Entre com o modelo: ");
-		
 		String modelo = input.next();
 		
-		if(!modelo.equals(null))
-			setModelo(modelo);
-		else 
-			throw new IllegalArgumentException("Modelo nao deve ser nulo!");
+		if(modelo.equals(null))
+			throw new IllegalArgumentException("Modelo: Opção Inválida.");
+		
+		setModelo(modelo);	
 	}
 	
 	/**
 	 * Método que faz a leitura de cor de um veiculo a partir do teclado
 	 */
 	public void leCor() {
-		String corEscolhida = null;
-		
+
 		System.out.println("Entre com a cor: ");
 		Cor.exibirOpcoes();
 		int opcaoCor = input.nextInt();
+		String corEscolhida = Cor.pesquisarOpcao(opcaoCor);
 		
-		/**
-		 * Percorre todos os valores de Cor e recebe seus valores em "cor" na ordem
-		 * Assim, verifica se o valor da opcao inputada confere com cada opcao de "cor"
-		 */
-		for (Cor cor : Cor.values()) {
-			if(opcaoCor == cor.getNumOpcao())
-				corEscolhida = cor.getNomeCor();	
-		} 
+		if (corEscolhida.equals(null)) 
+			throw new IllegalArgumentException("Cor: Opção Inválida.");
 		
-		if (!corEscolhida.equals(null)) 
-			setCor(corEscolhida);
-		else 
-			throw new IllegalArgumentException("Opcao nao valida!");
+		setCor(corEscolhida);
 		
 	}
 	
@@ -183,9 +162,9 @@ public abstract class Veiculo {
 		System.out.println("Entre com o preço: ");
 		double preco = input.nextDouble();
 		
-		if(preco > 0)
-			setPreco(preco);
-		else 
-			throw new IllegalArgumentException("Preço deve ser numeral e positivo");
+		if(preco < 0)
+			throw new IllegalArgumentException("Preço: Numero Negativo não é Aceito.");
+		
+		setPreco(preco);
 	}
 }

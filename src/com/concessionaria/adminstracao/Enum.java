@@ -60,6 +60,16 @@ public class Enum {
 				System.out.println("*Digite " + montadora.getNumOpcao() + " para escolher " + montadora.getNomeMontadora());
 			}
 		}
+		
+		public static String pesquisarOpcao(int opcao) {
+			
+			for (Montadora montadora : Montadora.values()) {
+				if(opcao == montadora.getNumOpcao())
+					return montadora.getNomeMontadora();
+			} 
+			
+			return null;
+		}
 	}
 	
 	public enum TipoCarro {
@@ -114,6 +124,16 @@ public class Enum {
 				System.out.println("*Digite " + tipoCarro.getNumOpcao() + " para escolher " + tipoCarro.getNomeTipo());
 			}
 		}
+		
+		public static String pesquisarOpcao(int opcao) {
+			
+			for (TipoCarro tipoCarro : TipoCarro.values()) {
+				if(opcao == tipoCarro.getNumOpcao())
+					return tipoCarro.getNomeTipo();
+			} 
+			
+			return null;
+		}
 	}
 	
 	public enum TipoMoto{	
@@ -166,6 +186,16 @@ public class Enum {
 				System.out.println("*Digite " + tipoMoto.getNumOpcao() + " para escolher " + tipoMoto.getNomeTipo());
 			}
 		}
+		
+		public static String pesquisarOpcao(int opcao) {
+			
+			for (TipoMoto tipoMoto : TipoMoto.values()) {
+				if(opcao == tipoMoto.getNumOpcao())
+					return tipoMoto.getNomeTipo();
+			} 
+			
+			return null;
+		}
 	}
 
 	public enum Cor {	
@@ -212,6 +242,16 @@ public class Enum {
 				System.out.println("*Digite " + cor.getNumOpcao() + " para escolher " + cor.getNomeCor());
 			}
 		}
+		
+		public static String pesquisarOpcao(int opcao) {
+			
+			for (Cor cor : Cor.values()) {
+				if(opcao == cor.getNumOpcao())
+					return cor.getNomeCor();
+			} 
+			
+			return null;
+		}
 	}
 
 	public enum Cambio {
@@ -252,6 +292,16 @@ public class Enum {
 			for (Cambio cambio : Cambio.values()) {
 				System.out.println("*Digite " + cambio.getNumOpcao() + " para escolher " + cambio.getNomeCambio());
 			}
+		}
+		
+		public static String pesquisarOpcao(int opcao) {
+			
+			for (Cambio cambio : Cambio.values()) {
+				if(opcao == cambio.getNumOpcao())
+					return cambio.getNomeCambio();
+			} 
+			
+			return null;
 		}
 	}
 
@@ -298,6 +348,16 @@ public class Enum {
 			for (Cilindrada cilindrada : Cilindrada.values()) {
 				System.out.println("*Digite " + cilindrada.getNumOpcao() + " para escolher " + cilindrada.getNumCilindradas());
 			}
+		}
+		
+		public static int pesquisarOpcao(int opcao) {
+			
+			for (Cilindrada cilindrada : Cilindrada.values()) {
+				if(opcao == cilindrada.getNumOpcao())
+					return cilindrada.getNumCilindradas();
+			} 
+			
+			return 0;
 		}
 	}
 

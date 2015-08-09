@@ -20,18 +20,6 @@ public class Motocicleta extends Veiculo {
 	public Motocicleta() {
 	}
 	
-	/**
-	 * @param chassi
-	 * @param montadora
-	 * @param modelo
-	 * @param tipo
-	 * @param cor
-	 * @param preco
-	 * @param CapacidadeDeTanque
-	 * @param cilindrada
-	 * 
-	 * Construtor com todos os parâmentros e chamada a Super Classe Veículo
-	 */
 	public Motocicleta(String chassi, String montadora, String modelo,
 			String tipo, String cor, float preco, int CapacidadeDeTanque, int cilindrada) {
 		
@@ -41,36 +29,18 @@ public class Motocicleta extends Veiculo {
 		setCilindrada(cilindrada);
 	}
 	
-	/**
-	 * @return Retorna o numero de Cilindrada
-	 */
 	public int getCilindrada() {
 		return cilindrada;
 	}
 	
-	/**
-	 * @param cilindrada
-	 * Se Numero for Negativo, chama uma excessão.
-	 */
 	public void setCilindrada(int cilindrada) {
-		
-		if (cilindrada < 0) 
-			throw new IllegalArgumentException("Não se aceita Número Negativo.");
-
 		this.cilindrada = cilindrada;
 	}
 	
-	/**
-	 * @return Retorna a Capacidade de Tanque
-	 */
 	public int getCapacidaDeTanque() {
 		return capacidaDeTanque;
 	}
 	
-	/**
-	 * @param capacidadeTanque
-	 * Se Numero for Negativo, chama uma excessão.
-	 */
 	public void setCapacidaDeTanque(int capacidadeTanque) {		
 		this.capacidaDeTanque = capacidadeTanque;
 	}
@@ -79,66 +49,46 @@ public class Motocicleta extends Veiculo {
 	 * Método que faz a leitura de tipo de Motocicleta a partir do teclado
 	 */
 	public void leTipoMoto() {
-		String nomeTipoEscolhido = null;
-		
+
 		System.out.println("Entre com o tipo de moto: ");
 		TipoMoto.exibirOpcoes();
 		int opcaoTipo = input.nextInt();
+		String nomeTipoEscolhido = TipoMoto.pesquisarOpcao(opcaoTipo);
 		
-		/**
-		 * Percorre todos os valores de TipoMoto e recebe seus valores em "tipoMoto" na ordem
-		 * Assim, verifica se o valor da opcao inputada confere com cada opcao de "tipoMoto"
-		 */
-		for (TipoMoto tipoMoto : TipoMoto.values()) {
-			if(opcaoTipo == tipoMoto.getNumOpcao())
-				nomeTipoEscolhido = tipoMoto.getNomeTipo();	
-		} 
+		if (nomeTipoEscolhido.equals(null))
+			throw new IllegalArgumentException("Tipo de Moto: Opção Inválida.");
 		
-		if (!nomeTipoEscolhido.equals(null))
-			setTipo(nomeTipoEscolhido);
-		else 
-			throw new IllegalArgumentException("Opcao nao valida!");
-		
+		setTipo(nomeTipoEscolhido);	
 	}
 	
 	/**
 	 * Método que faz a leitura da cilindrada de Motocicleta a partir do teclado
 	 */
 	public void leCilindrada() {
-		int cilindradaEscolhida = 0;
-
+		
 		System.out.println("Entre com a cilindrada da moto: ");
 		Cilindrada.exibirOpcoes();
 		int opcaoCilindrada = input.nextInt();
+		int cilindradaEscolhida = Cilindrada.pesquisarOpcao(opcaoCilindrada);
 		
-		/**
-		 * Percorre todos os valores de Cilindrada e recebe seus valores em "cilindrada" na ordem
-		 * Assim, verifica se o valor da opcao inputada confere com cada opcao de "cilindrada"
-		 */
-		for (Cilindrada cilindrada : Cilindrada.values()) {
-			if(opcaoCilindrada == cilindrada.getNumOpcao())
-				cilindradaEscolhida = cilindrada.getNumCilindradas();	
-		} 
+		if (cilindradaEscolhida <= 0)
+			throw new IllegalArgumentException("Cilindrada: Opção Inválida.");
 		
-		if (cilindradaEscolhida > 0)
-			setCilindrada(cilindradaEscolhida);
-		else 
-			throw new IllegalArgumentException("Opcao nao valida!");
-		
+		setCilindrada(cilindradaEscolhida);
 	}
 	
 	/**
 	 * Método que faz a leitura de capacidade de tanque de Motocicleta a partir do teclado
 	 */
 	public void leCapacidadeDeTanque() {
-		System.out.println("Entre com a capacidade do tanque da moto: ");
 		
+		System.out.println("Entre com a capacidade do tanque da moto: ");
 		int capacidade = input.nextInt();
 		
-		if(capacidade > 0)
-			setCapacidaDeTanque(capacidade);
-		else 
-			throw new IllegalArgumentException("Capacidade deve ser numeral e positiva");
+		if(capacidade < 0)
+			throw new IllegalArgumentException("Capacidade De Tanque: Numero Negativo não é Aceito.");
+		
+		setCapacidaDeTanque(capacidade);
 	}
 	
 	/**
@@ -162,6 +112,5 @@ public class Motocicleta extends Veiculo {
 		lePreco();
 		leCapacidadeDeTanque();
 		leCilindrada();
-		
 	}
 }
