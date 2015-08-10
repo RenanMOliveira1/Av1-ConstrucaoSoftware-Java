@@ -12,17 +12,16 @@ import com.concessionaria.adminstracao.Enum.*;
  */
 
 public abstract class Veiculo {
-	Scanner input = new Scanner(System.in);
-	
 	protected String chassi;
 	protected String montadora;
 	protected String modelo;
 	protected String tipo;
 	protected String cor;
 	protected double preco;
+	protected Scanner input;
 	
 	public Veiculo () {
-		
+		input = new Scanner(System.in);
 	}
 	
 	

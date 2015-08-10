@@ -133,7 +133,7 @@ public class Menu {
 	}
 }
 
-class EntradaDeDado {
+	class EntradaDeDado {
 	/**
 	 * @param mensagem
 	 * 

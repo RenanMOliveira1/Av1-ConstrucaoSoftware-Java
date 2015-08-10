@@ -1,7 +1,5 @@
 package com.concessionaria.veiculos;
 
-import java.util.Scanner;
-
 import com.concessionaria.adminstracao.Enum.*;
 
 /**
@@ -14,7 +12,6 @@ import com.concessionaria.adminstracao.Enum.*;
 public class Carro extends Veiculo {
 	private double motorizacao;
 	private String cambio;
-	Scanner input = new Scanner(System.in);
 	
 	public Carro() {
 	}

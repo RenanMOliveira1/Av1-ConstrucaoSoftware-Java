@@ -2,9 +2,6 @@ package com.concessionaria.veiculos;
 
 import com.concessionaria.adminstracao.Enum.*;
 
-import java.util.Scanner;
-
-
 /**
  * @author Tiago
  * @author Renan Oliveira
@@ -15,7 +12,6 @@ import java.util.Scanner;
 public class Motocicleta extends Veiculo {
 	private int cilindrada;
 	private int capacidaDeTanque;
-	Scanner input = new Scanner(System.in);
 	
 	public Motocicleta() {
 	}

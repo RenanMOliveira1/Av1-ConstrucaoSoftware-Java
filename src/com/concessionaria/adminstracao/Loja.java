@@ -16,8 +16,13 @@ public class Loja {
 	
 	private String endereco;
 	private String nome;
-	private ArrayList<Carro> estoqueCarro = new ArrayList<Carro>();
-	private ArrayList<Motocicleta> estoqueMotocicleta = new ArrayList<Motocicleta>();
+	private ArrayList<Carro> estoqueCarro;
+	private ArrayList<Motocicleta> estoqueMotocicleta;
+	
+	public Loja() {
+		estoqueCarro = new ArrayList<Carro>();
+		estoqueMotocicleta = new ArrayList<Motocicleta>();
+	}
 	
 	/** 
 	 * @return retorna endereco
