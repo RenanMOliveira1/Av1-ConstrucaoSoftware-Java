@@ -1,6 +1,8 @@
 package com.concessionaria.veiculos;
 
-import com.concessionaria.adminstracao.Enum.*;
+import java.util.InputMismatchException;
+
+import com.concessionaria.administracao.auxiliares.SubOpcoesMenu.*;
 
 /**
  * @author Tiago
@@ -14,15 +16,6 @@ public class Motocicleta extends Veiculo {
 	private int capacidaDeTanque;
 	
 	public Motocicleta() {
-	}
-	
-	public Motocicleta(String chassi, String montadora, String modelo,
-			String tipo, String cor, float preco, int CapacidadeDeTanque, int cilindrada) {
-		
-		super(chassi, montadora, modelo, tipo, cor, preco);
-		
-		setCapacidaDeTanque(capacidaDeTanque);
-		setCilindrada(cilindrada);
 	}
 	
 	public int getCilindrada() {
@@ -44,11 +37,11 @@ public class Motocicleta extends Veiculo {
 	/**
 	 * Método que faz a leitura de tipo de Motocicleta a partir do teclado
 	 */
-	public void leTipoMoto() {
+	public void leTipoMoto()  throws InputMismatchException {
 
 		System.out.println("Entre com o tipo de moto: ");
 		TipoMoto.exibirOpcoes();
-		int opcaoTipo = input.nextInt();
+		int opcaoTipo = entradaDeDado.getInputInt();
 		String nomeTipoEscolhido = TipoMoto.pesquisarOpcao(opcaoTipo);
 		
 		if (nomeTipoEscolhido.equals(null))
@@ -60,11 +53,11 @@ public class Motocicleta extends Veiculo {
 	/**
 	 * Método que faz a leitura da cilindrada de Motocicleta a partir do teclado
 	 */
-	public void leCilindrada() {
+	public void leCilindrada()  throws InputMismatchException {
 		
 		System.out.println("Entre com a cilindrada da moto: ");
 		Cilindrada.exibirOpcoes();
-		int opcaoCilindrada = input.nextInt();
+		int opcaoCilindrada = entradaDeDado.getInputInt();
 		int cilindradaEscolhida = Cilindrada.pesquisarOpcao(opcaoCilindrada);
 		
 		if (cilindradaEscolhida <= 0)
@@ -76,10 +69,10 @@ public class Motocicleta extends Veiculo {
 	/**
 	 * Método que faz a leitura de capacidade de tanque de Motocicleta a partir do teclado
 	 */
-	public void leCapacidadeDeTanque() {
+	public void leCapacidadeDeTanque()  throws InputMismatchException {
 		
 		System.out.println("Entre com a capacidade do tanque da moto: ");
-		int capacidade = input.nextInt();
+		int capacidade = entradaDeDado.getInputInt();
 		
 		if(capacidade < 0)
 			throw new IllegalArgumentException("Capacidade De Tanque: Numero Negativo não é Aceito.");

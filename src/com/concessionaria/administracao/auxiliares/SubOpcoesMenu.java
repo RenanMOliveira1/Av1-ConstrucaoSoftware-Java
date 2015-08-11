@@ -1,11 +1,11 @@
-package com.concessionaria.adminstracao;
+package com.concessionaria.administracao.auxiliares;
 
 
 /**
  * @author Yasmin
  *
  */
-public class Enum {
+public class SubOpcoesMenu {
 
 	public enum Montadora {
 		TOYOTA(1, "Toyota"),

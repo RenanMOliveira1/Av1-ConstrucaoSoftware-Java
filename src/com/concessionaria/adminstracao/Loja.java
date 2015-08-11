@@ -2,6 +2,7 @@ package com.concessionaria.adminstracao;
 
 import java.util.ArrayList;
 
+import com.concessionaria.administracao.auxiliares.Tela;
 import com.concessionaria.veiculos.Carro;
 import com.concessionaria.veiculos.Motocicleta;
 
@@ -16,66 +17,44 @@ public class Loja {
 	
 	private String endereco;
 	private String nome;
+	private Tela tela;
 	private ArrayList<Carro> estoqueCarro;
 	private ArrayList<Motocicleta> estoqueMotocicleta;
 	
 	public Loja() {
 		estoqueCarro = new ArrayList<Carro>();
 		estoqueMotocicleta = new ArrayList<Motocicleta>();
+		tela = new Tela();
 	}
 	
-	/** 
-	 * @return retorna endereco
-	 */
 	public String getEndereco() {
 		return endereco;
 	}
 	
-	/**
-	 * @param endereco
-	 */
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
 	
-	/**
-	 * @return retorna nome
-	 */
 	public String getNome() {
 		return nome;
 	}
 	
-	/**
-	 * @param nome
-	 */
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 	
-	/**
-	 * @return retorna um ArrayList de carros
-	 */
 	public ArrayList<Carro> getEstoqueCarro() {
 		return estoqueCarro;
 	}
 	
-	/**
-	 * @param estoqueCarro
-	 */
 	public void setEstoqueCarro(ArrayList<Carro> estoqueCarro) {
 		this.estoqueCarro = estoqueCarro;
 	}
 	
-	/**
-	 * @return retorna im ArrayList de motocicletas
-	 */
 	public ArrayList<Motocicleta> getEstoqueMotocicleta() {
 		return estoqueMotocicleta;
 	}
 	
-	/**
-	 * @param estoqueMoto
-	 */
 	public void setEstoqueMotocicleta(ArrayList<Motocicleta> estoqueMoto) {
 		this.estoqueMotocicleta = estoqueMoto;
 	}	
@@ -91,9 +70,12 @@ public class Loja {
 		if (this.getEstoqueCarro() != null)
 			verifica = this.getEstoqueCarro().size();
 		this.getEstoqueCarro().add(carro);
+		
 		if(verifica + 1 == this.getEstoqueCarro().size()){
+			tela.exibirMsgLine("\nCarro Adicionado!\n");	
 			return true;
 		} else {
+			tela.exibirMsgLine("\nHouve um Problema no Cadastro.\n");
 			return false;
 		}	
 	}
@@ -108,9 +90,12 @@ public class Loja {
 		moto.leMoto();
 		verifica = this.getEstoqueMotocicleta().size();
 		this.getEstoqueMotocicleta().add(moto);
+		
 		if(verifica + 1 == this.getEstoqueMotocicleta().size()){
+			tela.exibirMsgLine("\nMotocicleta Adicionado!\n");
 			return true;
 		} else {
+			tela.exibirMsgLine("\nHouve um Problema no Cadastro.\n");
 			return false;
 		}	
 	}
@@ -229,15 +214,16 @@ public class Loja {
 	
 	public void listarCarro(Carro carro){
 		
-		System.out.println("Chassi: " + carro.getChassi());
-		System.out.println("Montadora: " + carro.getMontadora());
-		System.out.println("Modelo: " + carro.getModelo());
-		System.out.println("Tipo: " + carro.getTipo());
-		System.out.println("Cambio: " + carro.getCambio());
-		System.out.println("Motorizacao: " + carro.getMotorizacao());
-		System.out.println("Cor: " + carro.getCor());
-		System.out.println("Preco: " + carro.getPreco());
-		System.out.println("-----------X------------\n");
+		tela.exibirMsgLine("Chassi: " + carro.getChassi());
+		tela.exibirMsgLine("Montadora: " + carro.getMontadora());
+		tela.exibirMsgLine("Modelo: " + carro.getModelo());
+		tela.exibirMsgLine("Tipo: " + carro.getTipo());
+		tela.exibirMsgLine("Cambio: " + carro.getCambio());
+		tela.exibirMsgLine("Motorizacao: " + carro.getMotorizacao());
+		tela.exibirMsgLine("Cor: " + carro.getCor());
+		tela.exibirMsg("Preco: ");
+		tela.exibirValoresReais(carro.getPreco());
+		tela.exibirMsgLine("-----------X------------\n");
 	}
 	
 	/**
@@ -249,14 +235,15 @@ public class Loja {
 	
 	public void listarMotocicleta(Motocicleta motoSelecionada){
 		
-		System.out.println("Chassi: " + motoSelecionada.getChassi());
-		System.out.println("Montadora: " + motoSelecionada.getMontadora());
-		System.out.println("Modelo: " + motoSelecionada.getModelo());
-		System.out.println("Tipo: " + motoSelecionada.getTipo());
-		System.out.println("Cilindrada: " + motoSelecionada.getCilindrada());
-		System.out.println("Capacida De Tanque: " + motoSelecionada.getCapacidaDeTanque());
-		System.out.println("Cor: " + motoSelecionada.getCor());
-		System.out.println("Preco: " + motoSelecionada.getPreco());
+		tela.exibirMsgLine("Chassi: " + motoSelecionada.getChassi());
+		tela.exibirMsgLine("Montadora: " + motoSelecionada.getMontadora());
+		tela.exibirMsgLine("Modelo: " + motoSelecionada.getModelo());
+		tela.exibirMsgLine("Tipo: " + motoSelecionada.getTipo());
+		tela.exibirMsgLine("Cilindrada: " + motoSelecionada.getCilindrada());
+		tela.exibirMsgLine("Capacida De Tanque: " + motoSelecionada.getCapacidaDeTanque());
+		tela.exibirMsgLine("Cor: " + motoSelecionada.getCor());
+		tela.exibirMsg("Preco: ");
+		tela.exibirValoresReais(motoSelecionada.getPreco());
 		System.out.println("-----------X------------\n");
 	}
 }

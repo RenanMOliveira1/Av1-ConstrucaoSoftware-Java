@@ -1,6 +1,8 @@
 package com.concessionaria.veiculos;
 
-import com.concessionaria.adminstracao.Enum.*;
+import java.util.InputMismatchException;
+
+import com.concessionaria.administracao.auxiliares.SubOpcoesMenu.*;
 
 /**
  * @author Tiago
@@ -14,13 +16,6 @@ public class Carro extends Veiculo {
 	private String cambio;
 	
 	public Carro() {
-	}
-	
-	public Carro(String chassi, String montadora, String modelo, String tipo,
-			String cor, float preco, float motolizacao, String cambio) {
-		super(chassi, montadora, modelo, tipo, cor, preco);
-		setMotorizacao(motolizacao);
-		setCambio(cambio);
 	}
 	
 	public double getMotorizacao() {
@@ -42,11 +37,11 @@ public class Carro extends Veiculo {
 	/**
 	 * Método que faz a leitura de tipo de Carro a partir do teclado
 	 */
-	public void leTipoCarro() {
+	public void leTipoCarro()  {
 		
 		System.out.println("\nEntre com o tipo de carro: ");
 		TipoCarro.exibirOpcoes();
-		int opcaoTipo = input.nextInt();
+		int opcaoTipo = entradaDeDado.getInputInt();
 		String nomeTipoEscolhido = TipoCarro.pesquisarOpcao(opcaoTipo);
 		
 		if (nomeTipoEscolhido.equals(null))
@@ -58,10 +53,10 @@ public class Carro extends Veiculo {
 	/**
 	 * Método que faz a leitura de motorizacao de Carro a partir do teclado
 	 */
-	public void leMotorizacao() {
+	public void leMotorizacao()  throws InputMismatchException {
 		
 		System.out.println("\nEntre com a motorizacao do tanque do carro: ");
-		int motorizacao = input.nextInt();
+		int motorizacao = entradaDeDado.getInputInt();
 		
 		if(motorizacao < 0)
 			throw new IllegalArgumentException("Motorização: Numero Negativo não é Aceito.");
@@ -73,11 +68,11 @@ public class Carro extends Veiculo {
 	/**
 	 * Método que faz a leitura de tipo de Carro a partir do teclado
 	 */
-	public void leCambio() {
+	public void leCambio()  throws InputMismatchException {
 
 		System.out.println("\nEntre com o cambio de carro: ");
 		Cambio.exibirOpcoes();
-		int opcaoCambio = input.nextInt();
+		int opcaoCambio = entradaDeDado.getInputInt();
 		String cambioEscolhido = Cambio.pesquisarOpcao(opcaoCambio);
 		
 		if (cambioEscolhido.equals(null))
@@ -99,14 +94,21 @@ public class Carro extends Veiculo {
 	public void leCarro(){
 		
 		System.out.println("********Entre com caracteristicas para o seu carro********");
-		leChassi();
-		leMontadora();
-		leModelo();
-		leTipoCarro();
-		leCor();
-		lePreco();
-		leMotorizacao();
-		leCambio();
+		
+		try {
+			leChassi();
+			leMontadora();
+			leModelo();
+			leTipoCarro();
+			leCor();
+			lePreco();
+			leMotorizacao();
+			leCambio();
+		} catch (InputMismatchException string) {
+			System.err.println("Não se Aceita String.");
+			System.exit(1);
+		}
+		
 		
 	}
 }

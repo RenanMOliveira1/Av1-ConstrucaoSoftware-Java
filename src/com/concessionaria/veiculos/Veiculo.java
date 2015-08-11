@@ -1,8 +1,11 @@
  package com.concessionaria.veiculos;
  
- import java.util.Scanner;
+ import java.util.InputMismatchException;
+import java.util.Scanner;
 
-import com.concessionaria.adminstracao.Enum.*;
+import com.concessionaria.administracao.auxiliares.EntradaDeDados;
+import com.concessionaria.administracao.auxiliares.Tela;
+import com.concessionaria.administracao.auxiliares.SubOpcoesMenu.*;
 
 /**
  * 
@@ -19,30 +22,12 @@ public abstract class Veiculo {
 	protected String cor;
 	protected double preco;
 	protected Scanner input;
+	protected Tela tela;
+	protected EntradaDeDados entradaDeDado;
 	
 	public Veiculo () {
-		input = new Scanner(System.in);
-	}
-	
-	
-	/**
-	 * @param chassi
-	 * @param montadora
-	 * @param modelo
-	 * @param tipo
-	 * @param cor
-	 * @param preco
-	 * 
-	 * Construtor com todos os parâmentros
-	 */
-	public Veiculo(String chassi, String montadora, String modelo, String tipo, String cor, float preco) {
-		
-		setChassi(chassi);
-		setMontadora(montadora);
-		setModelo(modelo);
-		setTipo(tipo);
-		setCor(cor);
-		setPreco(preco);
+		tela = new Tela();
+		entradaDeDado = new EntradaDeDados();
 	}
 	
 	public String getChassi() {
@@ -99,7 +84,7 @@ public abstract class Veiculo {
 	public void leChassi() {
 		System.out.println("\nEntre com o chassi: ");
 		
-		String chassi = input.nextLine();
+		String chassi = entradaDeDado.getInputString();
 		
 		if(chassi.equals(null) == false)
 			setChassi(chassi);
@@ -110,11 +95,11 @@ public abstract class Veiculo {
 	/**
 	 * Método que faz a leitura de montadora de um veiculo a partir do teclado
 	 */
-	public void leMontadora() {
+	public void leMontadora() throws InputMismatchException {
 
 		System.out.println("\nEntre com a montadora: ");
 		Montadora.exibirOpcoes();
-		int opcaoMontadora = input.nextInt();
+		int opcaoMontadora = entradaDeDado.getInputInt();
 		String nomeMontadoraEscolhido = Montadora.pesquisarOpcao(opcaoMontadora);
 		
 		if (nomeMontadoraEscolhido.equals(null))
@@ -128,7 +113,7 @@ public abstract class Veiculo {
 	 */
 	public void leModelo() {
 		System.out.println("Entre com o modelo: ");
-		String modelo = input.next();
+		String modelo = entradaDeDado.getInput();
 		
 		if(modelo.equals(null))
 			throw new IllegalArgumentException("Modelo: Opção Inválida.");
@@ -139,11 +124,11 @@ public abstract class Veiculo {
 	/**
 	 * Método que faz a leitura de cor de um veiculo a partir do teclado
 	 */
-	public void leCor() {
+	public void leCor() throws InputMismatchException {
 
 		System.out.println("Entre com a cor: ");
 		Cor.exibirOpcoes();
-		int opcaoCor = input.nextInt();
+		int opcaoCor = entradaDeDado.getInputInt();
 		String corEscolhida = Cor.pesquisarOpcao(opcaoCor);
 		
 		if (corEscolhida.equals(null)) 
@@ -156,10 +141,10 @@ public abstract class Veiculo {
 	/**
 	 * Método que faz a leitura de capacidade de tanque de Motocicleta a partir do teclado
 	 */
-	public void lePreco() {
+	public void lePreco()  throws InputMismatchException {
 		
 		System.out.println("Entre com o preço: ");
-		double preco = input.nextDouble();
+		double preco = entradaDeDado.getInputDouble();
 		
 		if(preco < 0)
 			throw new IllegalArgumentException("Preço: Numero Negativo não é Aceito.");
