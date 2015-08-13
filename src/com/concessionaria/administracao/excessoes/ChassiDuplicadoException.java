@@ -13,5 +13,16 @@ package com.concessionaria.administracao.excessoes;
  *
  */
 public class ChassiDuplicadoException extends Exception {
-
+	private static final long serialVersionUID = -3205286034729059680L;
+	
+	private String msg;
+	
+	public ChassiDuplicadoException(String msg) {
+		super(msg);
+		this.msg = msg;
+	}
+	
+	public String getMsg() {
+		return msg;
+	}
 }

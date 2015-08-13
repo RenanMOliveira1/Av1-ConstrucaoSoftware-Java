@@ -6,9 +6,10 @@
  * 
  */
 package com.concessionaria.veiculos;
- 
+
 import com.concessionaria.administracao.auxiliares.EntradaDeDados;
 import com.concessionaria.administracao.auxiliares.Tela;
+import com.concessionaria.administracao.excessoes.MenorQueZeroException;
 
 /**
  * 
@@ -96,5 +97,16 @@ public abstract class Veiculo {
 	 *  Exibe os dados de um Veiculo Cadastrado.
 	 */
 	public abstract void exibirVeiculo();
-
+	
+	protected void tratarNumeros(int entrada) throws MenorQueZeroException {
+		
+		if (entrada < 0)
+			throw new MenorQueZeroException("Numero Negativo não é Aceito.");
+	}
+	
+	protected void tratarNumeros(double entrada) throws MenorQueZeroException {
+		
+		if (entrada < 0.0)
+			throw new MenorQueZeroException("Numero Negativo não é Aceito.");
+	}
 }

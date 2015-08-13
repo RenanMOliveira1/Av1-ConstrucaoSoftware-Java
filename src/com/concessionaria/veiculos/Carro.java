@@ -10,6 +10,7 @@ package com.concessionaria.veiculos;
 import java.util.InputMismatchException;
 
 import com.concessionaria.administracao.auxiliares.SubOpcoesMenu.*;
+import com.concessionaria.administracao.excessoes.MenorQueZeroException;
 
 /**
  * @author Tiago Henrique
@@ -65,37 +66,42 @@ public class Carro extends Veiculo {
 		tela.exibirMsg("\nEntre com a Montadora: ");
 		try {
 			opcaoEscolhida = entradaDeDado.getInputInt();
+			tratarNumeros(opcaoEscolhida);
 		} catch (InputMismatchException string) {
-			tela.exibirMsg("Não se Aceita Letras, só Números.");
-			System.exit(1);
+			tela.exibirMsg("Não se Aceita Letras, só Números ");
+			string.printStackTrace();
+		} catch (MenorQueZeroException e) {
+			e.printStackTrace();
 		}
 		setMontadora(Montadora.pesquisarOpcao(opcaoEscolhida));
 		
 		tela.exibirMsg("Entre com o Modelo: ");
-		try {
-			setModelo(entradaDeDado.getInput());
-		} catch (InputMismatchException string) {
-			tela.exibirMsg("Não se Aceita Letras, só Números.");
-			System.exit(1);
-		}
+		setModelo(entradaDeDado.getInput());
+		
 		
 		tela.inserirQuebraDeLinha();
 		Cor.exibirOpcoes();
 		tela.exibirMsg("Entre com a Cor: ");
 		try {
 			opcaoEscolhida = entradaDeDado.getInputInt();
+			tratarNumeros(opcaoEscolhida);
 		} catch (InputMismatchException string) {
-			tela.exibirMsg("Não se Aceita Letras, só Números.");
-			System.exit(1);
+			tela.exibirMsg("Não se Aceita Letras, só Números ");
+			string.printStackTrace();
+		} catch (MenorQueZeroException e) {
+			e.printStackTrace();
 		}
 		setCor(Cor.pesquisarOpcao(opcaoEscolhida));
 		
 		tela.exibirMsg("Entre com o Preço: ");
 		try {
 			setPreco(entradaDeDado.getInputDouble());
+			tratarNumeros(opcaoEscolhida);
 		} catch (InputMismatchException string) {
-			tela.exibirMsg("Não se Aceita Letras, só Números.");
-			System.exit(1);
+			tela.exibirMsg("Não se Aceita Letras, só Números ");
+			string.printStackTrace();
+		} catch (MenorQueZeroException e) {
+			e.printStackTrace();
 		}
 		
 		tela.inserirQuebraDeLinha();
@@ -103,18 +109,24 @@ public class Carro extends Veiculo {
 		tela.exibirMsg("\nEntre com o Tipo de Carro: ");
 		try {
 			opcaoEscolhida = entradaDeDado.getInputInt();
+			tratarNumeros(opcaoEscolhida);
 		} catch (InputMismatchException string) {
-			tela.exibirMsg("Não se Aceita Letras, só Números.");
-			System.exit(1);
+			tela.exibirMsg("Não se Aceita Letras, só Números ");
+			string.printStackTrace();
+		} catch (MenorQueZeroException e) {
+			e.printStackTrace();
 		}
 		setTipo(TipoCarro.pesquisarOpcao(opcaoEscolhida));
 		
 		tela.exibirMsg("\nEntre Com a Motorizacao do Tanque: ");
 		try {
 			setMotorizacao(entradaDeDado.getInputInt());
+			tratarNumeros(opcaoEscolhida);
 		} catch (InputMismatchException string) {
-			tela.exibirMsg("Não se Aceita Letras, só Números.");
-			System.exit(1);
+			tela.exibirMsg("Não se Aceita Letras, só Números ");
+			string.printStackTrace();
+		} catch (MenorQueZeroException e) {
+			e.printStackTrace();
 		}
 		
 		tela.inserirQuebraDeLinha();
@@ -122,9 +134,12 @@ public class Carro extends Veiculo {
 		tela.exibirMsg("\nEntre com o Cambio: ");
 		try {
 			opcaoEscolhida = entradaDeDado.getInputInt();
+			tratarNumeros(opcaoEscolhida);
 		} catch (InputMismatchException string) {
-			tela.exibirMsg("Não se Aceita Letras, só Números.");
-			System.exit(1);
+			tela.exibirMsg("Não se Aceita Letras, só Números ");
+			string.printStackTrace();
+		} catch (MenorQueZeroException e) {
+			e.printStackTrace();
 		}
 		setCambio(Cambio.pesquisarOpcao(opcaoEscolhida));
 		

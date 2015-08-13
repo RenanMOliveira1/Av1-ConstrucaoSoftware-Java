@@ -13,5 +13,16 @@ package com.concessionaria.administracao.excessoes;
  *
  */
 public class MenorQueZeroException extends Exception {
+	private static final long serialVersionUID = 2408412099459677071L;
 	
+	private String msg;
+	
+	public MenorQueZeroException(String msg) {
+		super(msg);
+		this.msg = msg;
+	}
+	
+	public String getMsg() {
+		return msg;
+	}
 }
