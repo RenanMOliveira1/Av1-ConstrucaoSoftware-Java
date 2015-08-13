@@ -1,16 +1,26 @@
- package com.concessionaria.veiculos;
+/*
+ * Copyright (c) 2015, GEC5 and/or its affiliates. All rights reserved.
+ * INSTITUTO INFNET. Use is subject to license terms.
+ * 
+ * 
+ * 
+ */
+package com.concessionaria.veiculos;
  
- import java.util.InputMismatchException;
-import java.util.Scanner;
-
 import com.concessionaria.administracao.auxiliares.EntradaDeDados;
 import com.concessionaria.administracao.auxiliares.Tela;
-import com.concessionaria.administracao.auxiliares.SubOpcoesMenu.*;
 
 /**
  * 
+ * <p>A Classe <code>Veiculo<code> é uma Classe Abstrata usada
+ * como espelho para os diversos tipos de Veículos (Carro, 
+ * Motocicletas, Barcos), onde todos esses veículos deveram
+ * ter obrigatoriamente dois métodos, cadastrarVeiculo e
+ * exibirVeiculo. Ela não pode ser Inicializada.</p>
+ * 
  * @author Yasmin
- * @author Tiago
+ * @author Tiago Henrique
+ * @since JDK 1.8
  *
  */
 
@@ -21,11 +31,10 @@ public abstract class Veiculo {
 	protected String tipo;
 	protected String cor;
 	protected double preco;
-	protected Scanner input;
 	protected Tela tela;
 	protected EntradaDeDados entradaDeDado;
 	
-	public Veiculo () {
+	public Veiculo() {
 		tela = new Tela();
 		entradaDeDado = new EntradaDeDados();
 	}
@@ -79,76 +88,13 @@ public abstract class Veiculo {
 	}
 	
 	/**
-	 * Método que faz a leitura do chassi de um veiculo a partir do teclado
+	 * @return um veículo Cadastrado
 	 */
-	public void leChassi() {
-		System.out.println("\nEntre com o chassi: ");
-		
-		String chassi = entradaDeDado.getInputString();
-		
-		if(chassi.equals(null) == false)
-			setChassi(chassi);
-		else 
-			throw new IllegalArgumentException("Chassi nao deve ser nulo!");
-	}
+	public abstract Veiculo cadastrarVeiculo();
 	
 	/**
-	 * Método que faz a leitura de montadora de um veiculo a partir do teclado
+	 *  Exibe os dados de um Veiculo Cadastrado.
 	 */
-	public void leMontadora() throws InputMismatchException {
+	public abstract void exibirVeiculo();
 
-		System.out.println("\nEntre com a montadora: ");
-		Montadora.exibirOpcoes();
-		int opcaoMontadora = entradaDeDado.getInputInt();
-		String nomeMontadoraEscolhido = Montadora.pesquisarOpcao(opcaoMontadora);
-		
-		if (nomeMontadoraEscolhido.equals(null))
-			throw new IllegalArgumentException("Montadora: Opção Inválida.");
-		
-		setMontadora(nomeMontadoraEscolhido);	
-	}
-	
-	/**
-	 * Método que faz a leitura de modelo de um veiculo a partir do teclado
-	 */
-	public void leModelo() {
-		System.out.println("Entre com o modelo: ");
-		String modelo = entradaDeDado.getInput();
-		
-		if(modelo.equals(null))
-			throw new IllegalArgumentException("Modelo: Opção Inválida.");
-		
-		setModelo(modelo);	
-	}
-	
-	/**
-	 * Método que faz a leitura de cor de um veiculo a partir do teclado
-	 */
-	public void leCor() throws InputMismatchException {
-
-		System.out.println("Entre com a cor: ");
-		Cor.exibirOpcoes();
-		int opcaoCor = entradaDeDado.getInputInt();
-		String corEscolhida = Cor.pesquisarOpcao(opcaoCor);
-		
-		if (corEscolhida.equals(null)) 
-			throw new IllegalArgumentException("Cor: Opção Inválida.");
-		
-		setCor(corEscolhida);
-		
-	}
-	
-	/**
-	 * Método que faz a leitura de capacidade de tanque de Motocicleta a partir do teclado
-	 */
-	public void lePreco()  throws InputMismatchException {
-		
-		System.out.println("Entre com o preço: ");
-		double preco = entradaDeDado.getInputDouble();
-		
-		if(preco < 0)
-			throw new IllegalArgumentException("Preço: Numero Negativo não é Aceito.");
-		
-		setPreco(preco);
-	}
 }

@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2015, GEC5 and/or its affiliates. All rights reserved.
+ * INSTITUTO INFNET. Use is subject to license terms.
+ * 
+ * 
+ * 
+ */
 package com.concessionaria.adminstracao;
 
 import java.util.ArrayList;
@@ -5,25 +12,26 @@ import java.util.ArrayList;
 import com.concessionaria.administracao.auxiliares.Tela;
 import com.concessionaria.veiculos.Carro;
 import com.concessionaria.veiculos.Motocicleta;
+import com.concessionaria.veiculos.Veiculo;
 
 /**
+ * <p>A Classe <code>Loja<code> contém todos os métodos 
+ * disponiveis em um estoque de veículos.</p>
  * 
  * @author Renan Oliveira
  * @author Tiago Henrique
+ * @since JDK 1.8
  *
  */
 
 public class Loja {
-	
 	private String endereco;
 	private String nome;
 	private Tela tela;
-	private ArrayList<Carro> estoqueCarro;
-	private ArrayList<Motocicleta> estoqueMotocicleta;
+	private ArrayList<Veiculo> estoqueVeiculos;
 	
 	public Loja() {
-		estoqueCarro = new ArrayList<Carro>();
-		estoqueMotocicleta = new ArrayList<Motocicleta>();
+		estoqueVeiculos = new ArrayList<Veiculo>();
 		tela = new Tela();
 	}
 	
@@ -43,35 +51,23 @@ public class Loja {
 		this.nome = nome;
 	}
 	
-	public ArrayList<Carro> getEstoqueCarro() {
-		return estoqueCarro;
+	public ArrayList<Veiculo> getEstoqueVeiculos() {
+		return estoqueVeiculos;
 	}
-	
-	public void setEstoqueCarro(ArrayList<Carro> estoqueCarro) {
-		this.estoqueCarro = estoqueCarro;
+
+	public void setEstoqueVeiculos(ArrayList<Veiculo> estoqueVeiculos) {
+		this.estoqueVeiculos = estoqueVeiculos;
 	}
-	
-	public ArrayList<Motocicleta> getEstoqueMotocicleta() {
-		return estoqueMotocicleta;
-	}
-	
-	public void setEstoqueMotocicleta(ArrayList<Motocicleta> estoqueMoto) {
-		this.estoqueMotocicleta = estoqueMoto;
-	}	
-	
+
 	/**
-	 * @return Retorna True se o Carro for Cadastrado com sucesso, e false se ocorrer algum problema
+	 * Adiciona um Carro no Estoque
+	 * 
+	 * @return Retorna <tt>true</tt> se o Carro for Cadastrado com sucesso, e <tt>false</tt> se ocorrer algum problema
 	 */
 	public boolean adicionarCarro(){
-		Carro carro = new Carro();
-		int verifica = 0;
+		Veiculo veiculo = new Carro();
 		
-		carro.leCarro();
-		if (this.getEstoqueCarro() != null)
-			verifica = this.getEstoqueCarro().size();
-		this.getEstoqueCarro().add(carro);
-		
-		if(verifica + 1 == this.getEstoqueCarro().size()){
+		if(getEstoqueVeiculos().add(veiculo.cadastrarVeiculo())) {
 			tela.exibirMsgLine("\nCarro Adicionado!\n");	
 			return true;
 		} else {
@@ -81,17 +77,14 @@ public class Loja {
 	}
 	
 	/**
-	 * @return Retorna True se a Motocicleta for Cadastrado com sucesso, e false se ocorrer algum problema
+	 * Adiciona uma Motocicleta no Estoque
+	 * 
+	 * @return Retorna <tt>true</tt> se a Motocicleta for Cadastrado com sucesso, e <tt>false</tt> se ocorrer algum problema
 	 */
 	public boolean adicionarMotocicleta(){
-		Motocicleta moto = new Motocicleta();
-		int verifica;
+		Veiculo veiculo = new Motocicleta();
 		
-		moto.leMoto();
-		verifica = this.getEstoqueMotocicleta().size();
-		this.getEstoqueMotocicleta().add(moto);
-		
-		if(verifica + 1 == this.getEstoqueMotocicleta().size()){
+		if(getEstoqueVeiculos().add(veiculo.cadastrarVeiculo())){
 			tela.exibirMsgLine("\nMotocicleta Adicionado!\n");
 			return true;
 		} else {
@@ -100,35 +93,31 @@ public class Loja {
 		}	
 	}
 	
-	public ArrayList<Carro> pesquisaCarro(){
-		return getEstoqueCarro();
-	}
-	
-	public ArrayList<Motocicleta> pesquisaMotocicleta(){
-		return getEstoqueMotocicleta();
-	}
-	
 	/**
-	 * @param chassi
+	 * Busca um Carro no Estoque e Retorna o Objeto do Veiculo.
+	 * 
+	 * @param chassi O Chassi do Veículo que deseja Procurar
 	 * @return Retorna o Carro com o Chassi correspondente
 	 */
-	public Carro buscarCarro(String chassi){
+	public Veiculo buscarCarro(String chassi){
 		
-		for(Carro car : this.getEstoqueCarro()){
-			if(car.getChassi().equals(chassi)){
-				return car;
+		for(Veiculo carro : getEstoqueVeiculos()){
+			if(carro.getChassi().equals(chassi)){
+				return carro;
 			}
 		}
 		return null;
 	}
 	
 	/**
-	 * @param chassi
+	 * Busca um Carro no Estoque e Retorna o Objeto do Veiculo.
+	 * 
+	 * @param chassi O Chassi do Veículo que deseja Procurar
 	 * @return Retorna a Motocicleta com o Chassi correspondente
 	 */
-	public Motocicleta buscarMoto(String chassi){
+	public Veiculo buscarMoto(String chassi){
 		
-		for(Motocicleta moto : this.getEstoqueMotocicleta()){
+		for(Veiculo moto : getEstoqueVeiculos()){
 			if(moto.getChassi().equals(chassi)){
 				return moto;
 			}
@@ -136,114 +125,50 @@ public class Loja {
 		return null;
 	}
 	
-	/**
-	 * 
-	 * @param carList
-	 * 
-	 * lista as caracteristicas de todos os objetos contidos num ArrayList de carros
-	 */
-	
-	public void listarArrayCarro(ArrayList<Carro> carList){
-		for(Carro car : carList){
-			this.listarCarro(car);
-		}
-	}
-	
-	/**
-	 * 
-	 * @param motoList
-	 * 
-	 * lista as caracteristicas de todos os objetos contidos num ArrayList de motocicletas
-	 */
-	
-	public void listarArrayMotocicleta(ArrayList<Motocicleta> motoList){
-		for(Motocicleta moto : motoList){
-			this.listarMotocicleta(moto);
-		}
-	}
-	
 	public void listarEstoqueMotocicleta(){
-		for(Motocicleta moto : getEstoqueMotocicleta()){
-			this.listarMotocicleta(moto);
+		for(Veiculo moto : getEstoqueVeiculos()){
+			moto.exibirVeiculo();
 		}
 	}
-	
 	
 	public void listarEstoqueCarro(){
-		for(Carro car : getEstoqueCarro()){
-			this.listarCarro(car);
+		for(Veiculo carro : getEstoqueVeiculos()){
+			carro.exibirVeiculo();
 		}
 	}
 	
 	/**
+	 * Remove um Carro do Estoque.
 	 * 
-	 * @param chassi
-	 * @return
-	 * 
-	 * remove o veiculo a partir do codigo do seu chassi
+	 * @param chassi O Chassi do Veículo que deseja Remover
+	 * @return True se o Carro foi Removido com Sucesso, e False se não.
 	 */
 	
 	public boolean removerCarro(String chassi) {
-		Carro carroSelecionado = buscarCarro(chassi);
+		Veiculo carroSelecionado = buscarCarro(chassi);
 		
 		if (carroSelecionado != null) {
-			getEstoqueCarro().remove(carroSelecionado);
+			getEstoqueVeiculos().remove(carroSelecionado);
 			return true;
 		} 
 		
 		return false;
 	}
 	
+	/**
+	 * Remove uma Motocicleta do Estoque.
+	 * 
+	 * @param chassi O Chassi do Veículo que deseja Remover
+	 * @return True se a Motocicleta foi Removida com Sucesso, e False se não.
+	 */
 	public boolean removerMotocicleta(String chassi) {
-		Motocicleta motoSelecionada = buscarMoto(chassi);
+		Veiculo motoSelecionada = buscarMoto(chassi);
 		
 		if (motoSelecionada != null) {
-			getEstoqueMotocicleta().remove(motoSelecionada);
+			getEstoqueVeiculos().remove(motoSelecionada);
 			return true;
 		} 
 		
 		return false;
-	}
-	
-	/**
-	 * 
-	 * @param carro
-	 * 
-	 * imprime todas as caraacteristicas do carro
-	 */
-	
-	public void listarCarro(Carro carro){
-		
-		tela.exibirMsgLine("Chassi: " + carro.getChassi());
-		tela.exibirMsgLine("Montadora: " + carro.getMontadora());
-		tela.exibirMsgLine("Modelo: " + carro.getModelo());
-		tela.exibirMsgLine("Tipo: " + carro.getTipo());
-		tela.exibirMsgLine("Cambio: " + carro.getCambio());
-		tela.exibirMsgLine("Motorizacao: " + carro.getMotorizacao());
-		tela.exibirMsgLine("Cor: " + carro.getCor());
-		tela.exibirMsg("Preco: ");
-		tela.exibirValoresReais(carro.getPreco());
-		tela.exibirMsgLine("-----------X------------\n");
-	}
-	
-	/**
-	 * 
-	 * @param motoSelecionada
-	 * 
-	 * imprime todas as caracteristicas de motocicleta
-	 */
-	
-	public void listarMotocicleta(Motocicleta motoSelecionada){
-		
-		tela.exibirMsgLine("Chassi: " + motoSelecionada.getChassi());
-		tela.exibirMsgLine("Montadora: " + motoSelecionada.getMontadora());
-		tela.exibirMsgLine("Modelo: " + motoSelecionada.getModelo());
-		tela.exibirMsgLine("Tipo: " + motoSelecionada.getTipo());
-		tela.exibirMsgLine("Cilindrada: " + motoSelecionada.getCilindrada());
-		tela.exibirMsgLine("Capacida De Tanque: " + motoSelecionada.getCapacidaDeTanque());
-		tela.exibirMsgLine("Cor: " + motoSelecionada.getCor());
-		tela.exibirMsg("Preco: ");
-		tela.exibirValoresReais(motoSelecionada.getPreco());
-		System.out.println("-----------X------------\n");
 	}
 }

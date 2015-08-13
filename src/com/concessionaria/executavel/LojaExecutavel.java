@@ -1,13 +1,13 @@
 package com.concessionaria.executavel;
 
-import com.concessionaria.adminstracao.MenuLoja;
+import com.concessionaria.adminstracao.MenuConcessionaria;
 
 public class LojaExecutavel {
 
 	public static void main(String[] args) {
-		MenuLoja loja = new MenuLoja();
+		MenuConcessionaria concessionaria = new MenuConcessionaria();
 		
-		loja.iniciar();
+		concessionaria.iniciar();
 	}
 
 }

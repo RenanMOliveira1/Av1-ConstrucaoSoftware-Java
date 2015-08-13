@@ -1,8 +1,17 @@
+/*
+ * Copyright (c) 2015, GEC5 and/or its affiliates. All rights reserved.
+ * INSTITUTO INFNET. Use is subject to license terms.
+ * 
+ * 
+ * 
+ */
 package com.concessionaria.administracao.auxiliares;
 
 
 /**
- * @author Yasmin
+ * @author Yasmin Farias
+ * @author Tiago Henrique
+ * @since JDK 1.8
  *
  */
 public class SubOpcoesMenu {
@@ -31,10 +40,10 @@ public class SubOpcoesMenu {
 		private String nomeMontadora;
 		
 		/**
-		 * @param numOpcao
-		 * @param nomeMontadora
-		 * 
 		 * Construtor com todos os parâmentros
+		 * 
+		 * @param numOpcao O Numero da Montadora desejada no Menu
+		 * @param nomeMontadora O Nome da Montadora desejada no Menu
 		 */
 		private Montadora(int numOpcao, String nomeMontadora) {
 			this.numOpcao = numOpcao;
@@ -55,12 +64,23 @@ public class SubOpcoesMenu {
 			return this.nomeMontadora;
 		}
 		
+		/**
+		 * Exibe Todas as Opções Formatadas em String.
+		 */
 		public static void exibirOpcoes() {
 			for (Montadora montadora : Montadora.values()) {
-				System.out.println("*Digite " + montadora.getNumOpcao() + " para escolher " + montadora.getNomeMontadora());
+				System.out.println(montadora.getNumOpcao() + " - " + montadora.getNomeMontadora());
 			}
 		}
 		
+		/**
+		 * Pesquisa no Enumerodo a Opção desejada pelo Usuário.
+		 * 
+		 * @param opcao O Numero da Montadora desejada no Menu
+		 * @return Retorna o Nome da Montadora Escolhida, se não Lança um Excessão.
+		 * 
+		 * @throws IllegalArgumentException Caso Digite uma Opção Incorreta.
+		 */
 		public static String pesquisarOpcao(int opcao) {
 			
 			for (Montadora montadora : Montadora.values()) {
@@ -68,7 +88,7 @@ public class SubOpcoesMenu {
 					return montadora.getNomeMontadora();
 			} 
 			
-			return null;
+			throw new IllegalArgumentException("Opção Incorreta");
 		}
 	}
 	
@@ -92,10 +112,10 @@ public class SubOpcoesMenu {
 		private String nomeTipo;
 		
 		/**
-		 * @param numOpcao
-		 * @param nomeTipo
-		 * 
 		 * Construtor com todos os parâmentros
+		 * 
+		 * @param numOpcao O Numero do Tipo de Carro desejado no Menu
+		 * @param nomeTipo O Nome do Tipo de Carro desejado no Menu
 		 */
 		private TipoCarro(int numOpcao, String nomeTipo) {
 			this.numOpcao = numOpcao;
@@ -117,14 +137,22 @@ public class SubOpcoesMenu {
 		}
 		
 		/**
-		 * Percorre todos os valores de TipoCarro e recebe seus valores em "tipoCarro" na ordem, imprimindo as opcoes
+		 * Exibe Todas as Opções Formatadas em String.
 		 */
 		public static void exibirOpcoes() {
 			for (TipoCarro tipoCarro : TipoCarro.values()) {
-				System.out.println("*Digite " + tipoCarro.getNumOpcao() + " para escolher " + tipoCarro.getNomeTipo());
+				System.out.println(tipoCarro.getNumOpcao() + " - " + tipoCarro.getNomeTipo());
 			}
 		}
 		
+		/**
+		 * Pesquisa no Enumerodo a Opção desejada pelo Usuário.
+		 * 
+		 * @param opcao O Numero do Tipo de Carro desejado no Menu
+		 * @return Retorna o Nome do Tipo de Carro Escolhido, se não Lança um Excessão.
+		 * 
+		 * @throws IllegalArgumentException Caso Digite uma Opção Incorreta.
+		 */
 		public static String pesquisarOpcao(int opcao) {
 			
 			for (TipoCarro tipoCarro : TipoCarro.values()) {
@@ -132,7 +160,7 @@ public class SubOpcoesMenu {
 					return tipoCarro.getNomeTipo();
 			} 
 			
-			return null;
+			throw new IllegalArgumentException("Opção Incorreta");
 		}
 	}
 	
@@ -157,10 +185,10 @@ public class SubOpcoesMenu {
 		private String nomeTipo;
 		
 		/**
-		 * @param numOpcao
-		 * @param nomeTipo
-		 * 
 		 * Construtor com todos os parâmentros
+		 * 
+		 * @param numOpcao O Numero do Tipo do Motor desejado no Menu
+		 * @param nomeTipo O Nome do Tipo do Motor desejado no Menu
 		 */
 		private TipoMoto(int numOpcao, String nomeTipo) {
 			this.numOpcao = numOpcao;
@@ -181,12 +209,23 @@ public class SubOpcoesMenu {
 			return nomeTipo;
 		}
 		
+		/**
+		 * Exibe Todas as Opções Formatadas em String.
+		 */
 		public static void exibirOpcoes() {
 			for (TipoMoto tipoMoto : TipoMoto.values()) {
-				System.out.println("*Digite " + tipoMoto.getNumOpcao() + " para escolher " + tipoMoto.getNomeTipo());
+				System.out.println(tipoMoto.getNumOpcao() + " - " + tipoMoto.getNomeTipo());
 			}
 		}
 		
+		/**
+		 * Pesquisa no Enumerodo a Opção desejada pelo Usuário.
+		 * 
+		 * @param opcao O Numero do Tipo do Motor desejado no Menu
+		 * @return Retorna o Nome do Tipo do Motor Escolhido, se não Lança um Excessão.
+		 * 
+		 * @throws IllegalArgumentException Caso Digite uma Opção Incorreta.
+		 */
 		public static String pesquisarOpcao(int opcao) {
 			
 			for (TipoMoto tipoMoto : TipoMoto.values()) {
@@ -194,7 +233,7 @@ public class SubOpcoesMenu {
 					return tipoMoto.getNomeTipo();
 			} 
 			
-			return null;
+			throw new IllegalArgumentException("Opção Incorreta");
 		}
 	}
 
@@ -213,10 +252,10 @@ public class SubOpcoesMenu {
 		private String nomeCor;
 		
 		/**
-		 * @param numOpcao
-		 * @param nomeCor
-		 * 
 		 * Construtor com todos os parâmentros
+		 * 
+		 * @param numOpcao O Numero da Cor desejada no Menu
+		 * @param nomeCor O Nome da Cor desejada no Menu
 		 */
 		private Cor(int numOpcao, String nomeCor) {
 			this.numOpcao = numOpcao;
@@ -237,12 +276,23 @@ public class SubOpcoesMenu {
 			return nomeCor;
 		}
 		
+		/**
+		 * Exibe Todas as Opções Formatadas em String.
+		 */
 		public static void exibirOpcoes() {
 			for (Cor cor : Cor.values()) {
-				System.out.println("*Digite " + cor.getNumOpcao() + " para escolher " + cor.getNomeCor());
+				System.out.println(cor.getNumOpcao() + " - " + cor.getNomeCor());
 			}
 		}
 		
+		/**
+		 * Pesquisa no Enumerodo a Opção desejada pelo Usuário.
+		 * 
+		 * @param opcao O Numero da Cor desejada no Menu
+		 * @return Retorna o Nome da Cor Escolhida, se não Lança um Excessão.
+		 * 
+		 * @throws IllegalArgumentException Caso Digite uma Opção Incorreta.
+		 */
 		public static String pesquisarOpcao(int opcao) {
 			
 			for (Cor cor : Cor.values()) {
@@ -250,7 +300,7 @@ public class SubOpcoesMenu {
 					return cor.getNomeCor();
 			} 
 			
-			return null;
+			throw new IllegalArgumentException("Opção Incorreta");
 		}
 	}
 
@@ -264,10 +314,10 @@ public class SubOpcoesMenu {
 		private String nomeCambio;
 		
 		/**
-		 * @param numOpcao
-		 * @param nomeCambio
-		 * 
 		 * Construtor com todos os parâmentros
+		 * 
+		 * @param numOpcao O Numero do Cambio desejado no Menu
+		 * @param nomeCambio O Nome do Cambio desejado no Menu
 		 */
 		private Cambio(int numOpcao, String nomeCambio) {
 			this.numOpcao = numOpcao;
@@ -288,12 +338,23 @@ public class SubOpcoesMenu {
 			return nomeCambio;
 		}
 		
+		/**
+		 * Exibe Todas as Opções Formatadas em String.
+		 */
 		public static void exibirOpcoes() {
 			for (Cambio cambio : Cambio.values()) {
-				System.out.println("*Digite " + cambio.getNumOpcao() + " para escolher " + cambio.getNomeCambio());
+				System.out.println(cambio.getNumOpcao() + " - " + cambio.getNomeCambio());
 			}
 		}
 		
+		/**
+		 * Pesquisa no Enumerodo a Opção desejada pelo Usuário.
+		 * 
+		 * @param opcao O Numero do Cambio desejado no Menu
+		 * @return Retorna o Nome do Cambio Escolhido, se não Lança um Excessão.
+		 * 
+		 * @throws IllegalArgumentException Caso Digite uma Opção Incorreta.
+		 */
 		public static String pesquisarOpcao(int opcao) {
 			
 			for (Cambio cambio : Cambio.values()) {
@@ -301,7 +362,7 @@ public class SubOpcoesMenu {
 					return cambio.getNomeCambio();
 			} 
 			
-			return null;
+			throw new IllegalArgumentException("Opção Incorreta");
 		}
 	}
 
@@ -320,10 +381,10 @@ public class SubOpcoesMenu {
 		private int numCilindradas;
 		
 		/**
-		 * @param numOpcao
-		 * @param numCilindradas
-		 * 
 		 * Construtor com todos os parâmentros
+		 * 
+		 * @param numOpcao O Numero da Cilindrada desejada no Menu
+		 * @param numCilindradas O Numero da Cilindrada Formatada desejada no Menu
 		 */
 		private Cilindrada(int numOpcao, int numCilindradas) {
 			this.numOpcao = numOpcao;
@@ -344,12 +405,23 @@ public class SubOpcoesMenu {
 			return numCilindradas;
 		}
 		
+		/**
+		 * Exibe Todas as Opções Formatadas em String.
+		 */
 		public static void exibirOpcoes() {
 			for (Cilindrada cilindrada : Cilindrada.values()) {
-				System.out.println("*Digite " + cilindrada.getNumOpcao() + " para escolher " + cilindrada.getNumCilindradas());
+				System.out.println(cilindrada.getNumOpcao() + " - " + cilindrada.getNumCilindradas());
 			}
 		}
 		
+		/**
+		 * Pesquisa no Enumerodo a Opção desejada pelo Usuário.
+		 * 
+		 * @param opcao O Numero da Cilindrada desejada no Menu
+		 * @return Retorna o Nome da Cilindrada Escolhida, se não Lança um Excessão.
+		 * 
+		 * @throws IllegalArgumentException Caso Digite uma Opção Incorreta.
+		 */
 		public static int pesquisarOpcao(int opcao) {
 			
 			for (Cilindrada cilindrada : Cilindrada.values()) {
@@ -357,7 +429,7 @@ public class SubOpcoesMenu {
 					return cilindrada.getNumCilindradas();
 			} 
 			
-			return 0;
+			throw new IllegalArgumentException("Opção Incorreta");
 		}
 	}
 

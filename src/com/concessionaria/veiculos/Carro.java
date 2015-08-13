@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2015, GEC5 and/or its affiliates. All rights reserved.
+ * INSTITUTO INFNET. Use is subject to license terms.
+ * 
+ * 
+ * 
+ */
 package com.concessionaria.veiculos;
 
 import java.util.InputMismatchException;
@@ -5,9 +12,11 @@ import java.util.InputMismatchException;
 import com.concessionaria.administracao.auxiliares.SubOpcoesMenu.*;
 
 /**
- * @author Tiago
- *@author Renan Oliveira
- *@author Yasmin
+ * @author Tiago Henrique
+ * @author Yasmin Farias
+ * @author Renan Oliveira
+ * @see Veiculo
+ * @since JDK 1.8
  *
  */
 
@@ -35,80 +44,104 @@ public class Carro extends Veiculo {
 	}
 	
 	/**
-	 * Método que faz a leitura de tipo de Carro a partir do teclado
-	 */
-	public void leTipoCarro()  {
-		
-		System.out.println("\nEntre com o tipo de carro: ");
-		TipoCarro.exibirOpcoes();
-		int opcaoTipo = entradaDeDado.getInputInt();
-		String nomeTipoEscolhido = TipoCarro.pesquisarOpcao(opcaoTipo);
-		
-		if (nomeTipoEscolhido.equals(null))
-			throw new IllegalArgumentException("Tipo de Carro: Opção Inválida.");
-		
-		setTipo(nomeTipoEscolhido);	
-	}
-	
-	/**
-	 * Método que faz a leitura de motorizacao de Carro a partir do teclado
-	 */
-	public void leMotorizacao()  throws InputMismatchException {
-		
-		System.out.println("\nEntre com a motorizacao do tanque do carro: ");
-		int motorizacao = entradaDeDado.getInputInt();
-		
-		if(motorizacao < 0)
-			throw new IllegalArgumentException("Motorização: Numero Negativo não é Aceito.");
-		
-		setMotorizacao(motorizacao);	
-	}
-	
-	
-	/**
-	 * Método que faz a leitura de tipo de Carro a partir do teclado
-	 */
-	public void leCambio()  throws InputMismatchException {
-
-		System.out.println("\nEntre com o cambio de carro: ");
-		Cambio.exibirOpcoes();
-		int opcaoCambio = entradaDeDado.getInputInt();
-		String cambioEscolhido = Cambio.pesquisarOpcao(opcaoCambio);
-		
-		if (cambioEscolhido.equals(null))
-			throw new IllegalArgumentException("Cambio: Opção Inválida.");
-		
-		setCambio(cambioEscolhido);
-	}
-	
-	
-	/**
-	 * @see leChassi()
-	 * @see leMontadora()
-	 * @see leModelo()
-	 * @see leCor()
-	 * @see lePreco()
+	 * Cadastra os Dados de um Novo Carro e Retorna um
+	 * Veiculo preenxido.
 	 * 
-	 * Métodos da classe abstrata Veiculo
+	 * @throws InputMismatchException se digitar alguma String
+	 * quando se pede Inteiro.
+	 * 
 	 */
-	public void leCarro(){
+	
+	public Veiculo cadastrarVeiculo() {
+		int opcaoEscolhida = 0;
 		
-		System.out.println("********Entre com caracteristicas para o seu carro********");
+		tela.exibirMsgLine("********Entre com Caracteristicas para o seu Carro********");
 		
+		tela.exibirMsg("\nEntre com o Chassi: ");
+		setChassi(entradaDeDado.getInputString());
+		
+		tela.inserirQuebraDeLinha();
+		Montadora.exibirOpcoes();
+		tela.exibirMsg("\nEntre com a Montadora: ");
 		try {
-			leChassi();
-			leMontadora();
-			leModelo();
-			leTipoCarro();
-			leCor();
-			lePreco();
-			leMotorizacao();
-			leCambio();
+			opcaoEscolhida = entradaDeDado.getInputInt();
 		} catch (InputMismatchException string) {
-			System.err.println("Não se Aceita String.");
+			tela.exibirMsg("Não se Aceita Letras, só Números.");
+			System.exit(1);
+		}
+		setMontadora(Montadora.pesquisarOpcao(opcaoEscolhida));
+		
+		tela.exibirMsg("Entre com o Modelo: ");
+		try {
+			setModelo(entradaDeDado.getInput());
+		} catch (InputMismatchException string) {
+			tela.exibirMsg("Não se Aceita Letras, só Números.");
 			System.exit(1);
 		}
 		
+		tela.inserirQuebraDeLinha();
+		Cor.exibirOpcoes();
+		tela.exibirMsg("Entre com a Cor: ");
+		try {
+			opcaoEscolhida = entradaDeDado.getInputInt();
+		} catch (InputMismatchException string) {
+			tela.exibirMsg("Não se Aceita Letras, só Números.");
+			System.exit(1);
+		}
+		setCor(Cor.pesquisarOpcao(opcaoEscolhida));
 		
+		tela.exibirMsg("Entre com o Preço: ");
+		try {
+			setPreco(entradaDeDado.getInputDouble());
+		} catch (InputMismatchException string) {
+			tela.exibirMsg("Não se Aceita Letras, só Números.");
+			System.exit(1);
+		}
+		
+		tela.inserirQuebraDeLinha();
+		TipoCarro.exibirOpcoes();
+		tela.exibirMsg("\nEntre com o Tipo de Carro: ");
+		try {
+			opcaoEscolhida = entradaDeDado.getInputInt();
+		} catch (InputMismatchException string) {
+			tela.exibirMsg("Não se Aceita Letras, só Números.");
+			System.exit(1);
+		}
+		setTipo(TipoCarro.pesquisarOpcao(opcaoEscolhida));
+		
+		tela.exibirMsg("\nEntre Com a Motorizacao do Tanque: ");
+		try {
+			setMotorizacao(entradaDeDado.getInputInt());
+		} catch (InputMismatchException string) {
+			tela.exibirMsg("Não se Aceita Letras, só Números.");
+			System.exit(1);
+		}
+		
+		tela.inserirQuebraDeLinha();
+		Cambio.exibirOpcoes();
+		tela.exibirMsg("\nEntre com o Cambio: ");
+		try {
+			opcaoEscolhida = entradaDeDado.getInputInt();
+		} catch (InputMismatchException string) {
+			tela.exibirMsg("Não se Aceita Letras, só Números.");
+			System.exit(1);
+		}
+		setCambio(Cambio.pesquisarOpcao(opcaoEscolhida));
+		
+		return this;
 	}
+	
+	public void exibirVeiculo() {
+		
+		tela.exibirMsgLine("Chassi: " + getChassi());
+		tela.exibirMsgLine("Montadora: " + getMontadora());
+		tela.exibirMsgLine("Modelo: " + getModelo());
+		tela.exibirMsgLine("Tipo: " + getTipo());
+		tela.exibirMsgLine("Cambio: " + getCambio());
+		tela.exibirMsgLine("Motorização: " + getMotorizacao());
+		tela.exibirMsgLine("Cor: " + getCor());
+		tela.exibirMsg("Preço: " + tela.exibirValorReais(getPreco()));
+		tela.exibirMsgLine("-----------X------------\n");
+	}
+	
 }

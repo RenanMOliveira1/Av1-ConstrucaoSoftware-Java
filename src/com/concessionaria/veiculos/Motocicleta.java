@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2015, GEC5 and/or its affiliates. All rights reserved.
+ * INSTITUTO INFNET. Use is subject to license terms.
+ * 
+ * 
+ * 
+ */
 package com.concessionaria.veiculos;
 
 import java.util.InputMismatchException;
@@ -5,9 +12,11 @@ import java.util.InputMismatchException;
 import com.concessionaria.administracao.auxiliares.SubOpcoesMenu.*;
 
 /**
- * @author Tiago
+ * @author Tiago Henrique
+ * @author Yasmin Farias
  * @author Renan Oliveira
- * @author Yasmin
+ * @see Veiculo
+ * @since JDK 1.8
  *
  */
 
@@ -35,71 +44,100 @@ public class Motocicleta extends Veiculo {
 	}
 	
 	/**
-	 * Método que faz a leitura de tipo de Motocicleta a partir do teclado
-	 */
-	public void leTipoMoto()  throws InputMismatchException {
-
-		System.out.println("Entre com o tipo de moto: ");
-		TipoMoto.exibirOpcoes();
-		int opcaoTipo = entradaDeDado.getInputInt();
-		String nomeTipoEscolhido = TipoMoto.pesquisarOpcao(opcaoTipo);
-		
-		if (nomeTipoEscolhido.equals(null))
-			throw new IllegalArgumentException("Tipo de Moto: Opção Inválida.");
-		
-		setTipo(nomeTipoEscolhido);	
-	}
-	
-	/**
-	 * Método que faz a leitura da cilindrada de Motocicleta a partir do teclado
-	 */
-	public void leCilindrada()  throws InputMismatchException {
-		
-		System.out.println("Entre com a cilindrada da moto: ");
-		Cilindrada.exibirOpcoes();
-		int opcaoCilindrada = entradaDeDado.getInputInt();
-		int cilindradaEscolhida = Cilindrada.pesquisarOpcao(opcaoCilindrada);
-		
-		if (cilindradaEscolhida <= 0)
-			throw new IllegalArgumentException("Cilindrada: Opção Inválida.");
-		
-		setCilindrada(cilindradaEscolhida);
-	}
-	
-	/**
-	 * Método que faz a leitura de capacidade de tanque de Motocicleta a partir do teclado
-	 */
-	public void leCapacidadeDeTanque()  throws InputMismatchException {
-		
-		System.out.println("Entre com a capacidade do tanque da moto: ");
-		int capacidade = entradaDeDado.getInputInt();
-		
-		if(capacidade < 0)
-			throw new IllegalArgumentException("Capacidade De Tanque: Numero Negativo não é Aceito.");
-		
-		setCapacidaDeTanque(capacidade);
-	}
-	
-	/**
-	 * @see leChassi()
-	 * @see leMontadora()
-	 * @see leModelo()
-	 * @see leCor()
-	 * @see lePreco()
+	 * Cadastra os Dados de uma nova Motocicleta e Retorna um
+	 * Veiculo Preenxido.
 	 * 
-	 * Métodos da classe abstrata Veiculo
+	 * @throws InputMismatchException se digitar alguma String
+	 * quando se pede Inteiro.
 	 */
-	public void leMoto(){
+	public Veiculo cadastrarVeiculo(){
+		int opcaoEscolhida = 0;
 		
 		System.out.println("********Entre com caracteristicas para a sua moto********");
-
-		leChassi();
-		leMontadora();
-		leModelo();
-		leTipoMoto();
-		leCor();
-		lePreco();
-		leCapacidadeDeTanque();
-		leCilindrada();
+		
+		tela.exibirMsg("\nEntre com o chassi: ");
+		setChassi(entradaDeDado.getInputString());
+		
+		tela.inserirQuebraDeLinha();
+		Montadora.exibirOpcoes();
+		tela.exibirMsg("\nEntre com a Montadora: ");
+		try {
+			opcaoEscolhida = entradaDeDado.getInputInt();
+		} catch (InputMismatchException string) {
+			tela.exibirMsg("Não se Aceita Letras, só Números..");
+			System.exit(1);
+		}
+		setMontadora(Montadora.pesquisarOpcao(opcaoEscolhida));
+		
+		tela.exibirMsg("Entre com o Modelo: ");
+		try {
+			setModelo(entradaDeDado.getInput());
+		} catch (InputMismatchException string) {
+			tela.exibirMsg("Não se Aceita Letras, só Números..");
+			System.exit(1);
+		}
+		
+		tela.inserirQuebraDeLinha();
+		TipoMoto.exibirOpcoes();
+		tela.exibirMsg("Entre com o tipo de moto: ");
+		try {
+		opcaoEscolhida = entradaDeDado.getInputInt();
+		} catch (InputMismatchException string) {
+			tela.exibirMsg("Não se Aceita Letras, só Números..");
+			System.exit(1);
+		}
+		setTipo(TipoMoto.pesquisarOpcao(opcaoEscolhida));
+		
+		tela.inserirQuebraDeLinha();
+		Cor.exibirOpcoes();
+		tela.exibirMsg("Entre com a cor: ");
+		try {
+			opcaoEscolhida = entradaDeDado.getInputInt();
+		} catch (InputMismatchException string) {
+			tela.exibirMsg("Não se Aceita Letras, só Números..");
+			System.exit(1);
+		}
+		setCor(Cor.pesquisarOpcao(opcaoEscolhida));
+		
+		tela.exibirMsg("Entre com o preço: ");
+		try {
+			setPreco(entradaDeDado.getInputDouble());
+		} catch (InputMismatchException string) {
+			tela.exibirMsg("Não se Aceita Letras, só Números..");
+			System.exit(1);
+		}
+		
+		tela.exibirMsg("Entre com a capacidade do tanque da moto: ");
+		try {
+			setCapacidaDeTanque(entradaDeDado.getInputInt());
+		} catch (InputMismatchException string) {
+			tela.exibirMsg("Não se Aceita Letras, só Números..");
+			System.exit(1);
+		}
+		
+		tela.inserirQuebraDeLinha();
+		Cilindrada.exibirOpcoes();
+		tela.exibirMsg("Entre com a cilindrada da moto: ");
+		try {
+			setCilindrada(Cilindrada.pesquisarOpcao(entradaDeDado.getInputInt()));
+		} catch (InputMismatchException string) {
+			tela.exibirMsg("Não se Aceita Letras, só Números..");
+			System.exit(1);
+		}
+		
+		return this;
+	}
+	
+		public void exibirVeiculo(){
+		
+		tela.exibirMsgLine("Chassi: " + getChassi());
+		tela.exibirMsgLine("Montadora: " + getMontadora());
+		tela.exibirMsgLine("Modelo: " + getModelo());
+		tela.exibirMsgLine("Tipo: " + getTipo());
+		tela.exibirMsgLine("Cilindrada: " + getCilindrada());
+		tela.exibirMsgLine("Capacida De Tanque: " + getCapacidaDeTanque());
+		tela.exibirMsgLine("Cor: " + getCor());
+		tela.exibirMsg("Preco: " + tela.exibirValorReais(getPreco()));
+		System.out.println("-----------X------------\n");
 	}
 }

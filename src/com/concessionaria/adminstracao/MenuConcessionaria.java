@@ -1,20 +1,26 @@
+/*
+ * Copyright (c) 2015, GEC5 and/or its affiliates. All rights reserved.
+ * INSTITUTO INFNET. Use is subject to license terms.
+ * 
+ * 
+ * 
+ */
 package com.concessionaria.adminstracao;
 
 import java.util.InputMismatchException;
 
 import com.concessionaria.administracao.auxiliares.EntradaDeDados;
 import com.concessionaria.administracao.auxiliares.Tela;
-import com.concessionaria.veiculos.Carro;
-import com.concessionaria.veiculos.Motocicleta;
+import com.concessionaria.veiculos.Veiculo;
 
 /**
- * 
- * @author Yasmin
- * @author Tiago
+ * @author Yasmin Farias
+ * @author Tiago Henrique
+ * @since JDK 1.8
  *
  */
        
-public class MenuLoja {
+public class MenuConcessionaria {
 	private static final int ADICIONAR_CARRO = 1;
 	private static final int ADICIONAR_MOTO = 2;
 	private static final int PESQUISAR_CARRO = 3;
@@ -31,12 +37,18 @@ public class MenuLoja {
 	private EntradaDeDados entradaDeDado;
 	private Loja concessionaria;
 	
-	public MenuLoja() {
+	public MenuConcessionaria() {
 		concessionaria = new Loja();
 		tela = new Tela();
 		entradaDeDado = new EntradaDeDados();
 	}
 	
+	/**
+	 * Inicia o Programa Concessionaria, com o Menu e suas Respectivas Opções.
+	 * 
+	 * @throws InputMismatchException se digitar alguma String
+	 * quando se pede Inteiro.
+	 */
 	public void iniciar() {
 		boolean sair = false;
 		int opcaoEscolhida = 0;
@@ -46,8 +58,7 @@ public class MenuLoja {
 			try {
 				opcaoEscolhida = exibirMenuPrincipal();
 			} catch (InputMismatchException stringException) {
-				System.err.println("Não se Aceita String: " + stringException.getMessage());
-				stringException.printStackTrace();
+				System.err.println("Não se Aceita Letras, só Números.");
 				System.exit(1);
 			}
 			
@@ -62,47 +73,46 @@ public class MenuLoja {
 					break;
 				case PESQUISAR_CARRO:
 					tela.exibirMsgLine("|        Pesquisar Carro Selecionado       |");
-					concessionaria.listarArrayCarro(concessionaria.pesquisaCarro());
+					//concessionaria.listarArrayCarro(concessionaria.pesquisaCarro());
 					break;
 				case PESQUISAR_MOTO:
 					tela.exibirMsgLine("|       Pesquisar Moto Seleciondado        |");
-					concessionaria.listarArrayMotocicleta(concessionaria.pesquisaMotocicleta());
+					//concessionaria.listarArrayMotocicleta(concessionaria.pesquisaMotocicleta());
 					break;
 				case BUSCAR_CARRO:
 					tela.exibirMsgLine("|         Buscar Carro Selecionado         |");
-					tela.exibirMsg("Entre com o chassi: ");
-					Carro carroSelecionado = concessionaria.buscarCarro(entradaDeDado.getInput());
+					tela.exibirMsg("Entre com o Chassi: ");
+					Veiculo carroSelecionado = concessionaria.buscarCarro(entradaDeDado.getInput());
 					
 					if (carroSelecionado != null)
-						concessionaria.listarCarro(carroSelecionado);
+						carroSelecionado.exibirVeiculo();
 					else
 						tela.exibirMsgLine("\nCarro não Encontrado.\n");
 					break;
 				case BUSCAR_MOTO:
 					tela.exibirMsgLine("|          Buscar Moto  Selecionado         |");
-					tela.exibirMsg("Entre com o chassi: ");
-					Motocicleta motocicletaSelecionada = concessionaria.buscarMoto(entradaDeDado.getInput());
+					tela.exibirMsg("Entre com o Chassi: ");
+					Veiculo motocicletaSelecionada = concessionaria.buscarMoto(entradaDeDado.getInput());
 					
 					if (motocicletaSelecionada != null)
-						concessionaria.listarMotocicleta(motocicletaSelecionada);
+						motocicletaSelecionada.exibirVeiculo();
 					else
 						tela.exibirMsgLine("\nMoto não Encontrada.\n");
 					break;
 				case REMOVER_CARRO:
 					tela.exibirMsgLine("|   Remover Carro do Estoque Selecionado    |");
-					tela.exibirMsg("Entre com o chassi: ");
-					String chassiCarroSelecionado = entradaDeDado.getInputString();
+					tela.exibirMsg("Entre com o Chassi: ");
 					
-					if (concessionaria.removerCarro(chassiCarroSelecionado))
+					if (concessionaria.removerCarro(entradaDeDado.getInputString()))
 						tela.exibirMsgLine("\nCarro Removido!\n");
 					else
 						tela.exibirMsgLine("\nHouve um Problema na Remocao do Veiculo.\n");
 					break;
 				case REMOVER_MOTO:
 					tela.exibirMsgLine("|    Remover Moto do Estoque Selecinado     |");
-					tela.exibirMsg("Entre com o chassi: ");
-					String chassiMotoSelecionado = entradaDeDado.getInputString();
-					if (concessionaria.removerMotocicleta(chassiMotoSelecionado))
+					tela.exibirMsg("Entre com o Chassi: ");
+					
+					if (concessionaria.removerMotocicleta(entradaDeDado.getInputString()))
 						tela.exibirMsgLine("\nMoto Removida!\n");
 					else
 						tela.exibirMsgLine("\nHouve um Problema na Remocao do Veiculo.\n");
@@ -120,29 +130,34 @@ public class MenuLoja {
 					sair = true;
 					break;
 				default:
-					tela.exibirMsgLine("Opcao Invalida!!");
+					tela.exibirMsgLine("Opcao Invalida!");
 				}
 		}
 	}
 	
+	/**
+	 * Exibi o Menu e Pede ao Usuário a Opção Desejada.
+	 * 
+	 * @return a Opção do Menu que o Usuário deseja
+	 */
 	private int exibirMenuPrincipal() {
 		
-		tela.exibirMsgLine("===========================================");
-		tela.exibirMsgLine("|        Bem-vindo a Concessionaria        |");
-		tela.exibirMsgLine("===========================================");
-		tela.exibirMsgLine("|    Opcoes:                               |");
-		tela.exibirMsgLine("|        1. Adicionar Carro                |");
-		tela.exibirMsgLine("|        2. Adicionar Moto                 |");
-		tela.exibirMsgLine("|        3. Pesquisar Carro                |");
-		tela.exibirMsgLine("|        4. Pesquisar Moto                 |");
-		tela.exibirMsgLine("|        5. Buscar Carro                   |");
-		tela.exibirMsgLine("|        6. Buscar Moto                    |");
-		tela.exibirMsgLine("|        7. Remover Carro                  |");
-		tela.exibirMsgLine("|        8. Remover Moto                   |");
-		tela.exibirMsgLine("|        9. Listar Estoque de Carros       |");
-		tela.exibirMsgLine("|        10. Listar Estoque de Motos       |");			
-		tela.exibirMsgLine("|        0. Sair                           |");
-		tela.exibirMsgLine("===========================================");
+		tela.exibirMsgLine("===========================================\n"
+		                 + "|        Bem-vindo a Concessionaria        |\n"
+                         + "===========================================\n"
+                         + "|    Opcoes:                               |\n"
+                         + "|        1. Adicionar Carro                |\n"
+                         + "|        2. Adicionar Moto                 |\n"
+                         + "|        3. Pesquisar Carro                |\n"
+                         + "|        4. Pesquisar Moto                 |\n"
+                         + "|        5. Buscar Carro                   |\n"
+                         + "|        6. Buscar Moto                    |\n"
+                         + "|        7. Remover Carro                  |\n"
+                         + "|        8. Remover Moto                   |\n"
+                         + "|        9. Listar Estoque de Carros       |\n"
+                         + "|        10. Listar Estoque de Motos       |\n"		
+                         + "|        0. Sair                           |\n"
+                         + "===========================================");
 		
 		tela.exibirMsg("Entre com a Opção Desejada: ");
 		return entradaDeDado.getInputInt();

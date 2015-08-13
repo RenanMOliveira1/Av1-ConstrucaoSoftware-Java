@@ -1,7 +1,19 @@
+/*
+ * Copyright (c) 2015, GEC5 and/or its affiliates. All rights reserved.
+ * INSTITUTO INFNET. Use is subject to license terms.
+ * 
+ * 
+ * 
+ */
 package com.concessionaria.administracao.auxiliares;
 
 import java.util.Scanner;
 
+/**
+ * @author Tiago Henrique
+ * @since JDK 1.8
+ *
+ */
 public class EntradaDeDados {
 	private Scanner input;
 	
