@@ -146,6 +146,21 @@ public class Carro extends Veiculo {
 		return this;
 	}
 	
+	@Override
+	public boolean equals(Object carro) {
+		
+		if (carro instanceof Carro) {
+			Carro obj = (Carro) carro;
+			return (this.getChassi().equals(obj.getChassi()));
+		}
+		return false;
+	}
+	
+	@Override
+	public int hashCode() {
+		return 0;
+	}
+	
 	public void exibirVeiculo() {
 		
 		tela.exibirMsgLine("Chassi: " + getChassi());

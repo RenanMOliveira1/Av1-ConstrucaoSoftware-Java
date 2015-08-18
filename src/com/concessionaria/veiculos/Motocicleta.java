@@ -144,7 +144,22 @@ public class Motocicleta extends Veiculo {
 		return this;
 	}
 	
-		public void exibirVeiculo(){
+	@Override
+	public boolean equals(Object motocicleta) {
+		
+		if (motocicleta instanceof Carro) {
+			Motocicleta obj = (Motocicleta) motocicleta;
+			return (this.getChassi().equals(obj.getChassi()));
+		}
+		return false;
+	}
+	
+	@Override
+	public int hashCode() {
+		return 0;
+	}
+	
+	public void exibirVeiculo(){
 		
 		tela.exibirMsgLine("Chassi: " + getChassi());
 		tela.exibirMsgLine("Montadora: " + getMontadora());
