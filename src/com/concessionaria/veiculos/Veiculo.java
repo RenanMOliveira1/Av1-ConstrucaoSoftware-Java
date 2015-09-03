@@ -3,7 +3,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.concessionaria.view.especificacoes.Especificacoes;
+import com.concessionaria.view.especificacoes.Especificavel;
 
 
 public class Veiculo {

@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import com.concessionaria.admin.Loja;
 import com.concessionaria.veiculos.TipoVeiculo;
-import com.concessionaria.view.especificacoes.Especificacoes;
+import com.concessionaria.view.especificacoes.Especificavel;
 
 public class ViewCadastro {
 	FabricaDeEspecificacao factory;
@@ -14,7 +14,7 @@ public class ViewCadastro {
 	}
 	
 	public void cadastrarVeiculo(TipoVeiculo tipoVeiculo, Loja loja) {
-		Especificacoes especificacoes;
+		Especificavel especificacoes;
 		Scanner input = new Scanner(System.in);
 		
 		System.out.print("Entre com o Chassi: ");

@@ -2,7 +2,7 @@ package com.concessionaria.view.especificacoes;
 import java.util.HashMap;
 import java.util.Map;
 
-public class EspecificacoesMotocicleta extends Especificacoes {
+public class EspecificacoesMotocicleta implements Especificavel {
 	
 	@Override
 	public Map<String, String> cadastrarEspecificacoes() {
