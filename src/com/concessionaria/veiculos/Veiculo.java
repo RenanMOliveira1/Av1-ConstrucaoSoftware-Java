@@ -12,6 +12,10 @@ public class Veiculo {
 	private double preco;
 	protected Map<String, String> especificacoes;
 	
+	public Veiculo() {
+		this.especificacoes = new HashMap<String, String>();
+	}
+	
 	public Veiculo (String chassi, double preco, Map<String, String> especificacoes) {
 		setChassi(chassi);
 		setPreco(preco);
