@@ -3,16 +3,14 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.concessionaria.veiculos.Especificacoes;
 import com.concessionaria.veiculos.Veiculo;
+import com.concessionaria.view.especificacoes.Especificacoes;
 
 public class Loja {
 	private ArrayList<Veiculo> estoqueVeiculos;
-	private FabricaDeVeiculo factory;
-	
+
 	public Loja() {
 		estoqueVeiculos = new ArrayList<Veiculo>();
-		factory = new FabricaDeVeiculo();
 	}
 	
 	public ArrayList<Veiculo> getEstoqueVeiculos() {
@@ -23,17 +21,14 @@ public class Loja {
 		this.estoqueVeiculos = estoqueVeiculos;
 	}
 
-	public boolean adicionarVeiculo(Especificacoes especificacoes) {
-		Veiculo veiculo = factory.criarVeiculo(especificacoes);
-		veiculo.cadastrarVeiculo();
-		
-		return estoqueVeiculos.add(veiculo);
+	public boolean adicionarVeiculo(String chassi, double preco, Map<String, String> especificacoes) {
+		return estoqueVeiculos.add(new Veiculo(chassi, preco, especificacoes));
 	}
 	
 	public Veiculo buscarVeiculo(String chassi) {
 		
 		for (Veiculo veiculo : estoqueVeiculos) {
-			if (veiculo.getChassi() == chassi) {
+			if (veiculo.getChassi().equals(chassi)) {
 				return veiculo;
 			}
 		}

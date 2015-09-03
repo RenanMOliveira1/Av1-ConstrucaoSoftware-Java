@@ -1,15 +1,14 @@
-package com.concessionaria.veiculos;
+package com.concessionaria.view.especificacoes;
 import java.util.HashMap;
+import java.util.Map;
 
 public class EspecificacoesCarro extends Especificacoes {
 	
-	public EspecificacoesCarro() {
-		this.especificacoes = new HashMap<String, String>();
-	}
-	
 	@Override
-	public void cadastrarEspecificacoes() {
-
+	public Map<String, String> cadastrarEspecificacoes() {
+		
+		Map<String, String> especificacoes = new HashMap<String, String>();
+		
 		especificacoes.put("Montadora", "Toyota");
 		especificacoes.put("Modelo", "Toyota Novo");
 		especificacoes.put("Tipo", "Hatch");
@@ -17,5 +16,7 @@ public class EspecificacoesCarro extends Especificacoes {
 		especificacoes.put("Motorizacao", "1.0");
 		especificacoes.put("Câmbio", "Automatico");
 		especificacoes.put("Capacidade do Tanque", "30");
+		
+		return especificacoes;
 	}
 }

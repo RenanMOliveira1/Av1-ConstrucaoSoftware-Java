@@ -1,16 +1,20 @@
 package com.concessionaria.veiculos;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.concessionaria.view.especificacoes.Especificacoes;
+
 
 public class Veiculo {
-	public enum TipoVeiculo{CARRO, MOTO}
-	
+
 	private String chassi;
 	private double preco;
-	private Especificacoes especificacoes;
+	protected Map<String, String> especificacoes;
 	
-	public Veiculo(Especificacoes especificacoes) {
+	public Veiculo (String chassi, double preco, Map<String, String> especificacoes) {
+		setChassi(chassi);
+		setPreco(preco);
 		setEspecificacoes(especificacoes);
 	}
 	
@@ -31,20 +35,11 @@ public class Veiculo {
 	}
 	
 	public Map<String, String> getEspecificacoes() {
-		return this.especificacoes.getEspecificacoes();
+		return especificacoes;
 	}
 
-	public void setEspecificacoes(Especificacoes especificacoes) {
+	public void setEspecificacoes(Map<String, String> especificacoes) {
 		this.especificacoes = especificacoes;
-	}
-
-	public Veiculo cadastrarVeiculo() {
-		
-		setChassi("111");
-		setPreco(100.00);
-		especificacoes.cadastrarEspecificacoes();
-		
-		return this;
 	}
 	
 	@Override
@@ -68,12 +63,12 @@ public class Veiculo {
 	
 	@Override
 	public String toString() {
-		String especificacoes = "\n";
+		String especificacoes = "";
 		
 		for (Entry<String, String> cadaEspecificacao: getEspecificacoes().entrySet()) {
 			especificacoes += cadaEspecificacao.getKey() + ": " + cadaEspecificacao.getValue() + "\n";
 		}
 		
-		return String.format("Chassi: %s%nPreco: R$ %.2f%s", getChassi(), getPreco(), especificacoes);
+		return String.format("Chassi: %s%nPreco: R$ %.2f\n%s", getChassi(), getPreco(), especificacoes);
 	}
 }

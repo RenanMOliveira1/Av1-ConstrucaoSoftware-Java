@@ -1,34 +1,33 @@
+package com.concessionaria.view;
 import java.util.Scanner;
 
 import com.concessionaria.admin.Loja;
-import com.concessionaria.veiculos.Especificacoes;
-import com.concessionaria.veiculos.EspecificacoesCarro;
-import com.concessionaria.veiculos.EspecificacoesMotocicleta;
+import com.concessionaria.veiculos.TipoVeiculo;
 import com.concessionaria.veiculos.Veiculo;
 
 public class Execucao {
 	public static void main(String[] args) {
 		Loja loja = new Loja();
-		Especificacoes especificacoes;
+		ViewCadastro viewCadastro = new ViewCadastro();
 		
 		Scanner input = new Scanner(System.in);
 		int n;
 		while ((n = input.nextInt()) != 0) {
 			switch (n) {
 				case 1:
-					especificacoes = new EspecificacoesCarro();
-					loja.adicionarVeiculo(especificacoes);
+					viewCadastro.cadastrarVeiculo(TipoVeiculo.Carro, loja);
 					loja.listarEstoque();
 				break;
 				case 2:
-					especificacoes = new EspecificacoesMotocicleta();
-					loja.adicionarVeiculo(especificacoes);
+					viewCadastro.cadastrarVeiculo(TipoVeiculo.Motocicleta, loja);
 					loja.listarEstoque();
 				break;
 				case 3:
-					Veiculo veiculo = loja.buscarVeiculo("112");
+					System.out.println("Entre com o Chassi: ");
+					String chassi = input.next();
+					Veiculo veiculo = loja.buscarVeiculo(chassi);
 					System.out.println(veiculo.toString());
-				break;	
+				break;
 				default:
 					System.out.println("Inválido.");
 			}

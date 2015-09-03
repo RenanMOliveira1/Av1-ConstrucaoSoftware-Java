@@ -1,14 +1,13 @@
-package com.concessionaria.veiculos;
+package com.concessionaria.view.especificacoes;
 import java.util.HashMap;
+import java.util.Map;
 
 public class EspecificacoesMotocicleta extends Especificacoes {
 	
-	public EspecificacoesMotocicleta() {
-		this.especificacoes = new HashMap<String, String>();
-	}
-	
 	@Override
-	public void cadastrarEspecificacoes() {
+	public Map<String, String> cadastrarEspecificacoes() {
+		
+		Map<String, String> especificacoes = new HashMap<String, String>();
 		
 		especificacoes.put("Montadora", "Honda");
 		especificacoes.put("Modelo", "Honda Novo");
@@ -17,5 +16,7 @@ public class EspecificacoesMotocicleta extends Especificacoes {
 		especificacoes.put("Motorizacao", "3.0");
 		especificacoes.put("Cilindrada", "Automatico");
 		especificacoes.put("Capacidade do Tanque", "30");
+		
+		return especificacoes;
 	}
 }
