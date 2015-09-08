@@ -1,28 +1,30 @@
 package com.concessionaria.admin;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Map.Entry;
 
 import com.concessionaria.veiculos.Veiculo;
-import com.concessionaria.view.especificacoes.Especificavel;
 
 public class Loja {
-	private ArrayList<Veiculo> estoqueVeiculos;
+	private HashSet<Veiculo> estoqueVeiculos;
 
 	public Loja() {
-		estoqueVeiculos = new ArrayList<Veiculo>();
+		estoqueVeiculos = new HashSet<Veiculo>();
 	}
 	
-	public ArrayList<Veiculo> getEstoqueVeiculos() {
+	public HashSet<Veiculo> getEstoqueVeiculos() {
 		return estoqueVeiculos;
 	}
 
-	public void setEstoqueVeiculos(ArrayList<Veiculo> estoqueVeiculos) {
+	public void setEstoqueVeiculos(HashSet<Veiculo> estoqueVeiculos) {
 		this.estoqueVeiculos = estoqueVeiculos;
 	}
 
-	public boolean adicionarVeiculo(String chassi, double preco, Map<String, String> especificacoes) {
-		return estoqueVeiculos.add(new Veiculo(chassi, preco, especificacoes));
+	public boolean adicionarVeiculo(Veiculo veiculo) throws VeiculoJaCadastradoException {
+		if (estoqueVeiculos.add(veiculo))
+			return true;
+		else 
+			throw new VeiculoJaCadastradoException("Veículo já Cadastrado.");
 	}
 	
 	public Veiculo buscarVeiculo(String chassi) {
@@ -36,8 +38,8 @@ public class Loja {
 		return null;
 	}
 	
-	public ArrayList<Veiculo> pesquisarVeiculo(Map<String, String> novasEspecificacoes) {
-		ArrayList<Veiculo> resultadoVeiculos = new ArrayList<Veiculo>();
+	public HashSet<Veiculo> pesquisarVeiculo(Map<String, String> novasEspecificacoes) {
+		HashSet<Veiculo> resultadoVeiculos = new HashSet<Veiculo>();
 		
 		for (Veiculo veiculo : estoqueVeiculos) {
 			if (existeVeiculo(veiculo, novasEspecificacoes)) {

@@ -3,11 +3,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.concessionaria.view.especificacoes.Especificavel;
+import com.concessionaria.view.especificacoes.Especificacoes;
 
 
 public class Veiculo {
-
+	private TipoVeiculo tipoVeiculo;
 	private String chassi;
 	private double preco;
 	protected Map<String, String> especificacoes;
@@ -16,12 +16,21 @@ public class Veiculo {
 		this.especificacoes = new HashMap<String, String>();
 	}
 	
-	public Veiculo (String chassi, double preco, Map<String, String> especificacoes) {
+	public Veiculo (String chassi, double preco, Map<String, String> especificacoes, TipoVeiculo tipoVeiculo) {
 		setChassi(chassi);
 		setPreco(preco);
 		setEspecificacoes(especificacoes);
+		setTipoVeiculo(tipoVeiculo);
 	}
 	
+	public TipoVeiculo getTipoVeiculo() {
+		return tipoVeiculo;
+	}
+
+	public void setTipoVeiculo(TipoVeiculo tipoVeiculo) {
+		this.tipoVeiculo = tipoVeiculo;
+	}
+
 	public String getChassi() {
 		return chassi;
 	}
