@@ -31,6 +31,7 @@ public class ViewCadastro {
 			loja.adicionarVeiculo(new Veiculo(chassi, preco, especificacoes.cadastrarEspecificacoes(), tipoVeiculo));
 		} catch (VeiculoJaCadastradoException e) {
 			e.printStackTrace();
+			System.exit(1);
 		}
 	}
 }
