@@ -3,7 +3,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.concessionaria.veiculos.Veiculo;
+import com.concessionaria.excessoes.VeiculoJaCadastradoException;
 
 public class Loja {
 	private HashSet<Veiculo> estoqueVeiculos;
@@ -20,11 +20,17 @@ public class Loja {
 		this.estoqueVeiculos = estoqueVeiculos;
 	}
 
-	public boolean adicionarVeiculo(Veiculo veiculo) throws VeiculoJaCadastradoException {
-		if (estoqueVeiculos.add(veiculo))
-			return true;
-		else 
-			throw new VeiculoJaCadastradoException("Veículo já Cadastrado.");
+	public boolean adicionarVeiculo(Veiculo veiculo) {
+		
+		try {
+			if (!estoqueVeiculos.add(veiculo))
+				throw new VeiculoJaCadastradoException("Veículo já Cadastrado.");
+		} catch (VeiculoJaCadastradoException e) {
+			e.printStackTrace();
+			System.exit(1);
+		}
+		
+		return true;
 	}
 	
 	public Veiculo buscarVeiculo(String chassi) {

@@ -1,6 +1,6 @@
 package com.concessionaria.view;
 
-import com.concessionaria.veiculos.TipoVeiculo;
+import com.concessionaria.enumerados.TipoVeiculo;
 import com.concessionaria.view.especificacoes.Especificacoes;
 import com.concessionaria.view.especificacoes.EspecificacoesCarro;
 import com.concessionaria.view.especificacoes.EspecificacoesMotocicleta;

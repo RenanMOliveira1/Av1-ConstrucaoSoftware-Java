@@ -1,21 +1,34 @@
 package com.concessionaria.view.especificacoes;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class EspecificacoesCarro extends Especificacoes {
 	
 	@Override
 	public Map<String, String> cadastrarEspecificacoes() {
-		
+		Scanner input = new Scanner(System.in);
 		Map<String, String> especificacoes = new HashMap<String, String>();
 		
-		especificacoes.put("Montadora", "Toyota");
-		especificacoes.put("Modelo", "Toyota Novo");
-		especificacoes.put("Tipo", "Hatch");
-		especificacoes.put("Cor", "Azul");
-		especificacoes.put("Motorizacao", "1.0");
-		especificacoes.put("Câmbio", "Automatico");
-		especificacoes.put("Capacidade do Tanque", "30");
+		System.out.println("Entre com a Montadora: ");
+		especificacoes.put("Montadora", input.next());
+		
+		System.out.println("Entre com o Modelo: ");
+		especificacoes.put("Modelo", input.next());
+		
+		System.out.println("Entre com o Tipo do Carro: ");
+		especificacoes.put("Tipo", input.next());
+		
+		System.out.println("Entre com a Motorizacao: ");
+		Double motorizacao = input.nextDouble();
+		especificacoes.put("Motorizacao", Double.toString(motorizacao));
+		
+		System.out.println("Entre com o Câmbio: ");
+		especificacoes.put("Câmbio", input.next());
+				
+		System.out.println("Entre com a Capacidade do Tanque: ");
+		Integer capTanque = input.nextInt();
+		especificacoes.put("Capacidade do Tanque", Integer.toString(capTanque));
 		
 		return especificacoes;
 	}
