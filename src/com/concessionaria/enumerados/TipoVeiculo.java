@@ -1,7 +1,7 @@
 package com.concessionaria.enumerados;
 
 public enum TipoVeiculo {
-	Carro(1, "Carro"), Motocicleta(2, "Motocicleta");
+	CARRO(1, "Carro"), MOTOCICLETA(2, "Motocicleta");
 	
 	private String nomeVeiculo;
 	private int numOpcao;

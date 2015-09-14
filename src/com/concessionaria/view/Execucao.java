@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 import com.concessionaria.admin.Loja;
 import com.concessionaria.admin.Veiculo;
+import com.concessionaria.enumerados.TipoVeiculo;
 
 public class Execucao {
 	public static final int ADICIONAR_VEICULO = 1;
@@ -17,7 +18,6 @@ public class Execucao {
 		Loja loja = new Loja();
 		Veiculo veiculoTemporario;
 		String chassiTemporario;
-		ViewCadastro viewCadastro = new ViewCadastro();
 		
 		Scanner input = new Scanner(System.in);
 		int n;
@@ -40,12 +40,14 @@ public class Execucao {
 			switch (n) {
 				case ADICIONAR_VEICULO:
 					System.out.println("|        Adicionar Veiculo Selecionado       |");
+					ViewCadastro viewCadastro = new ViewCadastro();
 					Veiculo veiculo = viewCadastro.cadastrarVeiculo(loja);
 					loja.adicionarVeiculo(veiculo);
 				break;
 				case PESQUISAR_VEICULO:
 					System.out.println("|        Pesquisar Veiculo Selecionado       |");
-					
+					ViewPesquisar viewPesquisar = new ViewPesquisar();
+					viewPesquisar.pesquisarVeiculos(loja);
 				break;
 				case BUSCAR_VEICULO:
 					System.out.println("|         Buscar Veiculo Selecionado         |");

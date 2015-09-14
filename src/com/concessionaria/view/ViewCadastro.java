@@ -6,11 +6,9 @@ import com.concessionaria.admin.Loja;
 import com.concessionaria.admin.Veiculo;
 import com.concessionaria.enumerados.Cor;
 import com.concessionaria.enumerados.TipoVeiculo;
-import com.concessionaria.excessoes.OpcaoInvalidaException;
 import com.concessionaria.view.especificacoes.Especificacoes;
 
-public class ViewCadastro {
-	private Scanner input;
+public class ViewCadastro extends View {
 	private FabricaDeEspecificacao factory;
 	
 	public ViewCadastro() {
@@ -32,23 +30,5 @@ public class ViewCadastro {
 		Especificacoes especificacoes = factory.criarEspecificacoes(TipoVeiculo.getOpcao(tVeiculo));
 		
 		return new Veiculo(chassi, preco, Cor.getOpcao(cor), especificacoes.cadastrarEspecificacoes(), TipoVeiculo.getOpcao(tVeiculo));
-	}
-	
-	public int validarEntradaDados(String msg, String msgErro, int tamanhoInicial, int tamanhoFinal) {
-		int opcao = 0;
-		
-		do {
-			System.out.println(msg);
-			try {
-				opcao = input.nextInt();
-			if (opcao < tamanhoInicial || opcao > tamanhoFinal) {
-				throw new OpcaoInvalidaException();
-			}	
-			} catch (OpcaoInvalidaException e) {
-				System.err.println(msgErro);
-			}
-		} while (opcao < tamanhoInicial || opcao > tamanhoFinal);
-		
-		return opcao;
 	}
 }

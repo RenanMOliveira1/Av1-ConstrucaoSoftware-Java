@@ -11,9 +11,9 @@ public class FabricaDeEspecificacao {
 	public Especificacoes criarEspecificacoes(TipoVeiculo tipoVeiculo) {
 		
 		switch (tipoVeiculo) {
-			case Carro:
+			case CARRO:
 				return new EspecificacoesCarro();
-			case Motocicleta:
+			case MOTOCICLETA:
 				return new EspecificacoesMotocicleta();
 			default:
 				return null;
