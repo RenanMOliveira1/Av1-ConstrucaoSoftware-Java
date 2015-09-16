@@ -71,7 +71,7 @@ public class Loja {
 		int contCampos = 0;
 		
 		for(Entry<String, String> especificacoes: novasEspecificacoes.entrySet()) {
-			if (veiculo.getEspecificacoes().containsValue(especificacoes.getValue()))
+			if (novasEspecificacoes.containsKey(especificacoes.getKey()) && veiculo.getEspecificacoes().containsValue(especificacoes.getValue()))
 				contCampos++;
 		}
 		return contCampos != 0;
