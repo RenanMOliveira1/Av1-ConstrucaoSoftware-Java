@@ -4,6 +4,8 @@ import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+import com.concessionaria.admin.Loja;
+import com.concessionaria.excessoes.EstoqueVazioException;
 import com.concessionaria.excessoes.OpcaoInvalidaException;
 
 public abstract class View {
@@ -86,5 +88,17 @@ public abstract class View {
 		} 
 		
 		return opcao;
+	}
+	
+	public boolean estoqueVazio(Loja loja) {
+		
+		try {
+			if (loja.getEstoqueVeiculos().size() == 0)
+				throw new EstoqueVazioException("Estoque de Veículos está Vazio.");
+		} catch (EstoqueVazioException e) {
+			System.out.println("\nNenhum Veículo Cadastrado.\n");
+			return true;
+		}
+		return false;
 	}
 }

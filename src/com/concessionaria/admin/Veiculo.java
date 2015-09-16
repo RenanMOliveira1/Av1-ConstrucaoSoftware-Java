@@ -3,7 +3,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.concessionaria.enumerados.Cor;
 import com.concessionaria.enumerados.TipoVeiculo;
 
 

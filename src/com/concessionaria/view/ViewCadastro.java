@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 import com.concessionaria.admin.Loja;
 import com.concessionaria.admin.Veiculo;
-import com.concessionaria.enumerados.Cor;
 import com.concessionaria.enumerados.TipoVeiculo;
 import com.concessionaria.excessoes.ChassiDuplicadoException;
 import com.concessionaria.view.especificacoes.EspecificacoesView;

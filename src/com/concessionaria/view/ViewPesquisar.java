@@ -17,21 +17,21 @@ public class ViewPesquisar extends View {
 	}
 	
 	public Map<String, String> pesquisarVeiculos(Loja loja) {
-		int i = 1;
+		int cont = 1;
 		
 		System.out.println("\n");
-		
 		for (TipoVeiculo tv : TipoVeiculo.values()) {
-			System.out.println(i++ + " - " + tv.getNomeTipoVeiculo());
+			System.out.println(cont++ + " - " + tv.getNomeTipoVeiculo());
 		}
+		
 		System.out.println("Entre com o Tipo de Veículo: ");
 		TipoVeiculo tipoVeiculo = TipoVeiculo.getOpcao(input.nextInt());
 		
 		switch (tipoVeiculo) {
 			case CARRO:
-				return lerEspecificacoes(tipoVeiculoEscolhido(loja, TipoVeiculo.CARRO));
+				return lerEspecificacoes(tipoVeiculoEscolhido(loja, TipoVeiculo.CARRO), loja);
 			case MOTOCICLETA:
-				return lerEspecificacoes(tipoVeiculoEscolhido(loja, TipoVeiculo.MOTOCICLETA));
+				return lerEspecificacoes(tipoVeiculoEscolhido(loja, TipoVeiculo.MOTOCICLETA), loja);
 			default:
 				return null;
 		}
@@ -49,31 +49,33 @@ public class ViewPesquisar extends View {
 		return temp;
 	}
 	
-	private Map<String, String> lerEspecificacoes(HashSet<Veiculo> veiculosCarro) {
+	private Map<String, String> lerEspecificacoes(HashSet<Veiculo> listaVeiculos, Loja loja) {
 		Veiculo veiculoModelo = null;
 		Map<String, String> novasEspecificacoes = new HashMap<String, String>();
 		
-		for (Veiculo veiculo : veiculosCarro) {
-			veiculoModelo = veiculo;
-		}
-		
-		for(Entry<String, String> especificacoes: veiculoModelo.getEspecificacoes().entrySet()) {
-			System.out.print(" | " + especificacoes.getKey());
-		}
-		System.out.println(" | ");
-		System.out.println("Entre com os Dados:");
-		System.out.println("Se não for preenxer, -1 para passar para o próximo Campo.\n");
-		
-		String dados = "";
-		for(Entry<String, String> especificacoes: veiculoModelo.getEspecificacoes().entrySet()) {
-			System.out.print(especificacoes.getKey() + ": ");
-			input.nextLine();
-			dados = input.next();
-			if (!dados.equals("-1")) {
-				novasEspecificacoes.put(especificacoes.getKey(), dados);
+		if (!estoqueVazio(loja)) {
+			for (Veiculo veiculo : listaVeiculos) {
+				veiculoModelo = veiculo;
+			}
+			
+			for(Entry<String, String> especificacoes: veiculoModelo.getEspecificacoes().entrySet()) {
+				System.out.print(" | " + especificacoes.getKey());
+			}
+			System.out.println(" | ");
+			System.out.println("Entre com os Dados:");
+			System.out.println("Se não for preenxer, -1 para passar para o próximo Campo.\n");
+			
+			String dados = "";
+			for(Entry<String, String> especificacoes: veiculoModelo.getEspecificacoes().entrySet()) {
+				System.out.print(especificacoes.getKey() + ": ");
+				input.nextLine();
+				dados = input.next();
+				if (!dados.equals("-1")) {
+					novasEspecificacoes.put(especificacoes.getKey(), dados);
+				}
 			}
 		}
-		
+				
 		return novasEspecificacoes;
 	}
 }

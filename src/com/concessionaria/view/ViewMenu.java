@@ -7,7 +7,7 @@ import java.util.Scanner;
 import com.concessionaria.admin.Loja;
 import com.concessionaria.admin.Veiculo;
 
-public class ViewMenu {
+public class ViewMenu extends View {
 	public static final int ADICIONAR_VEICULO = 1;
 	public static final int PESQUISAR_VEICULO = 2;
 	public static final int BUSCAR_VEICULO = 3;
@@ -15,7 +15,6 @@ public class ViewMenu {
 	public static final int LISTAR_ESTOQUE_VEICULO = 5;
 	public static final int SAIR = 0;
 	
-	private Scanner input;
 	private Loja loja;
 	
 	public ViewMenu() {
@@ -27,12 +26,12 @@ public class ViewMenu {
 		Veiculo veiculoTemporario = null;
 		String chassiTemporario = null;
 	
-		int n;
+		int opcaoMenuPrincipal;
 		boolean sair = false;
 		while (!sair) {
-			n = exibirOpcoesPrincipais();
+			opcaoMenuPrincipal = exibirOpcoesPrincipais();
 			
-			switch (n) {
+			switch (opcaoMenuPrincipal) {
 				case ADICIONAR_VEICULO:
 					opcaoAdicionarVeiculo();
 				break;
@@ -67,12 +66,11 @@ public class ViewMenu {
 	private void opcaoPesquisarVeiculo() {
 		System.out.println("|        Pesquisar Veiculo Selecionado       |");
 		
-		if (loja.getEstoqueVeiculos().size() == 0)
-			System.out.println("Nenhum Veículo Cadastrado.");
-		else {
+		if (!this.estoqueVazio(loja)) {
 			ViewPesquisar viewPesquisar = new ViewPesquisar();
 			Map<String, String> novasEspecificacoes = viewPesquisar.pesquisarVeiculos(loja);
 			HashSet<Veiculo> veiculosEncontrados = loja.pesquisarVeiculo(novasEspecificacoes);
+			
 			if (veiculosEncontrados.size() == 0)
 				System.out.println("Nenhum Veículo Encontrado.");
 			else {
@@ -87,11 +85,8 @@ public class ViewMenu {
 	private void opcaoBuscarVeiculo(Veiculo veiculoEncontrado, String chassi) {
 		System.out.println("|         Buscar Veiculo Selecionado         |");
 		
-		if (loja.getEstoqueVeiculos().size() == 0)
-			System.out.println("Nenhum Veículo Cadastrado.");
-		else {
-			System.out.println("Entre com o Chassi: ");
-			chassi = input.next();
+		if (!estoqueVazio(loja)) {
+			chassi = validarCampoString("Entre com o Chassi: ", "Chassi: Dados Inválidos.");
 			veiculoEncontrado = loja.buscarVeiculo(chassi);
 			
 			if (veiculoEncontrado != null)
@@ -104,11 +99,8 @@ public class ViewMenu {
 	private void opcaoRemoverVeiculo(String chassi) {
 		System.out.println("|   Remover Veiculo do Estoque Selecionado    |");
 		
-		if (loja.getEstoqueVeiculos().size() == 0)
-			System.out.println("Nenhum Veículo Cadastrado.");
-		else {
-			System.out.println("Entre com o Chassi: ");
-			chassi = input.next();
+		if (!estoqueVazio(loja)) {
+			chassi = validarCampoString("Entre com o Chassi: ", "Chassi: Dados Inválidos.");
 			if (loja.removerVeiculo(chassi))
 				System.out.println("Veículo Removido Com Sucesso.");
 			else
@@ -119,9 +111,7 @@ public class ViewMenu {
 	private void opcaoListarEstoqueVeiculo() {
 		System.out.println("|   Listar Estoque de Veiculos Selecionado    |");
 		
-		if (loja.getEstoqueVeiculos().size() == 0)
-			System.out.println("Nenhum Veículo Cadastrado.");
-		else
+		if (!this.estoqueVazio(loja))
 			loja.listarEstoque();
 	}
 	
@@ -138,7 +128,6 @@ public class ViewMenu {
 		System.out.println("|        0. Sair                           |");
 		System.out.println("===========================================");
 		
-		System.out.print("Entre com a Opção: ");
-		return input.nextInt();
+		return validarCampoInteiro("Entre com a Opção: ", "Só se Aceita Inteiros");
 	}
 }
