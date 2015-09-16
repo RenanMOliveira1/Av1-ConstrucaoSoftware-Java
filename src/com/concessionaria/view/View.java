@@ -34,6 +34,7 @@ public abstract class View {
 		do {
 			System.out.println(msgParaUsuario);
 			try {
+				input.nextLine();
 				opcao = input.next();
 			} catch (NoSuchElementException e) {
 				System.err.println(msgErro);
@@ -51,7 +52,6 @@ public abstract class View {
 		while (!dadoInvalido) {
 			try {
 				System.out.println(msgParaUsuario);
-				input.nextLine();
 				opcao = input.nextInt();
 				dadoInvalido = true;
 			} catch (InputMismatchException e) {
