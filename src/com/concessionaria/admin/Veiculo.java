@@ -93,6 +93,6 @@ public class Veiculo {
 			especificacoes += cadaEspecificacao.getKey() + ": " + cadaEspecificacao.getValue() + "\n";
 		}
 		
-		return String.format("Chassi: %s%nPreco: R$ %.2f\n%s", getChassi(), getPreco(), especificacoes);
+		return String.format("Tipo de Veículo: %s\n\nChassi: %s%nPreco: R$ %.2f\nCor: %s\n%s", getTipoVeiculo().getNomeTipoVeiculo(), getChassi(), getPreco(), getCor(), especificacoes);
 	}
 }

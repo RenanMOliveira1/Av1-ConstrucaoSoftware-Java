@@ -11,7 +11,7 @@ public enum TipoVeiculo {
 		this.numOpcao = numOpcao;
 	}
 	
-	public String getNomeVeiculo() {
+	public String getNomeTipoVeiculo() {
 		return nomeVeiculo;
 	}
 	
@@ -27,5 +27,14 @@ public enum TipoVeiculo {
 		}
 		
 		return null;
+	}
+	
+	public static void exibirOpcoes() {
+		
+		System.out.println();
+		for (TipoVeiculo tipoVeiculo : TipoVeiculo.values()) {
+			System.out.println("*Digite " + tipoVeiculo.getNumOpcao() + " para escolher " + tipoVeiculo.getNomeTipoVeiculo());
+		}
+		System.out.println();
 	}
 }

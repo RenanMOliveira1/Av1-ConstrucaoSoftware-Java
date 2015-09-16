@@ -41,7 +41,7 @@ public enum TipoMotocicleta {
 	/**
 	 * @return Retorna o nome do tipo
 	 */
-	public String getNomeTipo() {
+	public String getNomeTipoMotocicleta() {
 		return nomeTipo;
 	}
 	
@@ -53,5 +53,14 @@ public enum TipoMotocicleta {
 		}
 		
 		return null;
+	}
+	
+	public static void exibirOpcoes() {
+		
+		System.out.println();
+		for (TipoMotocicleta tipoMotocicleta : TipoMotocicleta.values()) {
+			System.out.println("*Digite " + tipoMotocicleta.getNumOpcao() + " para escolher " + tipoMotocicleta.getNomeTipoMotocicleta());
+		}
+		System.out.println();
 	}
 }

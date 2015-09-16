@@ -57,4 +57,13 @@ public enum Montadora {
 		
 		return null;
 	}
+	
+	public static void exibirOpcoes() {
+		
+		System.out.println();
+		for (Montadora montadora : Montadora.values()) {
+			System.out.println("*Digite " + montadora.getNumOpcao() + " para escolher " + montadora.getNomeMontadora());
+		}
+		System.out.println();
+	}
 }

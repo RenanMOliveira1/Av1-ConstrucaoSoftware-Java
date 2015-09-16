@@ -6,7 +6,7 @@ import com.concessionaria.admin.Loja;
 import com.concessionaria.admin.Veiculo;
 import com.concessionaria.enumerados.Cor;
 import com.concessionaria.enumerados.TipoVeiculo;
-import com.concessionaria.view.especificacoes.Especificacoes;
+import com.concessionaria.view.especificacoes.EspecificacoesView;
 
 public class ViewCadastro extends View {
 	private FabricaDeEspecificacao factory;
@@ -17,18 +17,18 @@ public class ViewCadastro extends View {
 	}
 	
 	public Veiculo cadastrarVeiculo(Loja loja) {
-
-		int tVeiculo = validarEntradaDados("Entre com o Tipo de Veiculo: ", "Opção de Cor Inválida", 1, 2);
 		
-		System.out.print("Entre com o Chassi: ");
-		String chassi = input.next();
+		TipoVeiculo.exibirOpcoes();
+		int tipoVeiculo = validarOpcao("Entre com o Tipo de Veiculo: ", "Tipo de Veículo Inválido.", 1, 2);
 		
-		System.out.println("Entre com o Preço: ");
-		double preco = input.nextDouble();
+		String chassi = validarCampoString("Entre com o Chassi: ", "Chassi: Dados Inválidos.");
+		double preco = validarCampoDouble("Entre com o Preço: ", "Preço: Dados Inválidos.");
 		
-		int cor = validarEntradaDados("Entre com a Cor: ", "Opção de Cor Inválida", 1, 9);
-		Especificacoes especificacoes = factory.criarEspecificacoes(TipoVeiculo.getOpcao(tVeiculo));
+		Cor.exibirOpcoes();
+		int cor = validarOpcao("Entre com a Cor: ", "Opção de Cor Inválida", 1, 9);
 		
-		return new Veiculo(chassi, preco, Cor.getOpcao(cor), especificacoes.cadastrarEspecificacoes(), TipoVeiculo.getOpcao(tVeiculo));
+		EspecificacoesView especificacoes = factory.criarEspecificacoes(TipoVeiculo.getOpcao(tipoVeiculo));
+		
+		return new Veiculo(chassi, preco, Cor.getOpcao(cor), especificacoes.cadastrarEspecificacoes(), TipoVeiculo.getOpcao(tipoVeiculo));
 	}
 }

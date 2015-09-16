@@ -5,7 +5,7 @@ import java.util.Map;
  * @author Tiago
  *
  */
-public abstract class Especificacoes {
+public interface EspecificacoesView {
 	
 	public abstract Map<String, String> cadastrarEspecificacoes();
 }

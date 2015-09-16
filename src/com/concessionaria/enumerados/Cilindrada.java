@@ -48,4 +48,13 @@ public enum Cilindrada {
 		
 		return null;
 	}
+	
+	public static void exibirOpcoes() {
+		
+		System.out.println();
+		for (Cilindrada cilindrada : Cilindrada.values()) {
+			System.out.println("*Digite " + cilindrada.getNumOpcao() + " para escolher " + cilindrada.getNumCilindradas());
+		}
+		System.out.println();
+	}
 }

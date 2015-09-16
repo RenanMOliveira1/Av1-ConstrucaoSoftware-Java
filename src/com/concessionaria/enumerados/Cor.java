@@ -32,7 +32,7 @@ public enum Cor {
 		return numOpcao;
 	} 
 	
-	public String nomeCor() {
+	public String getNomeCor() {
 		return nomeCor;
 	}
 	
@@ -44,6 +44,15 @@ public enum Cor {
 		}
 		
 		return null;
+	}
+	
+	public static void exibirOpcoes() {
+		
+		System.out.println();
+		for (Cor cor : Cor.values()) {
+			System.out.println("*Digite " + cor.getNumOpcao() + " para escolher " + cor.getNomeCor());
+		}
+		System.out.println();
 	}
 	
 }

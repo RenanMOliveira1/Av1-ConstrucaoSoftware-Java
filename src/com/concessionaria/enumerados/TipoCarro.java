@@ -40,7 +40,7 @@ public enum TipoCarro {
 	/**
 	 * @return Retorna o nome do tipo
 	 */
-	public String getNomeTipo() {
+	public String getNomeTipoCarro() {
 		return nomeTipo;
 	}
 	
@@ -52,5 +52,14 @@ public enum TipoCarro {
 		}
 		
 		return null;
+	}
+	
+	public static void exibirOpcoes() {
+		
+		System.out.println();
+		for (TipoCarro tipoCarro : TipoCarro.values()) {
+			System.out.println("*Digite " + tipoCarro.getNumOpcao() + " para escolher " + tipoCarro.getNomeTipoCarro());
+		}
+		System.out.println();
 	}
 }

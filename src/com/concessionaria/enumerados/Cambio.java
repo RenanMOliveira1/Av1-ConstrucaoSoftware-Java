@@ -43,4 +43,13 @@ public enum Cambio {
 		
 		return null;
 	}
+	
+	public static void exibirOpcoes() {
+		
+		System.out.println();
+		for (Cambio cambio : Cambio.values()) {
+			System.out.println("*Digite " + cambio.getNumOpcao() + " para escolher " + cambio.getNomeCambio());
+		}
+		System.out.println();
+	}
 }
