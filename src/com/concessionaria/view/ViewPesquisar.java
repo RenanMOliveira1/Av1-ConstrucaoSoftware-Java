@@ -67,6 +67,7 @@ public class ViewPesquisar extends View {
 		String dados = "";
 		for(Entry<String, String> especificacoes: veiculoModelo.getEspecificacoes().entrySet()) {
 			System.out.print(especificacoes.getKey() + ": ");
+			input.nextLine();
 			dados = input.next();
 			if (!dados.equals("-1")) {
 				novasEspecificacoes.put(especificacoes.getKey(), dados);

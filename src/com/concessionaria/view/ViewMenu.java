@@ -1,5 +1,6 @@
 package com.concessionaria.view;
 
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -40,17 +41,18 @@ public class ViewMenu {
 				break;
 				case BUSCAR_VEICULO:
 					opcaoBuscarVeiculo(veiculoTemporario, chassiTemporario);
+				break;
 				case REMOVER_VEICULO:
 					opcaoRemoverVeiculo(chassiTemporario);
-					break;
+				break;
 				case LISTAR_ESTOQUE_VEICULO:
 					opcaoListarEstoqueVeiculo();
-					break;
+				break;
 				case SAIR:
 					sair = true;
 				break;
 				default:
-					System.out.println("Inválido.");
+					System.out.println("Opção Inválida.");
 			}
 		}
 	}
@@ -64,29 +66,63 @@ public class ViewMenu {
 	
 	private void opcaoPesquisarVeiculo() {
 		System.out.println("|        Pesquisar Veiculo Selecionado       |");
-		ViewPesquisar viewPesquisar = new ViewPesquisar();
-		Map<String, String> novasEspecificacoes = viewPesquisar.pesquisarVeiculos(loja);
-		loja.pesquisarVeiculo(novasEspecificacoes);
+		
+		if (loja.getEstoqueVeiculos().size() == 0)
+			System.out.println("Nenhum Veículo Cadastrado.");
+		else {
+			ViewPesquisar viewPesquisar = new ViewPesquisar();
+			Map<String, String> novasEspecificacoes = viewPesquisar.pesquisarVeiculos(loja);
+			HashSet<Veiculo> veiculosEncontrados = loja.pesquisarVeiculo(novasEspecificacoes);
+			if (veiculosEncontrados.size() == 0)
+				System.out.println("Nenhum Veículo Encontrado.");
+			else {
+				System.out.println("\nVeículos Encontrados: \n");
+				for (Veiculo v : veiculosEncontrados) {
+					System.out.println(v.toString());
+				}
+			}
+		}
 	}
 	
 	private void opcaoBuscarVeiculo(Veiculo veiculoEncontrado, String chassi) {
 		System.out.println("|         Buscar Veiculo Selecionado         |");
-		System.out.println("Entre com o Chassi: ");
-		chassi = input.next();
-		veiculoEncontrado = loja.buscarVeiculo(chassi);
-		System.out.println(veiculoEncontrado.toString());
+		
+		if (loja.getEstoqueVeiculos().size() == 0)
+			System.out.println("Nenhum Veículo Cadastrado.");
+		else {
+			System.out.println("Entre com o Chassi: ");
+			chassi = input.next();
+			veiculoEncontrado = loja.buscarVeiculo(chassi);
+			
+			if (veiculoEncontrado != null)
+				System.out.println(veiculoEncontrado.toString());
+			else
+				System.out.println("Veículo não Encontrado.");
+		}
 	}
 	
 	private void opcaoRemoverVeiculo(String chassi) {
 		System.out.println("|   Remover Veiculo do Estoque Selecionado    |");
-		System.out.println("Entre com o Chassi: ");
-		chassi = input.next();
-		loja.removerVeiculo(chassi);
+		
+		if (loja.getEstoqueVeiculos().size() == 0)
+			System.out.println("Nenhum Veículo Cadastrado.");
+		else {
+			System.out.println("Entre com o Chassi: ");
+			chassi = input.next();
+			if (loja.removerVeiculo(chassi))
+				System.out.println("Veículo Removido Com Sucesso.");
+			else
+				System.out.println("Veículo não Encontrado");
+		}
 	}
 	
 	private void opcaoListarEstoqueVeiculo() {
 		System.out.println("|   Listar Estoque de Veiculos Selecionado    |");
-		loja.listarEstoque();
+		
+		if (loja.getEstoqueVeiculos().size() == 0)
+			System.out.println("Nenhum Veículo Cadastrado.");
+		else
+			loja.listarEstoque();
 	}
 	
 	private int exibirOpcoesPrincipais() {

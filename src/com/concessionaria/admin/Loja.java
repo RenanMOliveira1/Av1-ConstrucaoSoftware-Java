@@ -70,11 +70,10 @@ public class Loja {
 	private boolean existeVeiculo(Veiculo veiculo, Map<String, String> novasEspecificacoes) {
 		int contCampos = 0;
 		
-		for(Entry<String, String> especificacoes: veiculo.getEspecificacoes().entrySet()) {
-			if (especificacoes.getValue() == novasEspecificacoes.get(especificacoes.getKey()))
+		for(Entry<String, String> especificacoes: novasEspecificacoes.entrySet()) {
+			if (veiculo.getEspecificacoes().containsValue(especificacoes.getValue()))
 				contCampos++;
 		}
-		
 		return contCampos != 0;
 	}
 }
