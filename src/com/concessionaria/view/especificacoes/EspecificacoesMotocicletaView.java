@@ -3,6 +3,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.concessionaria.enumerados.Cilindrada;
+import com.concessionaria.enumerados.Cor;
 import com.concessionaria.enumerados.Montadora;
 import com.concessionaria.enumerados.TipoMotocicleta;
 import com.concessionaria.view.View;
@@ -22,6 +23,10 @@ public class EspecificacoesMotocicletaView extends View implements Especificacoe
 		Montadora.exibirOpcoes();
 		int montadora = validarOpcao("Entre com a Montadora: ", "Opção de Montadora Inválida", 1, 18);
 		especificacoes.put("Montadora", Montadora.getOpcao(montadora).getNomeMontadora());
+		
+		Cor.exibirOpcoes();
+		int cor = validarOpcao("Entre com a Cor: ", "Opção de Cor Inválida", 1, 9);
+		especificacoes.put("Cor", Cor.getOpcao(cor).getNomeCor());
 		
 		System.out.println("Entre com o Modelo: ");
 		especificacoes.put("Modelo", input.next());

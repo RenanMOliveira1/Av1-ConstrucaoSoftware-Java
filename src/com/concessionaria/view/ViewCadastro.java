@@ -24,11 +24,8 @@ public class ViewCadastro extends View {
 		String chassi = validarCampoString("Entre com o Chassi: ", "Chassi: Dados Inválidos.");
 		double preco = validarCampoDouble("Entre com o Preço: ", "Preço: Dados Inválidos.");
 		
-		Cor.exibirOpcoes();
-		int cor = validarOpcao("Entre com a Cor: ", "Opção de Cor Inválida", 1, 9);
-		
 		EspecificacoesView especificacoes = factory.criarEspecificacoes(TipoVeiculo.getOpcao(tipoVeiculo));
 		
-		return new Veiculo(chassi, preco, Cor.getOpcao(cor), especificacoes.cadastrarEspecificacoes(), TipoVeiculo.getOpcao(tipoVeiculo));
+		return new Veiculo(chassi, preco, especificacoes.cadastrarEspecificacoes(), TipoVeiculo.getOpcao(tipoVeiculo));
 	}
 }

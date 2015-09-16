@@ -11,27 +11,17 @@ public class Veiculo {
 	private TipoVeiculo tipoVeiculo;
 	private String chassi;
 	private double preco;
-	private Cor cor;
 	protected Map<String, String> especificacoes;
 	
 	public Veiculo() {
 		this.especificacoes = new HashMap<String, String>();
 	}
 	
-	public Veiculo (String chassi, double preco, Cor cor, Map<String, String> especificacoes, TipoVeiculo tipoVeiculo) {
+	public Veiculo (String chassi, double preco, Map<String, String> especificacoes, TipoVeiculo tipoVeiculo) {
 		setChassi(chassi);
 		setPreco(preco);
 		setEspecificacoes(especificacoes);
 		setTipoVeiculo(tipoVeiculo);
-		setCor(cor);
-	}
-	
-	public Cor getCor() {
-		return cor;
-	}
-
-	public void setCor(Cor cor) {
-		this.cor = cor;
 	}
 
 	public TipoVeiculo getTipoVeiculo() {
@@ -93,6 +83,6 @@ public class Veiculo {
 			especificacoes += cadaEspecificacao.getKey() + ": " + cadaEspecificacao.getValue() + "\n";
 		}
 		
-		return String.format("Tipo de Veículo: %s\n\nChassi: %s%nPreco: R$ %.2f\nCor: %s\n%s", getTipoVeiculo().getNomeTipoVeiculo(), getChassi(), getPreco(), getCor(), especificacoes);
+		return String.format("Tipo de Veículo: %s\n\nChassi: %s%nPreco: R$ %.2f\n%s", getTipoVeiculo().getNomeTipoVeiculo(), getChassi(), getPreco(), especificacoes);
 	}
 }

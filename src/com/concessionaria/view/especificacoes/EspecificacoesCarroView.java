@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 import com.concessionaria.enumerados.Cambio;
+import com.concessionaria.enumerados.Cor;
 import com.concessionaria.enumerados.Montadora;
 import com.concessionaria.enumerados.TipoCarro;
 import com.concessionaria.view.View;
@@ -21,6 +22,10 @@ public class EspecificacoesCarroView extends View implements EspecificacoesView 
 		Montadora.exibirOpcoes();
 		int montadora = validarOpcao("Entre com a Montadora: ", "Opção de Montadora Inválida", 1, 18);
 		especificacoes.put("Montadora", Montadora.getOpcao(montadora).getNomeMontadora());
+		
+		Cor.exibirOpcoes();
+		int cor = validarOpcao("Entre com a Cor: ", "Opção de Cor Inválida", 1, 9);
+		especificacoes.put("Cor", Cor.getOpcao(cor).getNomeCor());
 		
 		System.out.println("Entre com o Modelo: ");
 		especificacoes.put("Modelo", input.next());
