@@ -37,7 +37,6 @@ public class ViewCadastro extends View {
 		
 		while (!dadoInvalido) {
 			try {
-				input.nextLine();
 				chassi = this.validarCampoString("Entre com o Chassi: ", "Dados Inválidos.");
 				for (Veiculo v : loja.getEstoqueVeiculos()) {
 					if (chassi.equals(v.getChassi()))
