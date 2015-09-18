@@ -24,29 +24,22 @@ public class ViewPesquisar extends View {
 			System.out.println(cont++ + " - " + tv.getNomeTipoVeiculo());
 		}
 		
-		System.out.println("Entre com o Tipo de Veículo: ");
-		TipoVeiculo tipoVeiculo = TipoVeiculo.getOpcao(input.nextInt());
+		int opcao = validarCampoInteiro("Entre com o Tipo de Veículo: ", "Tipo de Veiculo: Dados Inválidos");
+		TipoVeiculo tipoVeiculo = TipoVeiculo.getOpcao(opcao);
 		
-		switch (tipoVeiculo) {
-			case CARRO:
-				return lerEspecificacoes(tipoVeiculoEscolhido(loja, TipoVeiculo.CARRO), loja);
-			case MOTOCICLETA:
-				return lerEspecificacoes(tipoVeiculoEscolhido(loja, TipoVeiculo.MOTOCICLETA), loja);
-			default:
-				return null;
-		}
+		return lerEspecificacoes(tipoVeiculoEscolhido(loja, tipoVeiculo), loja);
 	}
 	
 	private HashSet<Veiculo> tipoVeiculoEscolhido(Loja loja, TipoVeiculo tipoVeiculo) {
-		HashSet<Veiculo> temp = new HashSet<Veiculo>();
+		HashSet<Veiculo> estoqueTipoEscolhido = new HashSet<Veiculo>();
 		
 		for (Veiculo v : loja.getEstoqueVeiculos()) {
 			if (v.getTipoVeiculo().equals(tipoVeiculo)) {
-				temp.add(v);
+				estoqueTipoEscolhido.add(v);
 			}
 		}
 		
-		return temp;
+		return estoqueTipoEscolhido;
 	}
 	
 	private Map<String, String> lerEspecificacoes(HashSet<Veiculo> listaVeiculos, Loja loja) {
@@ -67,12 +60,9 @@ public class ViewPesquisar extends View {
 			
 			String dados = "";
 			for(Entry<String, String> especificacoes: veiculoModelo.getEspecificacoes().entrySet()) {
-				System.out.print(especificacoes.getKey() + ": ");
-				input.nextLine();
-				dados = input.next();
-				if (!dados.equals("-1")) {
+				dados = this.validarCampoString(especificacoes.getKey() + ": ", "Dados Inválidos.");
+				if (!dados.equals("-1")) 
 					novasEspecificacoes.put(especificacoes.getKey(), dados);
-				}
 			}
 		}
 				

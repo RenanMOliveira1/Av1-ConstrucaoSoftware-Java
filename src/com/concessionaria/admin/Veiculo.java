@@ -63,7 +63,7 @@ public class Veiculo {
 				+ ((especificacoes == null) ? 0 : especificacoes.hashCode());
 		return result;
 	}
-
+	
 	@Override
 	public boolean equals(Object veiculo) {
 		
@@ -72,16 +72,26 @@ public class Veiculo {
 			return (this.getChassi().equals(obj.getChassi()));
 		}
 		return false;
-	}	
+	}
+	
+	public boolean existeVeiculo(Veiculo veiculo, Map<String, String> novasEspecificacoes) {
+		int contCampos = 0;
+		
+		for(Entry<String, String> especificacoes: novasEspecificacoes.entrySet()) {
+			if (novasEspecificacoes.containsKey(especificacoes.getKey()) && veiculo.getEspecificacoes().containsValue(especificacoes.getValue()))
+				contCampos++;
+		}
+		return contCampos != 0;
+	}
 	
 	@Override
 	public String toString() {
 		String especificacoes = "";
 		
 		for (Entry<String, String> cadaEspecificacao: getEspecificacoes().entrySet()) {
-			especificacoes += cadaEspecificacao.getKey() + ": " + cadaEspecificacao.getValue() + "\n";
+			especificacoes += cadaEspecificacao.getKey() + ": " + cadaEspecificacao.getValue() + "%n";
 		}
 		
-		return String.format("Tipo de Veículo: %s\n\nChassi: %s%nPreco: R$ %.2f\n%s", getTipoVeiculo().getNomeTipoVeiculo(), getChassi(), getPreco(), especificacoes);
+		return String.format("Tipo de Veículo: %s%n\nChassi: %s%nPreco: R$ %.2f%n%s", getTipoVeiculo().getNomeTipoVeiculo(), getChassi(), getPreco(), especificacoes);
 	}
 }

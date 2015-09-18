@@ -1,5 +1,4 @@
-package com.concessionaria.view;
-
+import com.concessionaria.view.ViewMenu;
 
 public class Execucao {
 	public static void main(String[] args) {

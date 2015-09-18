@@ -1,17 +1,44 @@
 package com.concessionaria.admin;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Formatter;
 import java.util.HashSet;
 import java.util.Map;
-import java.util.Map.Entry;
 
+import com.concessionaria.enumerados.TipoVeiculo;
+import com.concessionaria.excessoes.EstoqueVazioException;
 import com.concessionaria.excessoes.VeiculoJaCadastradoException;
 
 public class Loja {
+	private String nome;
+	private String endereco;
 	private HashSet<Veiculo> estoqueVeiculos;
 
 	public Loja() {
-		estoqueVeiculos = new HashSet<Veiculo>();
+		this.estoqueVeiculos = new HashSet<Veiculo>();
+		this.nome = "Concessionaria GEC5";
+		this.endereco = "Rua São José 140 - Centro - RJ.";
 	}
 	
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+
 	public HashSet<Veiculo> getEstoqueVeiculos() {
 		return estoqueVeiculos;
 	}
@@ -48,7 +75,7 @@ public class Loja {
 		HashSet<Veiculo> resultadoVeiculos = new HashSet<Veiculo>();
 		
 		for (Veiculo veiculo : estoqueVeiculos) {
-			if (existeVeiculo(veiculo, novasEspecificacoes)) {
+			if (veiculo.existeVeiculo(veiculo, novasEspecificacoes)) {
 				resultadoVeiculos.add(veiculo);
 			}
 		}
@@ -60,22 +87,73 @@ public class Loja {
 		return estoqueVeiculos.remove(buscarVeiculo(chassi));
 	}
 	
-	public void listarEstoque() {
+	public String listarEstoque(TipoVeiculo tipoVeiculo) {
+		String estoque = "";
 		
 		for (Veiculo veiculo : estoqueVeiculos) {
-			System.out.println(veiculo.toString());
+			if (veiculo.getTipoVeiculo().equals(tipoVeiculo))
+				estoque += veiculo.toString();
+		}
+		
+		return estoque;
+	}
+	
+	public boolean salvarEstoque(TipoVeiculo tipoVeiculo) {
+		Formatter arquivoEstoque = null;
+		
+		try {
+			arquivoEstoque = new Formatter("Estoque de " + tipoVeiculo.getNomeTipoVeiculo() + "s.txt");
+			
+			if (listarEstoque(tipoVeiculo) == "") 
+				throw new EstoqueVazioException("Estoque de Veículos está Vazio.");
+			
+			arquivoEstoque.format("Estoque de " + tipoVeiculo.getNomeTipoVeiculo() + "s%n%n"
+					+ "=======================================================%n%n"
+					+ listarEstoque(tipoVeiculo)
+					+ "%n=======================================================");
+			System.out.println("Estoque Salvo com Sucesso.\n");
+		} catch (SecurityException ex) {
+			System.err.println("Você não tem permissão para criar esse arquivo.");
+			return false;
+		} catch (FileNotFoundException ex) {
+			System.err.println("Erro na Leitura ou Criação do Arquivo");
+			return false;
+		} catch (EstoqueVazioException e) {
+			System.err.println("Não há Veículos Desse Tipo Cadastrado.");
+			return false;
+		}
+		
+		arquivoEstoque.close();
+		return true;
+	}
+	
+	public void recuperarEstoque(TipoVeiculo tipoVeiculo) {
+		FileInputStream arquivoEstoque = null;
+		
+		try {
+			arquivoEstoque = new FileInputStream("Estoque de " + tipoVeiculo.getNomeTipoVeiculo() + "s.txt");
+		} catch (FileNotFoundException ex) {
+			System.err.println("Erro na Abertura do Arquivo ou Arquivo não Encontrado.");
+		} 
+		
+		InputStreamReader arquivoFormatado = new InputStreamReader(arquivoEstoque); 
+		BufferedReader stringDaLinha = new BufferedReader(arquivoFormatado);
+		
+		String linha = null;
+		try {
+			linha = stringDaLinha.readLine();
+			
+			while(linha != null){
+				System.out.println(linha);
+				linha = stringDaLinha.readLine();
+			}
+			
+			arquivoEstoque.close();
+		} catch (IOException e) {
+			System.err.println("Erro na manipulação do Arquivo.\n");
 		}
 	}
 	
-	private boolean existeVeiculo(Veiculo veiculo, Map<String, String> novasEspecificacoes) {
-		int contCampos = 0;
-		
-		for(Entry<String, String> especificacoes: novasEspecificacoes.entrySet()) {
-			if (novasEspecificacoes.containsKey(especificacoes.getKey()) && veiculo.getEspecificacoes().containsValue(especificacoes.getValue()))
-				contCampos++;
-		}
-		return contCampos != 0;
-	}
 }
 
 

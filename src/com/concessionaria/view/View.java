@@ -96,7 +96,7 @@ public abstract class View {
 			if (loja.getEstoqueVeiculos().size() == 0)
 				throw new EstoqueVazioException("Estoque de Veículos está Vazio.");
 		} catch (EstoqueVazioException e) {
-			System.out.println("\nNenhum Veículo Cadastrado.\n");
+			System.err.println("\nNenhum Veículo Cadastrado.\n");
 			return true;
 		}
 		return false;

@@ -7,25 +7,26 @@ import com.concessionaria.admin.Loja;
 import com.concessionaria.admin.Veiculo;
 import com.concessionaria.enumerados.TipoVeiculo;
 import com.concessionaria.excessoes.ChassiDuplicadoException;
-import com.concessionaria.view.especificacoes.EspecificacoesView;
+import com.concessionaria.view.especificacoes.ViewEspecificacoes;
+import com.concessionaria.view.especificacoes.FabricaDeEspecificacao;
 
 public class ViewCadastro extends View {
-	private FabricaDeEspecificacao factory;
+	private FabricaDeEspecificacao fabricaDeEspecificacao;
 	
 	public ViewCadastro() {
-		factory = new FabricaDeEspecificacao();
-		input = new Scanner(System.in);
+		this.fabricaDeEspecificacao = new FabricaDeEspecificacao();
+		this.input = new Scanner(System.in);
 	}
 	
 	public Veiculo cadastrarVeiculo(Loja loja) {
 		
 		TipoVeiculo.exibirOpcoes();
-		int tipoVeiculo = validarOpcao("Entre com o Tipo de Veiculo: ", "Tipo de Veículo Inválido.", 1, 2);
+		int tipoVeiculo = validarOpcao("Entre com o Tipo de Veiculo: ", "Tipo de Veículo Inválido.", 1, TipoVeiculo.values().length);
 		
 		String chassi = validaChassi(loja);
 		double preco = validarCampoDouble("Entre com o Preço: ", "Preço: Dados Inválidos.");
 		
-		EspecificacoesView especificacoes = factory.criarEspecificacoes(TipoVeiculo.getOpcao(tipoVeiculo));
+		ViewEspecificacoes especificacoes = fabricaDeEspecificacao.criarEspecificacoes(TipoVeiculo.getOpcao(tipoVeiculo));
 		
 		return new Veiculo(chassi, preco, especificacoes.cadastrarEspecificacoes(), TipoVeiculo.getOpcao(tipoVeiculo));
 	}
@@ -35,10 +36,9 @@ public class ViewCadastro extends View {
 		boolean dadoInvalido = false;
 		
 		while (!dadoInvalido) {
-			System.out.println("Entre com o Chassi: ");
 			try {
 				input.nextLine();
-				chassi = input.next();
+				chassi = this.validarCampoString("Entre com o Chassi: ", "Dados Inválidos.");
 				for (Veiculo v : loja.getEstoqueVeiculos()) {
 					if (chassi.equals(v.getChassi()))
 						throw new ChassiDuplicadoException("Chassi Duplicado.");
