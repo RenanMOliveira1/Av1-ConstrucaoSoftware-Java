@@ -1,5 +1,25 @@
+/**
+ * Copyright (c) 2015 GEC5
+ * Todos os direitos reservados.
+ * 
+ * NÃO ALTERE OU REMOVA AS INFORMAÇÕES DE COPYRIGHT
+ * OU INFORMAÇÕES CONTIDAS NESTE HEADER
+ * 
+ */
 package com.concessionaria.enumerados;
 
+/**
+ * 
+ * Guarda todos os tipos possíveis de motocicleta para um veiculo
+ * 
+ * enum <code>TipoMotocicleta<code>.
+ * 
+ * @author Tiago Henrique
+ * @author Yasmin Farias
+ * @author Renan Oliveira
+ * @version 2.0 (18/09/2015)
+ *
+ */
 public enum TipoMotocicleta {
 	CICLOMOTOR(1, "Ciclomotor"),
 	MOTOCICLO(2, "Motociclo"),

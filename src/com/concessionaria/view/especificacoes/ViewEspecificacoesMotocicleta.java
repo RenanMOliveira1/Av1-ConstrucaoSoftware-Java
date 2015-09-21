@@ -1,4 +1,13 @@
+/**
+ * Copyright (c) 2015 GEC5
+ * Todos os direitos reservados.
+ * 
+ * NÃO ALTERE OU REMOVA AS INFORMAÇÕES DE COPYRIGHT
+ * OU INFORMAÇÕES CONTIDAS NESTE HEADER
+ * 
+ */
 package com.concessionaria.view.especificacoes;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,6 +19,18 @@ import com.concessionaria.view.View;
 
 import java.util.Scanner;
 
+/**
+ * 
+ * Cadastra as especificações de uma moto.
+ * 
+ * Classe <code>ViewEspecificacoesMotocicleta<code>.
+ * 
+ * @author Tiago Henrique
+ * @author Yasmin Farias
+ * @author Renan Oliveira
+ * @version 2.0 (18/09/2015)
+ *
+ */
 public class ViewEspecificacoesMotocicleta extends View implements ViewEspecificacoes {
 	
 	public ViewEspecificacoesMotocicleta() {

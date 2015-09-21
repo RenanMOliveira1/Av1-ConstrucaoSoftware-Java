@@ -1,4 +1,14 @@
+/**
+ * Copyright (c) 2015 GEC5
+ * Todos os direitos reservados.
+ * 
+ * NÃO ALTERE OU REMOVA AS INFORMAÇÕES DE COPYRIGHT
+ * OU INFORMAÇÕES CONTIDAS NESTE HEADER
+ * 
+ */
+
 package com.concessionaria.admin;
+
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -12,41 +22,102 @@ import com.concessionaria.enumerados.TipoVeiculo;
 import com.concessionaria.excessoes.EstoqueVazioException;
 import com.concessionaria.excessoes.VeiculoJaCadastradoException;
 
+/**
+ * 
+ * Concessionária de veículos
+ * 
+ * Classe <code>Loja<code>.
+ * 
+ * @author Tiago Henrique
+ * @author Yasmin Farias
+ * @author Renan Oliveira
+ * @version 2.0 (18/09/2015)
+ *
+ */
 public class Loja {
+	
+	/** nome. */
 	private String nome;
+	
+	/** endereço. */
 	private String endereco;
+	
+	/** estoqueVeiculos. */
 	private HashSet<Veiculo> estoqueVeiculos;
 
+	/**
+	 * Construtor que define estoqueVeiculos, nome, endereco.
+	 * 
+	 */
 	public Loja() {
 		this.estoqueVeiculos = new HashSet<Veiculo>();
 		this.nome = "Concessionaria GEC5";
 		this.endereco = "Rua São José 140 - Centro - RJ.";
 	}
 	
+	/**
+	 * Obtem nome.
+	 * 
+	 * @return nome
+	 */
 	public String getNome() {
 		return nome;
 	}
 
+	/**
+	 * Define nome.
+	 * 
+	 * @param nome
+	 * 				define nome
+	 */
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
+	/**
+	 * Obtem endereço.
+	 * 
+	 * @return endereco
+	 */
 	public String getEndereco() {
 		return endereco;
 	}
 
+	/**
+	 * Define endereço.
+	 * 
+	 * @param endereco
+	 * 				define endereco
+	 */
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
 
+	/**
+	 * Obtem estoque de veículos.
+	 * 
+	 * @return estoqueVeiculos
+	 */
 	public HashSet<Veiculo> getEstoqueVeiculos() {
 		return estoqueVeiculos;
 	}
 
+	/**
+	 * Define estoque de veículos.
+	 * 
+	 * @param estoqueVeiculos
+	 * 				define estoqueVeiculos
+	 */
 	public void setEstoqueVeiculos(HashSet<Veiculo> estoqueVeiculos) {
 		this.estoqueVeiculos = estoqueVeiculos;
 	}
 
+	/**
+	 * 
+	 * 
+	 * @param veiculo
+	 * @return
+	 */
 	public boolean adicionarVeiculo(Veiculo veiculo) {
 		
 		try {
@@ -60,6 +131,12 @@ public class Loja {
 		return true;
 	}
 	
+	/**
+	 * 
+	 * @param chassi
+	 * @return veiculo
+	 * 
+	 */
 	public Veiculo buscarVeiculo(String chassi) {
 		
 		for (Veiculo veiculo : estoqueVeiculos) {
@@ -71,6 +148,12 @@ public class Loja {
 		return null;
 	}
 	
+	/**
+	 * 
+	 * @param novasEspecificacoes
+	 * @return resultadoVeiculos
+	 *
+	 */
 	public HashSet<Veiculo> pesquisarVeiculo(Map<String, String> novasEspecificacoes) {
 		HashSet<Veiculo> resultadoVeiculos = new HashSet<Veiculo>();
 		
@@ -83,10 +166,22 @@ public class Loja {
 		return resultadoVeiculos;
 	}
 	
+	/**
+	 * 
+	 * @param chassi
+	 * @return estoqueVeiculos com chassi removido
+	 * 
+	 */
 	public boolean removerVeiculo(String chassi) {
 		return estoqueVeiculos.remove(buscarVeiculo(chassi));
 	}
 	
+	/**
+	 * 
+	 * @param tipoVeiculo
+	 * @return estoque
+	 * 
+	 */
 	public String listarEstoque(TipoVeiculo tipoVeiculo) {
 		String estoque = "";
 		
@@ -98,6 +193,12 @@ public class Loja {
 		return estoque;
 	}
 	
+	/**
+	 * 
+	 * @param tipoVeiculo
+	 * @return
+	 */
+	@SuppressWarnings("resource")
 	public boolean salvarEstoque(TipoVeiculo tipoVeiculo) {
 		Formatter arquivoEstoque = null;
 		
@@ -127,6 +228,10 @@ public class Loja {
 		return true;
 	}
 	
+	/**
+	 * @param tipoVeiculo
+	 *  
+	 */
 	public void recuperarEstoque(TipoVeiculo tipoVeiculo) {
 		FileInputStream arquivoEstoque = null;
 		

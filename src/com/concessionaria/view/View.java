@@ -1,5 +1,25 @@
+/**
+ * Copyright (c) 2015 GEC5
+ * Todos os direitos reservados.
+ * 
+ * NÃO ALTERE OU REMOVA AS INFORMAÇÕES DE COPYRIGHT
+ * OU INFORMAÇÕES CONTIDAS NESTE HEADER
+ * 
+ */
 package com.concessionaria.view;
 
+/**
+ * 
+ * Classe abstrata de validação de dados imputados.
+ * 
+ * Classe Abstrata <code>View<code>.
+ * 
+ * @author Tiago Henrique
+ * @author Yasmin Farias
+ * @author Renan Oliveira
+ * @version 2.0 (18/09/2015)
+ *
+ */
 import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
@@ -11,6 +31,14 @@ import com.concessionaria.excessoes.OpcaoInvalidaException;
 public abstract class View {
 	protected Scanner input;
 	
+	/**
+	 * 
+	 * @param msgParaUsuario
+	 * @param msgErro
+	 * @param tamanhoInicial
+	 * @param tamanhoFinal
+	 * @return
+	 */
 	public int validarOpcao(String msgParaUsuario, String msgErro, int tamanhoInicial, int tamanhoFinal) {
 		int opcao = 0;
 		
@@ -29,6 +57,12 @@ public abstract class View {
 		return opcao;
 	}
 	
+	/**
+	 * 
+	 * @param msgParaUsuario
+	 * @param msgErro
+	 * @return
+	 */
 	public String validarCampoString(String msgParaUsuario, String msgErro) {
 		String opcao = null;
 		boolean dadoInvalido = false;
@@ -47,6 +81,12 @@ public abstract class View {
 		return opcao;
 	}
 	
+	/**
+	 * 
+	 * @param msgParaUsuario
+	 * @param msgErro
+	 * @return
+	 */
 	public int validarCampoInteiro(String msgParaUsuario, String msgErro) {
 		int opcao = 0;
 		boolean dadoInvalido = false;
@@ -68,6 +108,12 @@ public abstract class View {
 		return opcao;
 	}
 	
+	/**
+	 * 
+	 * @param msgParaUsuario
+	 * @param msgErro
+	 * @return
+	 */
 	public Double validarCampoDouble(String msgParaUsuario, String msgErro) {
 		Double opcao = 0.0;
 		boolean dadoInvalido = false;
@@ -90,6 +136,11 @@ public abstract class View {
 		return opcao;
 	}
 	
+	/**
+	 * 
+	 * @param loja
+	 * @return
+	 */
 	public boolean estoqueVazio(Loja loja) {
 		
 		try {

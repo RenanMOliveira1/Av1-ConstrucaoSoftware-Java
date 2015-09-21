@@ -1,3 +1,11 @@
+/**
+ * Copyright (c) 2015 GEC5
+ * Todos os direitos reservados.
+ * 
+ * NÃO ALTERE OU REMOVA AS INFORMAÇÕES DE COPYRIGHT
+ * OU INFORMAÇÕES CONTIDAS NESTE HEADER
+ * 
+ */
 package com.concessionaria.view;
 
 import java.util.HashSet;
@@ -9,6 +17,18 @@ import com.concessionaria.admin.Veiculo;
 import com.concessionaria.enumerados.TipoVeiculo;
 import com.concessionaria.excessoes.EstoqueVazioException;
 
+/**
+ * 
+ * Classe para exibição do menu e seus métodos.
+ * 
+ * Classe <code>ViewMenu<code>.
+ * 
+ * @author Tiago Henrique
+ * @author Yasmin Farias
+ * @author Renan Oliveira
+ * @version 2.0 (18/09/2015)
+ *
+ */
 public class ViewMenu extends View {
 	public static final int ADICIONAR_VEICULO = 1;
 	public static final int PESQUISAR_VEICULO = 2;
@@ -26,12 +46,18 @@ public class ViewMenu extends View {
 		loja = new Loja();
 	}
 	
+	/**
+	 * 
+	 */
 	public void menuPrincipal() {
 		Veiculo veiculoTemporario = null;
 		String chassiTemporario = null;
 		int opcaoMenuPrincipal;
 		boolean sair = false;
 		
+		/*
+		 * 
+		 */
 		while (!sair) {
 			opcaoMenuPrincipal = lerOpcaoMenuPrincipal();
 			
@@ -66,6 +92,9 @@ public class ViewMenu extends View {
 		}
 	}
 	
+	/**
+	 * 
+	 */
 	private void opcaoAdicionarVeiculo() {
 		System.out.println("|        Adicionar Veiculo Selecionado       |");
 		
@@ -78,6 +107,9 @@ public class ViewMenu extends View {
 			System.err.println("Veículo não Cadastrado, Tente Novamente.");
 	}
 	
+	/**
+	 * 
+	 */
 	private void opcaoPesquisarVeiculo() {
 		System.out.println("|        Pesquisar Veiculo Selecionado       |");
 		
@@ -97,6 +129,11 @@ public class ViewMenu extends View {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param veiculoEncontrado
+	 * @param chassi
+	 */
 	private void opcaoBuscarVeiculo(Veiculo veiculoEncontrado, String chassi) {
 		System.out.println("|         Buscar Veiculo Selecionado         |");
 		
@@ -111,6 +148,10 @@ public class ViewMenu extends View {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param chassi
+	 */
 	private void opcaoRemoverVeiculo(String chassi) {
 		System.out.println("|   Remover Veiculo do Estoque Selecionado    |");
 		
@@ -123,6 +164,9 @@ public class ViewMenu extends View {
 		}
 	}
 	
+	/**
+	 * 
+	 */
 	private void opcaoListarEstoqueVeiculo() {
 		System.out.println("|   Listar Estoque de Veiculos Selecionado    |");
 		
@@ -141,6 +185,9 @@ public class ViewMenu extends View {
 		}
 	}
 	
+	/**
+	 
+	 */
 	private void opcaoSalvarEstoqueVeiculo() {
 		System.out.println("|        Salvar Estoque de Veículos Selecionado       |");
 		
@@ -152,6 +199,9 @@ public class ViewMenu extends View {
 		}
 	}
 	
+	/**
+	 * 
+	 */
 	private void opcaoRecuperarEstoqueVeiculo() {
 		System.out.println("|        Recuperar Estoque de Veículos Selecionado       |");
 		
@@ -163,6 +213,10 @@ public class ViewMenu extends View {
 		}
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	private int lerOpcaoMenuPrincipal() {
 		System.out.println("===========================================");
 		System.out.println("|        Bem-vindo a Concessionaria        |");
@@ -178,6 +232,9 @@ public class ViewMenu extends View {
 		System.out.println("|        0. Sair                           |");
 		System.out.println("===========================================");
 		
+		/*
+		 * 
+		 */
 		return validarCampoInteiro("Entre com a Opção: ", "Só se Aceita Inteiros");
 	}
 }

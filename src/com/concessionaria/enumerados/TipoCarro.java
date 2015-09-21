@@ -1,5 +1,25 @@
+/**
+ * Copyright (c) 2015 GEC5
+ * Todos os direitos reservados.
+ * 
+ * NÃO ALTERE OU REMOVA AS INFORMAÇÕES DE COPYRIGHT
+ * OU INFORMAÇÕES CONTIDAS NESTE HEADER
+ * 
+ */
 package com.concessionaria.enumerados;
 
+/**
+ * 
+ * Guarda todos os tipos possíveis de carro para um veiculo
+ * 
+ * enum <code>TipoCarro<code>.
+ * 
+ * @author Tiago Henrique
+ * @author Yasmin Farias
+ * @author Renan Oliveira
+ * @version 2.0 (18/09/2015)
+ *
+ */
 public enum TipoCarro {
 	HATCH_COMPACTO(1, "Hatch Compacto"),
 	HATCH_MEDIO(2, "Hatch Médio"),

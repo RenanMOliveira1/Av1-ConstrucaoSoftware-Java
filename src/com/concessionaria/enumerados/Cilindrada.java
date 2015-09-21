@@ -1,5 +1,25 @@
+/**
+ * Copyright (c) 2015 GEC5
+ * Todos os direitos reservados.
+ * 
+ * NÃO ALTERE OU REMOVA AS INFORMAÇÕES DE COPYRIGHT
+ * OU INFORMAÇÕES CONTIDAS NESTE HEADER
+ * 
+ */
 package com.concessionaria.enumerados;
 
+/**
+ * 
+ * Guarda todos os tipos possíveis de cilindrada para um veiculo
+ * 
+ * enum <code>Cilindrada<code>.
+ * 
+ * @author Tiago Henrique
+ * @author Yasmin Farias
+ * @author Renan Oliveira
+ * @version 2.0 (18/09/2015)
+ *
+ */
 public enum Cilindrada {
 	CEM(1, 100),
 	CENTO_E_CINQUENTA(2, 150),

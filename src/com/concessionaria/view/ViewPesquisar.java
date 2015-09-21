@@ -1,3 +1,11 @@
+/**
+ * Copyright (c) 2015 GEC5
+ * Todos os direitos reservados.
+ * 
+ * NÃO ALTERE OU REMOVA AS INFORMAÇÕES DE COPYRIGHT
+ * OU INFORMAÇÕES CONTIDAS NESTE HEADER
+ * 
+ */
 package com.concessionaria.view;
 
 import java.util.HashMap;
@@ -10,12 +18,29 @@ import com.concessionaria.admin.Loja;
 import com.concessionaria.admin.Veiculo;
 import com.concessionaria.enumerados.TipoVeiculo;
 
+/**
+ * 
+ * Faz a leitura das especificações dos veiculos e faz a pesquisa de veículos.
+ * 
+ * Classe <code>ViewPesquisar<code>.
+ * 
+ * @author Tiago Henrique
+ * @author Yasmin Farias
+ * @author Renan Oliveira
+ * @version 2.0 (18/09/2015)
+ *
+ */
 public class ViewPesquisar extends View {
 	
 	public ViewPesquisar() {
 		input = new Scanner(System.in);
 	}
 	
+	/**
+	 * 
+	 * @param loja
+	 * @return
+	 */
 	public Map<String, String> pesquisarVeiculos(Loja loja) {
 		int cont = 1;
 		
@@ -24,12 +49,23 @@ public class ViewPesquisar extends View {
 			System.out.println(cont++ + " - " + tv.getNomeTipoVeiculo());
 		}
 		
+		/**
+		 * 
+		 */
 		int opcao = validarCampoInteiro("Entre com o Tipo de Veículo: ", "Tipo de Veiculo: Dados Inválidos");
 		TipoVeiculo tipoVeiculo = TipoVeiculo.getOpcao(opcao);
 		
+		/**
+		 */
 		return lerEspecificacoes(tipoVeiculoEscolhido(loja, tipoVeiculo), loja);
 	}
 	
+	/**
+	 * 
+	 * @param loja
+	 * @param tipoVeiculo
+	 * @return
+	 */
 	private HashSet<Veiculo> tipoVeiculoEscolhido(Loja loja, TipoVeiculo tipoVeiculo) {
 		HashSet<Veiculo> estoqueTipoEscolhido = new HashSet<Veiculo>();
 		
@@ -42,6 +78,12 @@ public class ViewPesquisar extends View {
 		return estoqueTipoEscolhido;
 	}
 	
+	/**
+	 * 
+	 * @param listaVeiculos
+	 * @param loja
+	 * @return
+	 */
 	private Map<String, String> lerEspecificacoes(HashSet<Veiculo> listaVeiculos, Loja loja) {
 		Veiculo veiculoModelo = null;
 		Map<String, String> novasEspecificacoes = new HashMap<String, String>();

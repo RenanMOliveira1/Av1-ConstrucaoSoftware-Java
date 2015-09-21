@@ -1,4 +1,13 @@
+/**
+ * Copyright (c) 2015 GEC5
+ * Todos os direitos reservados.
+ * 
+ * NÃO ALTERE OU REMOVA AS INFORMAÇÕES DE COPYRIGHT
+ * OU INFORMAÇÕES CONTIDAS NESTE HEADER
+ * 
+ */
 package com.concessionaria.view.especificacoes;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -9,12 +18,28 @@ import com.concessionaria.enumerados.Montadora;
 import com.concessionaria.enumerados.TipoCarro;
 import com.concessionaria.view.View;
 
+/**
+ * 
+ * Cadastra as especificações de um carro.
+ * 
+ * Classe <code>ViewEspecificacoesCarro<code>.
+ * 
+ * @author Tiago Henrique
+ * @author Yasmin Farias
+ * @author Renan Oliveira
+ * @version 2.0 (18/09/2015)
+ *
+ */
 public class ViewEspecificacoesCarro extends View implements ViewEspecificacoes {
 	
 	public ViewEspecificacoesCarro() {
 		input = new Scanner(System.in);
 	}
 	
+	/*
+	 * (non-Javadoc)
+	 * @see com.concessionaria.view.especificacoes.ViewEspecificacoes#cadastrarEspecificacoes()
+	 */
 	@Override
 	public Map<String, String> cadastrarEspecificacoes() {
 		Map<String, String> especificacoes = new HashMap<String, String>();
