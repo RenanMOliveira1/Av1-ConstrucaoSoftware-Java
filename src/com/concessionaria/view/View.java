@@ -33,11 +33,15 @@ public abstract class View {
 	
 	/**
 	 * 
-	 * @param msgParaUsuario
-	 * @param msgErro
-	 * @param tamanhoInicial
-	 * @param tamanhoFinal
-	 * @return
+	 * Valida uma Entrada se For em Opção ENUMERADA.
+	 * 
+	 * @param msgParaUsuario Mensagem A ser Exibida ao Usuário para Entrar com os Dados.
+	 * @param msgErro Mensagem de Erro Caso Não for Correta a Entrada de Dados.
+	 * @param tamanhoInicial Tamanho Inicial de Opções no Enumerados.
+	 * @param tamanhoFinal Tamanho Total (Final) de Opções no Enumerados.
+	 * @return Retorna o Numero referente a Opção no Enumerado
+	 * 
+	 * @throws OpcaoInvalidaException Se a Opção Entrada não for Válida, Lança essa Excessão.
 	 */
 	public int validarOpcao(String msgParaUsuario, String msgErro, int tamanhoInicial, int tamanhoFinal) {
 		int opcao = 0;
@@ -59,9 +63,13 @@ public abstract class View {
 	
 	/**
 	 * 
-	 * @param msgParaUsuario
-	 * @param msgErro
-	 * @return
+	 * Valida um Campo String.
+	 * 
+	 * @param msgParaUsuario Mensagem A ser Exibida ao Usuário para Entrar com os Dados.
+	 * @param msgErro Mensagem de Erro Caso Não for Correta a Entrada de Dados.
+	 * @return Retorna a String já validada.
+	 * 
+	 * @throws NoSuchElementException Se Houver Algum Erro referente a String, Lança uma Excessão.
 	 */
 	public String validarCampoString(String msgParaUsuario, String msgErro) {
 		String opcao = null;
@@ -83,9 +91,14 @@ public abstract class View {
 	
 	/**
 	 * 
-	 * @param msgParaUsuario
-	 * @param msgErro
-	 * @return
+	 * Valida Um campo Inteiro.
+	 * 
+	 * @param msgParaUsuario Mensagem A ser Exibida ao Usuário para Entrar com os Dados.
+	 * @param msgErro Mensagem de Erro Caso Não for Correta a Entrada de Dados.
+	 * @return Retorna o Número Inteiro Formatado.
+	 * 
+	 * @throws InputMismatchException Se Não For um Inteiro, Lança essa Excessão.
+	 * @throws NoSuchElementException Se Houver Algum Erro referente ao Inteiro, Lança uma Excessão.
 	 */
 	public int validarCampoInteiro(String msgParaUsuario, String msgErro) {
 		int opcao = 0;
@@ -110,9 +123,14 @@ public abstract class View {
 	
 	/**
 	 * 
-	 * @param msgParaUsuario
-	 * @param msgErro
-	 * @return
+	 * Validar um campo Double.
+	 * 
+	 * @param msgParaUsuario Mensagem A ser Exibida ao Usuário para Entrar com os Dados.
+	 * @param msgErro Mensagem de Erro Caso Não for Correta a Entrada de Dados.
+	 * @return retorna um Double Formatado.
+	 * 
+	 * @throws InputMismatchException Se Não For um Double, Lança essa Excessão.
+	 * @throws NoSuchElementException Se Houver Algum Erro referente ao Double, Lança uma Excessão.
 	 */
 	public Double validarCampoDouble(String msgParaUsuario, String msgErro) {
 		Double opcao = 0.0;
@@ -138,8 +156,10 @@ public abstract class View {
 	
 	/**
 	 * 
+	 * Verifica se o Veículo Está Vazio.
+	 * 
 	 * @param loja
-	 * @return
+	 * @return Retorna <tt>true</tt> se Estiver Vazio, e <tt>false</tt> se não estiver Vazio.
 	 */
 	public boolean estoqueVazio(Loja loja) {
 		

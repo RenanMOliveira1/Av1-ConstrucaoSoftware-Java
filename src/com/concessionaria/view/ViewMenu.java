@@ -26,6 +26,8 @@ import com.concessionaria.excessoes.EstoqueVazioException;
  * @author Tiago Henrique
  * @author Yasmin Farias
  * @author Renan Oliveira
+ * 
+ * @see View
  * @version 2.0 (18/09/2015)
  *
  */
@@ -47,6 +49,7 @@ public class ViewMenu extends View {
 	}
 	
 	/**
+	 * Exibe o Menu Principal com todas as Opções da Concessionaria.
 	 * 
 	 */
 	public void menuPrincipal() {
@@ -93,7 +96,7 @@ public class ViewMenu extends View {
 	}
 	
 	/**
-	 * 
+	 * Opção do Menu Adicionar Veículo.
 	 */
 	private void opcaoAdicionarVeiculo() {
 		System.out.println("|        Adicionar Veiculo Selecionado       |");
@@ -108,7 +111,7 @@ public class ViewMenu extends View {
 	}
 	
 	/**
-	 * 
+	 * Opção do Menu de Pesquisar Veículo.
 	 */
 	private void opcaoPesquisarVeiculo() {
 		System.out.println("|        Pesquisar Veiculo Selecionado       |");
@@ -131,8 +134,10 @@ public class ViewMenu extends View {
 	
 	/**
 	 * 
-	 * @param veiculoEncontrado
-	 * @param chassi
+	 * Opção Buscar Veículo no Estoque.
+	 * 
+	 * @param veiculoEncontrado Veículo Temporário para Fazer Operações.
+	 * @param chassi Chassi Temporário para Fazer Operações.
 	 */
 	private void opcaoBuscarVeiculo(Veiculo veiculoEncontrado, String chassi) {
 		System.out.println("|         Buscar Veiculo Selecionado         |");
@@ -150,7 +155,9 @@ public class ViewMenu extends View {
 	
 	/**
 	 * 
-	 * @param chassi
+	 * Opção Remover do Menu.
+	 * 
+	 * @param chassi Chassi Temporário para Fazer Operações.
 	 */
 	private void opcaoRemoverVeiculo(String chassi) {
 		System.out.println("|   Remover Veiculo do Estoque Selecionado    |");
@@ -165,7 +172,7 @@ public class ViewMenu extends View {
 	}
 	
 	/**
-	 * 
+	 * Opção de Listar Estoque.
 	 */
 	private void opcaoListarEstoqueVeiculo() {
 		System.out.println("|   Listar Estoque de Veiculos Selecionado    |");
@@ -186,7 +193,7 @@ public class ViewMenu extends View {
 	}
 	
 	/**
-	 
+	 * Opção de Salvar Estoque de Veículos
 	 */
 	private void opcaoSalvarEstoqueVeiculo() {
 		System.out.println("|        Salvar Estoque de Veículos Selecionado       |");
@@ -200,7 +207,7 @@ public class ViewMenu extends View {
 	}
 	
 	/**
-	 * 
+	 * Opção de Recuperar Estoque de Veículos.
 	 */
 	private void opcaoRecuperarEstoqueVeiculo() {
 		System.out.println("|        Recuperar Estoque de Veículos Selecionado       |");
@@ -215,7 +222,9 @@ public class ViewMenu extends View {
 	
 	/**
 	 * 
-	 * @return
+	 * Exibe as Principais Opções do Menu e Retorna um Opção do mesmo.
+	 * 
+	 * @return Retorna o Inteiro referente a Opção.
 	 */
 	private int lerOpcaoMenuPrincipal() {
 		System.out.println("===========================================");

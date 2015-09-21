@@ -38,8 +38,10 @@ public class ViewPesquisar extends View {
 	
 	/**
 	 * 
-	 * @param loja
-	 * @return
+	 * View do Pesquisar Veículo, onde retorna um Map de especificações.
+	 * 
+	 * @param loja loja recebe a Loja na qual está se Trabalhando.
+	 * @return Retorna um Map com as Especificações a serem Procuradas.
 	 */
 	public Map<String, String> pesquisarVeiculos(Loja loja) {
 		int cont = 1;
@@ -62,9 +64,12 @@ public class ViewPesquisar extends View {
 	
 	/**
 	 * 
-	 * @param loja
-	 * @param tipoVeiculo
-	 * @return
+	 * Método onde com base no tipo de veículo, retorna um HashSet somente com os Veículos
+	 * associados. Facilita na Hora de Trabalhar com esses Veículos.
+	 * 
+	 * @param loja loja recebe a Loja na qual está se Trabalhando.
+	 * @param tipoVeiculo O Tipo de Veículo a ser Pesquisado.
+	 * @return retorna um HashSet somente com os Veículos associados
 	 */
 	private HashSet<Veiculo> tipoVeiculoEscolhido(Loja loja, TipoVeiculo tipoVeiculo) {
 		HashSet<Veiculo> estoqueTipoEscolhido = new HashSet<Veiculo>();
@@ -80,9 +85,11 @@ public class ViewPesquisar extends View {
 	
 	/**
 	 * 
-	 * @param listaVeiculos
-	 * @param loja
-	 * @return
+	 * View para Leitura das Especificações, com base no Tipo de Veículo.
+	 * 
+	 * @param listaVeiculos Veículos a serem pesquisados.
+	 * @param loja loja recebe a Loja na qual está se Trabalhando.
+	 * @return retorna um Map com os Dados Preenxidos.
 	 */
 	private Map<String, String> lerEspecificacoes(HashSet<Veiculo> listaVeiculos, Loja loja) {
 		Veiculo veiculoModelo = null;

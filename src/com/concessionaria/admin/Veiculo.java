@@ -161,7 +161,7 @@ public class Veiculo {
 	 * @param novasEspecificacoes
 	 * @return boolean
 	 */
-	public boolean existeVeiculo(Veiculo veiculo, Map<String, String> novasEspecificacoes) {
+	public boolean existeEspecificacaoVeiculo(Veiculo veiculo, Map<String, String> novasEspecificacoes) {
 		int contCampos = 0;
 		
 		for(Entry<String, String> especificacoes: novasEspecificacoes.entrySet()) {

@@ -113,10 +113,11 @@ public class Loja {
 	}
 
 	/**
-	 * 
+	 * Adiciona um Veiculo no Estoque de Veiculos.
 	 * 
 	 * @param veiculo
-	 * @return
+	 * @return Retorna <tt>true</tt> se for adicionado, e <tt>false</tt> se não adicionar.
+	 * @throws VeiculoJaCadastradoException se já tiver um Veículo, lança uma excessão.
 	 */
 	public boolean adicionarVeiculo(Veiculo veiculo) {
 		
@@ -133,8 +134,9 @@ public class Loja {
 	
 	/**
 	 * 
-	 * @param chassi
-	 * @return veiculo
+	 * Pesquisa um Veiculo no estoque de veículos com base no Chassi passado por Parâmetro.
+	 * @param chassi o Chassi do Véiculo que se deseja Encontrar
+	 * @return veiculo Retorna o Veículo Encontrado, se não, retorna null.
 	 * 
 	 */
 	public Veiculo buscarVeiculo(String chassi) {
@@ -150,15 +152,19 @@ public class Loja {
 	
 	/**
 	 * 
-	 * @param novasEspecificacoes
-	 * @return resultadoVeiculos
+	 * Pesquisa um Veículo no Estoque com Base nas especificações passadas por Parâmetro.
+	 * Se uma Especificação já for igual, retorna esse Veículo.
+	 * 
+	 * @param novasEspecificacoes Especificações que serão pesquisadas.
+	 * @return resultadoVeiculos Retorna uma Coleção HashSet de Veículos encontrados, se não
+	 * retorna uma Coleção vazia.
 	 *
 	 */
 	public HashSet<Veiculo> pesquisarVeiculo(Map<String, String> novasEspecificacoes) {
 		HashSet<Veiculo> resultadoVeiculos = new HashSet<Veiculo>();
 		
 		for (Veiculo veiculo : estoqueVeiculos) {
-			if (veiculo.existeVeiculo(veiculo, novasEspecificacoes)) {
+			if (veiculo.existeEspecificacaoVeiculo(veiculo, novasEspecificacoes)) {
 				resultadoVeiculos.add(veiculo);
 			}
 		}
@@ -168,8 +174,11 @@ public class Loja {
 	
 	/**
 	 * 
-	 * @param chassi
-	 * @return estoqueVeiculos com chassi removido
+	 * Remove um Veículo do Estoque de Veículos.
+	 * 
+	 * @param chassi Chassi do Veículo que será Removido
+	 * @return estoqueVeiculos Retorna <tt>true</tt> se for removido
+	 * e <tt>false</tt> se não for removido.
 	 * 
 	 */
 	public boolean removerVeiculo(String chassi) {
@@ -178,8 +187,10 @@ public class Loja {
 	
 	/**
 	 * 
-	 * @param tipoVeiculo
-	 * @return estoque
+	 * Exibe Todos os Veículos Cadastrados, com Base no seu tipo (Carro, MOtocicleta, etc).
+	 * 
+	 * @param tipoVeiculo O Tipo de Veículo a ser Exibido.
+	 * @return retorna um String Formatada com Todo o Estoque.
 	 * 
 	 */
 	public String listarEstoque(TipoVeiculo tipoVeiculo) {
@@ -195,8 +206,14 @@ public class Loja {
 	
 	/**
 	 * 
-	 * @param tipoVeiculo
-	 * @return
+	 * Salva o Estoque em um Arquivo TXT.
+	 * 
+	 * @param tipoVeiculo O Tipo de Veículo a ser Salvo.
+	 * @return Retorna <tt>true</tt> se for Salvo, ou <tt>false</tt> se não for.
+	 * 
+	 * @throws SecurityException Se você não TIver Permissão, Lança essa Excessão.
+	 * @throws FileNotFoundException Se Houver algum erro na Criação, Lança essa Excessão.
+	 * @throws EstoqueVazioException Se não Há nenhum Carro Cadastrado, Lança essa Excessão.
 	 */
 	@SuppressWarnings("resource")
 	public boolean salvarEstoque(TipoVeiculo tipoVeiculo) {
@@ -229,7 +246,12 @@ public class Loja {
 	}
 	
 	/**
-	 * @param tipoVeiculo
+	 * 
+	 * Recupera o Estoque Salvo e Exibe na Tela o Arquivo.
+	 * 
+	 * @param tipoVeiculo O Tipo de Veículo a ser Exibido.
+	 * 
+	 * @throws FileNotFoundException Se o Arquivo não for Encontrado, Lança essa Excessão.
 	 *  
 	 */
 	public void recuperarEstoque(TipoVeiculo tipoVeiculo) {

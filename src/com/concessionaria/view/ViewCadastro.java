@@ -27,6 +27,8 @@ import com.concessionaria.view.especificacoes.FabricaDeEspecificacao;
  * @author Tiago Henrique
  * @author Yasmin Farias
  * @author Renan Oliveira
+ * 
+ * @see View
  * @version 2.0 (18/09/2015)
  *
  */
@@ -41,8 +43,11 @@ public class ViewCadastro extends View {
 	
 	/**
 	 * 
-	 * @param loja
-	 * @return
+	 * A Parte View de Cadastro, Recebe todos os Dados para o Veículo ser Cadastrado.
+	 * 
+	 * @param loja recebe a Loja na qual está se Trabalhando.
+	 * @return Retorna um Veículo Com os dados a serem cadastrados.
+	 * 
 	 */
 	public Veiculo cadastrarVeiculo(Loja loja) {
 		
@@ -65,8 +70,12 @@ public class ViewCadastro extends View {
 	
 	/**
 	 * 
-	 * @param loja
-	 * @return
+	 * Valida um Chassi de Veículo.
+	 * Verifica se Já Existe um Chassi Cadastrado, se sim, quer dizer que já
+	 * existe esse veículo, e pede para entrar novamente com o Chassi.
+	 * 
+	 * @param loja recebe a Loja na qual está se Trabalhando.
+	 * @return Um Chassi já Validado.
 	 */
 	private String validaChassi(Loja loja) {
 		String chassi = null;
